@@ -1,1 +1,399 @@
-hello world
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Set theme before first paint to avoid a flash (dark is the default). -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'light' && t !== 'dark') t = 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <title>Weiren Feng — Software Engineer (Frontend / Full-Stack)</title>
+  <meta name="description" content="Weiren Feng — frontend / full-stack software engineer in the SF Bay Area. I build production web apps end to end: React/TypeScript front ends, Node/Firebase/serverless back ends, and real AI/LLM integration. See PetNote and ToneDown.">
+  <meta name="author" content="Weiren Feng">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0a0d14" id="theme-color-meta">
+  <link rel="canonical" href="https://renrenmimi.github.io/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Weiren Feng — Software Engineer (Frontend / Full-Stack)">
+  <meta property="og:description" content="Production web apps end to end — React/TypeScript, Node/Firebase/serverless, and real AI/LLM integration. See PetNote and ToneDown.">
+  <meta property="og:url" content="https://renrenmimi.github.io/">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Icon sprite (decorative; referenced via <use>) -->
+  <svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+      </symbol>
+      <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+      </symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="5" width="18" height="14" rx="2.2"/>
+        <path d="m4 7.5 8 5 8-5"/>
+      </symbol>
+      <symbol id="i-arrow-up-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M7 17 17 7"/>
+        <path d="M8 7h9v9"/>
+      </symbol>
+      <symbol id="i-arrow-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5v13"/>
+        <path d="m6 12 6 6 6-6"/>
+      </symbol>
+      <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m9 18-6-6 6-6"/>
+        <path d="m15 6 6 6-6 6"/>
+      </symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2"/><path d="M12 20v2"/>
+        <path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/>
+        <path d="M2 12h2"/><path d="M20 12h2"/>
+        <path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+      </symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </symbol>
+      <symbol id="i-paw" viewBox="0 0 24 24" fill="currentColor">
+        <ellipse cx="12" cy="15.6" rx="5.4" ry="4.4"/>
+        <circle cx="6.3" cy="10.6" r="2.05"/>
+        <circle cx="10" cy="7.1" r="2.15"/>
+        <circle cx="14" cy="7.1" r="2.15"/>
+        <circle cx="17.7" cy="10.6" r="2.05"/>
+      </symbol>
+      <symbol id="i-wave" viewBox="0 0 24 24" fill="currentColor">
+        <rect x="2.5" y="9" width="2" height="6" rx="1"/>
+        <rect x="7" y="5.5" width="2" height="13" rx="1"/>
+        <rect x="11.5" y="2.5" width="2" height="19" rx="1"/>
+        <rect x="16" y="6.5" width="2" height="11" rx="1"/>
+        <rect x="20.5" y="8.5" width="2" height="7" rx="1"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <header class="site-header">
+    <div class="container header__inner">
+      <a class="wordmark" href="#top">Weiren&nbsp;Feng<span class="dot">.</span></a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#about">About</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch to light theme">
+        <svg class="icon icon-sun" aria-hidden="true" focusable="false"><use href="#i-sun"></use></svg>
+        <svg class="icon icon-moon" aria-hidden="true" focusable="false"><use href="#i-moon"></use></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero__aurora" aria-hidden="true"></div>
+      <div class="hero__grain" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <p class="eyebrow hero__status">
+          <span class="status-dot" aria-hidden="true"></span>
+          Open to Frontend / Full-Stack roles
+        </p>
+        <h1 class="hero__name">Weiren Feng</h1>
+        <p class="hero__title">Software Engineer <span class="sep">·</span> Frontend &amp; Full-Stack</p>
+        <p class="hero__lede">
+          I build production web apps end to end — React/TypeScript front ends,
+          Node/Firebase/serverless back ends, and real AI/LLM integration in between.
+        </p>
+        <p class="hero__meta">SF Bay Area · Redwood City &nbsp;·&nbsp; English / 中文</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="mailto:feng.weir@northeastern.edu">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-mail"></use></svg>
+            Email me
+          </a>
+          <a class="btn btn--ghost" href="https://github.com/renrenmimi" target="_blank" rel="noopener noreferrer">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-github"></use></svg>
+            GitHub
+          </a>
+          <a class="btn btn--ghost" href="https://www.linkedin.com/in/fengweiren" target="_blank" rel="noopener noreferrer">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-linkedin"></use></svg>
+            LinkedIn
+          </a>
+        </div>
+        <a class="hero__jump" href="#work">
+          See my work
+          <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-down"></use></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="section work" id="work" aria-labelledby="work-h">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">// selected work</p>
+          <h2 id="work-h" class="section__title">Two things I built, front to back</h2>
+          <p class="section__sub">Both are live and open source. Pick one and click around.</p>
+        </header>
+
+        <div class="cards">
+          <!-- PetNote -->
+          <article class="card reveal">
+            <div class="card__top">
+              <span class="card__logo" aria-hidden="true">
+                <svg class="icon" focusable="false"><use href="#i-paw"></use></svg>
+              </span>
+              <span class="card__index">01</span>
+            </div>
+            <p class="card__kicker">Pet-Centric Social Platform</p>
+            <h3 class="card__title">PetNote</h3>
+            <p class="card__desc">
+              A full social app for pet people: posts and feeds, multi-pet profiles,
+              check-ins at pet-friendly places, in-person meetups, notifications, and
+              moderation. It runs on React 19 with a callable-first Firebase backend —
+              Cloud Functions and Firestore security rules doing the heavy lifting,
+              with Cloudinary for media and Geoapify for places.
+            </p>
+            <ul class="stats" aria-label="Project highlights">
+              <li class="stat"><span class="stat__num">62</span><span class="stat__label">cloud functions</span></li>
+              <li class="stat"><span class="stat__num">11</span><span class="stat__label">domain modules</span></li>
+              <li class="stat"><span class="stat__num">React 19</span><span class="stat__label">front end</span></li>
+            </ul>
+            <ul class="tags" aria-label="Tech stack">
+              <li>Firebase</li>
+              <li>Cloud Functions</li>
+              <li>Firestore Rules</li>
+              <li>Cloudinary</li>
+              <li>Geoapify</li>
+            </ul>
+            <div class="card__actions">
+              <a class="btn btn--primary btn--sm" href="https://petnote.vercel.app" target="_blank" rel="noopener noreferrer">
+                Live demo
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg>
+              </a>
+              <a class="btn btn--ghost btn--sm" href="https://github.com/renrenmimi/PetNote" target="_blank" rel="noopener noreferrer">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-code"></use></svg>
+                Code
+              </a>
+            </div>
+          </article>
+
+          <!-- ToneDown -->
+          <article class="card reveal">
+            <div class="card__top">
+              <span class="card__logo" aria-hidden="true">
+                <svg class="icon" focusable="false"><use href="#i-wave"></use></svg>
+              </span>
+              <span class="card__index">02</span>
+            </div>
+            <p class="card__kicker">Real-Time AI Communication Coach</p>
+            <h3 class="card__title">ToneDown</h3>
+            <p class="card__desc">
+              A real-time coach that scores how you're coming across as you speak — live
+              transcription, LLM tone analysis, and audio signals combined into one score.
+              It adds roleplay "sparring" personas, AI session recaps, and a zero-mic demo,
+              all served through a Vercel serverless proxy to Groq (Whisper + Llama 3.3 70B)
+              with a circuit-breaker fallback chain.
+            </p>
+            <ul class="stats" aria-label="Project highlights">
+              <li class="stat"><span class="stat__num">101</span><span class="stat__label">tests in CI</span></li>
+              <li class="stat"><span class="stat__num">Real-time</span><span class="stat__label">tone scoring</span></li>
+              <li class="stat"><span class="stat__num">Zero-mic</span><span class="stat__label">instant demo</span></li>
+            </ul>
+            <ul class="tags" aria-label="Tech stack">
+              <li>React</li>
+              <li>Vercel Serverless</li>
+              <li>Groq</li>
+              <li>Whisper</li>
+              <li>Llama 3.3 70B</li>
+              <li>Web Audio API</li>
+            </ul>
+            <div class="card__actions">
+              <a class="btn btn--primary btn--sm" href="https://tone-down.vercel.app" target="_blank" rel="noopener noreferrer">
+                Live demo
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg>
+              </a>
+              <a class="btn btn--ghost btn--sm" href="https://github.com/renrenmimi/ToneDown" target="_blank" rel="noopener noreferrer">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-code"></use></svg>
+                Code
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section skills" id="skills" aria-labelledby="skills-h">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">// skills</p>
+          <h2 id="skills-h" class="section__title">What I work with</h2>
+          <p class="section__sub">The stack I reach for, grouped.</p>
+        </header>
+
+        <div class="skill-groups">
+          <div class="skill-group reveal">
+            <h3 class="skill-group__title">Languages</h3>
+            <ul class="tags">
+              <li>JavaScript</li><li>TypeScript</li><li>Java</li><li>Python</li><li>SQL</li>
+            </ul>
+          </div>
+          <div class="skill-group reveal">
+            <h3 class="skill-group__title">Frontend</h3>
+            <ul class="tags">
+              <li>React</li><li>Next.js</li><li>Vue</li><li>Tailwind</li>
+            </ul>
+          </div>
+          <div class="skill-group reveal">
+            <h3 class="skill-group__title">Backend &amp; Data</h3>
+            <ul class="tags">
+              <li>Node</li><li>Express</li><li>GraphQL</li><li>REST</li>
+              <li>Firebase</li><li>MySQL</li><li>MongoDB</li><li>Redis</li>
+            </ul>
+          </div>
+          <div class="skill-group reveal">
+            <h3 class="skill-group__title">Cloud &amp; Tools</h3>
+            <ul class="tags">
+              <li>AWS</li><li>Vercel</li><li>Docker</li><li>Git</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="about" aria-labelledby="about-h">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">// about</p>
+          <h2 id="about-h" class="section__title">From data to product</h2>
+        </header>
+
+        <div class="about__grid">
+          <div class="about__bio reveal">
+            <p>
+              I came to engineering the long way — six years as a senior data analyst before a
+              STEM master's at Northeastern. That path stuck with me: I build with an eye on what
+              actually ships and what the data says afterward, and I like owning a product end to
+              end, from a responsive React front end to the serverless functions and data model
+              behind it. Lately I'm most interested in getting the AI/LLM pieces right — and I
+              work in both English and Chinese.
+            </p>
+          </div>
+          <aside class="facts reveal" aria-label="Quick facts">
+            <dl>
+              <div class="fact">
+                <dt>Location</dt>
+                <dd>Redwood City, CA · SF Bay Area</dd>
+              </div>
+              <div class="fact">
+                <dt>Education</dt>
+                <dd>M.S. Information Systems (STEM) — Northeastern University, 2025</dd>
+              </div>
+              <div class="fact">
+                <dt>Focus</dt>
+                <dd>Frontend · Full-Stack</dd>
+              </div>
+              <div class="fact">
+                <dt>Work authorization</dt>
+                <dd>No visa sponsorship required</dd>
+              </div>
+              <div class="fact">
+                <dt>Languages</dt>
+                <dd>English · 中文 (Chinese)</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a class="wordmark" href="#top">Weiren&nbsp;Feng<span class="dot">.</span></a>
+        <p class="footer__note">Designed and built from scratch — just HTML, CSS, and a little vanilla JS. No template, no framework.</p>
+      </div>
+      <nav class="footer__links" aria-label="Contact and links">
+        <a href="mailto:feng.weir@northeastern.edu">
+          <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-mail"></use></svg>
+          Email
+        </a>
+        <a href="https://github.com/renrenmimi" target="_blank" rel="noopener noreferrer">
+          <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-github"></use></svg>
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/fengweiren" target="_blank" rel="noopener noreferrer">
+          <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-linkedin"></use></svg>
+          LinkedIn
+        </a>
+      </nav>
+    </div>
+    <div class="container footer__bottom">
+      <p>© <span id="year">2026</span> Weiren Feng</p>
+      <a class="footer__top" href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var toggle = document.querySelector('.theme-toggle');
+      var meta = document.getElementById('theme-color-meta');
+      var colors = { dark: '#0a0d14', light: '#f6f7fb' };
+
+      function label(t) { return t === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'; }
+      function apply(t) {
+        root.setAttribute('data-theme', t);
+        if (meta) meta.setAttribute('content', colors[t] || colors.dark);
+        if (toggle) toggle.setAttribute('aria-label', label(t));
+      }
+      apply(root.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
+
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          apply(next);
+          try { localStorage.setItem('theme', next); } catch (e) {}
+        });
+      }
+
+      var y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var items = document.querySelectorAll('.reveal');
+      if (!reduce && 'IntersectionObserver' in window && items.length) {
+        root.classList.add('reveal-on');
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+        items.forEach(function (el) { io.observe(el); });
+      }
+    })();
+  </script>
+</body>
+</html>
