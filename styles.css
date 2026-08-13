@@ -663,6 +663,167 @@ ul { list-style: none; padding: 0; }
   .reveal-on .skill-group:nth-child(2) { transition-delay: 0.06s; }
   .reveal-on .skill-group:nth-child(3) { transition-delay: 0.12s; }
   .reveal-on .skill-group:nth-child(4) { transition-delay: 0.18s; }
+  .reveal-on .mini:nth-child(2) { transition-delay: 0.05s; }
+  .reveal-on .mini:nth-child(3) { transition-delay: 0.10s; }
+  .reveal-on .mini:nth-child(4) { transition-delay: 0.15s; }
+  .reveal-on .mini:nth-child(5) { transition-delay: 0.20s; }
+  .reveal-on .mini:nth-child(6) { transition-delay: 0.25s; }
+  .reveal-on .lab__group:nth-child(3) { transition-delay: 0.06s; }
+  .reveal-on .lab__group:nth-child(4) { transition-delay: 0.12s; }
+}
+
+/* ---- Experience ------------------------------------------------------- */
+.roles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.25rem);
+}
+
+.role {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: clamp(1.35rem, 2.8vw, 1.9rem);
+}
+
+.role__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.4rem 1.25rem;
+  margin-bottom: 0.9rem;
+}
+
+.role__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2.2vw, 1.2rem);
+  letter-spacing: -0.01em;
+}
+
+.role__org {
+  margin: 0.3rem 0 0;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+.role__period {
+  margin: 0;
+  color: var(--text-faint);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+.role__desc {
+  margin: 0 0 1.1rem;
+  color: var(--text-dim);
+  line-height: 1.78;
+}
+
+/* ---- Teaching: compact cards ------------------------------------------ */
+.mini-grid {
+  display: grid;
+  gap: clamp(0.85rem, 2vw, 1.1rem);
+  grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+}
+
+.mini {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 1.15rem 1.25rem 1.05rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+}
+
+.mini__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  letter-spacing: -0.01em;
+}
+
+.mini__desc {
+  flex: 1;
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.mini__go {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--accent-text);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+}
+
+.mini__go .icon {
+  width: 0.85em;
+  height: 0.85em;
+  transition: transform 0.22s ease;
+}
+
+/* ---- Lab: pills -------------------------------------------------------- */
+.lab__group + .lab__group { margin-top: clamp(1.4rem, 3vw, 1.9rem); }
+
+.lab__label {
+  margin: 0 0 0.75rem;
+  color: var(--text-faint);
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.pills {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.pills a {
+  display: inline-block;
+  padding: 0.42rem 0.85rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-dim);
+  font-size: 0.87rem;
+  text-decoration: none;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+@media (pointer: fine) {
+  .mini:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-strong);
+  }
+  .mini:hover .mini__go .icon { transform: translate(2px, -2px); }
+  .pills a:hover {
+    color: var(--text);
+    border-color: var(--accent);
+    background: var(--accent-softer);
+  }
+}
+
+.mini:focus-visible,
+.pills a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {

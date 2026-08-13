@@ -80,6 +80,9 @@
         <circle cx="14" cy="7.1" r="2.15"/>
         <circle cx="17.7" cy="10.6" r="2.05"/>
       </symbol>
+      <symbol id="i-route" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M6 3a3 3 0 0 0-1 5.83V11a3 3 0 0 0 3 3h8a1 1 0 0 1 1 1v.17a3 3 0 1 0 2 0V15a3 3 0 0 0-3-3H8a1 1 0 0 1-1-1V8.83A3 3 0 0 0 6 3Zm0 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm12 12a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/>
+      </symbol>
       <symbol id="i-wave" viewBox="0 0 24 24" fill="currentColor">
         <rect x="2.5" y="9" width="2" height="6" rx="1"/>
         <rect x="7" y="5.5" width="2" height="13" rx="1"/>
@@ -95,7 +98,8 @@
       <a class="wordmark" href="#top">Weiren&nbsp;Feng<span class="dot">.</span></a>
       <nav class="nav" aria-label="Primary">
         <a href="#work">Work</a>
-        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#teaching">Teaching</a>
         <a href="#about">About</a>
       </nav>
       <button class="theme-toggle" type="button" aria-label="Switch to light theme">
@@ -148,8 +152,8 @@
       <div class="container">
         <header class="section__head reveal">
           <p class="eyebrow">// selected work</p>
-          <h2 id="work-h" class="section__title">Two things I built, front to back</h2>
-          <p class="section__sub">Both are live and open source. Pick one and click around.</p>
+          <h2 id="work-h" class="section__title">Three things I built, front to back</h2>
+          <p class="section__sub">All three are live and open source. Pick one and click around.</p>
         </header>
 
         <div class="cards">
@@ -235,6 +239,185 @@
               </a>
             </div>
           </article>
+
+          <!-- GreenLane -->
+          <article class="card reveal">
+            <div class="card__top">
+              <span class="card__logo" aria-hidden="true">
+                <svg class="icon" focusable="false"><use href="#i-route"></use></svg>
+              </span>
+              <span class="card__index">03</span>
+            </div>
+            <p class="card__kicker">Immigration Timeline Tracker</p>
+            <h3 class="card__title">GreenLane</h3>
+            <p class="card__desc">
+              A server-rendered dashboard for immigration backlogs: US green card categories
+              (EB-1 through EB-5, NIW, family-based) alongside Canada's Express Entry draws.
+              Ten years of history, per-category wait estimates, and email alerts when a
+              cutoff date moves — fed by three scheduled pipelines that pull from official
+              sources only.
+            </p>
+            <ul class="stats" aria-label="Project highlights">
+              <li class="stat"><span class="stat__num">10 yrs</span><span class="stat__label">of history charted</span></li>
+              <li class="stat"><span class="stat__num">3</span><span class="stat__label">data pipelines</span></li>
+              <li class="stat"><span class="stat__num">SSR</span><span class="stat__label">Next.js 15</span></li>
+            </ul>
+            <ul class="tags" aria-label="Tech stack">
+              <li>Next.js 15</li>
+              <li>TypeScript</li>
+              <li>Scheduled jobs</li>
+              <li>Email alerts</li>
+            </ul>
+            <div class="card__actions">
+              <a class="btn btn--primary btn--sm" href="https://greenlane-beryl.vercel.app" target="_blank" rel="noopener noreferrer">
+                Live demo
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg>
+              </a>
+              <a class="btn btn--ghost btn--sm" href="https://github.com/renrenmimi/greenlane" target="_blank" rel="noopener noreferrer">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-code"></use></svg>
+                Code
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section experience" id="experience" aria-labelledby="exp-h">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">// experience</p>
+          <h2 id="exp-h" class="section__title">Where I've been shipping</h2>
+          <p class="section__sub">Most recently: building a shipping platform from zero as a co-founder.</p>
+        </header>
+
+        <ol class="roles">
+          <li class="role reveal">
+            <div class="role__head">
+              <div>
+                <h3 class="role__title">Co-Founder &amp; Full-Stack Engineer</h3>
+                <p class="role__org">WeShipItNow <span class="sep">·</span> multi-carrier shipping platform</p>
+              </div>
+              <p class="role__period">2024 — present</p>
+            </div>
+            <p class="role__desc">
+              E-commerce sellers compare live rates across USPS, FedEx, UPS and Amazon, buy
+              discounted labels, and track every shipment in one place. I built the React
+              front end from scratch against a hybrid GraphQL-and-REST API, and co-designed
+              the backend behind it — idempotent purchase flows, a durable job queue for
+              carrier calls, and an adapter layer that keeps four carrier APIs behind one
+              internal contract.
+            </p>
+            <ul class="tags" aria-label="Tech stack">
+              <li>React</li>
+              <li>GraphQL BFF</li>
+              <li>Apollo</li>
+              <li>Redux</li>
+              <li>REST</li>
+              <li>Durable queue</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- TEACHING -->
+    <section class="section teaching" id="teaching" aria-labelledby="teach-h">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">// teaching</p>
+          <h2 id="teach-h" class="section__title">Seven sites that make hard things visible</h2>
+          <p class="section__sub">
+            A family of interactive courses for absolute beginners — every concept gets a
+            frame-by-frame animation, not just a paragraph. Built with Next.js, no UI library.
+          </p>
+        </header>
+
+        <div class="mini-grid">
+          <a class="mini reveal" href="https://data-data.vercel.app" target="_blank" rel="noopener noreferrer">
+            <h3 class="mini__title">DataData</h3>
+            <p class="mini__desc">Data structures you can watch: memory diagrams, live visualizations, Java/Python/JS side by side.</p>
+            <span class="mini__go">14 chapters<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
+          </a>
+          <a class="mini reveal" href="https://algo-algo.vercel.app" target="_blank" rel="noopener noreferrer">
+            <h3 class="mini__title">AlgoAlgo</h3>
+            <p class="mini__desc">Algorithms, frame by frame — decision trees, DP tables and shrinking intervals played back step by step.</p>
+            <span class="mini__go">13 chapters<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
+          </a>
+          <a class="mini reveal" href="https://tser.vercel.app" target="_blank" rel="noopener noreferrer">
+            <h3 class="mini__title">TSer</h3>
+            <p class="mini__desc">TypeScript from first principles: inference, generics, conditional types and the strict family.</p>
+            <span class="mini__go">12 chapters<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
+          </a>
+          <a class="mini reveal" href="https://apier-eta.vercel.app" target="_blank" rel="noopener noreferrer">
+            <h3 class="mini__title">APIer</h3>
+            <p class="mini__desc">HTTP, REST and GraphQL end to end — from your first fetch to versioning, caching and auth.</p>
+            <span class="mini__go">12 chapters<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
+          </a>
+          <a class="mini reveal" href="https://redis-visual.vercel.app" target="_blank" rel="noopener noreferrer">
+            <h3 class="mini__title">RedisVisual</h3>
+            <p class="mini__desc">Redis through one real system: caching, concurrency guards and read models, plus a hands-on lab.</p>
+            <span class="mini__go">4 stops<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
+          </a>
+          <a class="mini reveal" href="https://agent-lab-blond.vercel.app" target="_blank" rel="noopener noreferrer">
+            <h3 class="mini__title">AgentLab</h3>
+            <p class="mini__desc">What an AI agent really is: an array and a loop. Watch the messages array grow, then write one yourself.</p>
+            <span class="mini__go">3 stops<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
+          </a>
+          <a class="mini reveal" href="https://renrenmimi.github.io/SwiftLab/" target="_blank" rel="noopener noreferrer">
+            <h3 class="mini__title">SwiftLab</h3>
+            <p class="mini__desc">Swift and SwiftUI from zero, built around a real macOS app — one idea throughout: the UI is a function of your data.</p>
+            <span class="mini__go">4 stops<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LAB -->
+    <section class="section lab" id="lab" aria-labelledby="lab-h">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">// lab</p>
+          <h2 id="lab-h" class="section__title">Small things, built to learn something</h2>
+          <p class="section__sub">
+            Single-file canvas experiments — no build step, no dependencies. Click any of them
+            and it just runs.
+          </p>
+        </header>
+
+        <div class="lab__group reveal">
+          <h3 class="lab__label">Games</h3>
+          <ul class="pills">
+            <li><a href="https://renrenmimi.github.io/dota-snake/" target="_blank" rel="noopener noreferrer">Dota Snake</a></li>
+            <li><a href="https://renrenmimi.github.io/Tank/" target="_blank" rel="noopener noreferrer">Tank Battle</a></li>
+            <li><a href="https://renrenmimi.github.io/Gomoku/" target="_blank" rel="noopener noreferrer">Gomoku</a></li>
+            <li><a href="https://renrenmimi.github.io/NEON-HOVER-PONG/" target="_blank" rel="noopener noreferrer">Neon Hover-Pong</a></li>
+            <li><a href="https://renrenmimi.github.io/IAI-SAMURAI-STRIKE/" target="_blank" rel="noopener noreferrer">Iai Samurai Strike</a></li>
+            <li><a href="https://renrenmimi.github.io/SINGULARITY-Gravity-Collapse/" target="_blank" rel="noopener noreferrer">Singularity</a></li>
+            <li><a href="https://renrenmimi.github.io/1v1/" target="_blank" rel="noopener noreferrer">Split-Screen Duel</a></li>
+            <li><a href="https://renrenmimi.github.io/1v1--2/" target="_blank" rel="noopener noreferrer">Western Duel</a></li>
+          </ul>
+        </div>
+
+        <div class="lab__group reveal">
+          <h3 class="lab__label">Canvas &amp; motion</h3>
+          <ul class="pills">
+            <li><a href="https://renrenmimi.github.io/fluid-simulation/" target="_blank" rel="noopener noreferrer">Fluid Simulation</a></li>
+            <li><a href="https://renrenmimi.github.io/particle-galaxy/" target="_blank" rel="noopener noreferrer">Particle Galaxy</a></li>
+            <li><a href="https://renrenmimi.github.io/firework/" target="_blank" rel="noopener noreferrer">Fireworks</a></li>
+          </ul>
+        </div>
+
+        <div class="lab__group reveal">
+          <h3 class="lab__label">Cognitive drills</h3>
+          <ul class="pills">
+            <li><a href="https://renrenmimi.github.io/N-Back/" target="_blank" rel="noopener noreferrer">N-Back</a></li>
+            <li><a href="https://renrenmimi.github.io/Aim-Trainer/" target="_blank" rel="noopener noreferrer">Aim Trainer</a></li>
+            <li><a href="https://renrenmimi.github.io/Stroop-Test/" target="_blank" rel="noopener noreferrer">Stroop Test</a></li>
+            <li><a href="https://renrenmimi.github.io/Schulte-Grid/" target="_blank" rel="noopener noreferrer">Schulte Grid</a></li>
+            <li><a href="https://renrenmimi.github.io/Reaction/" target="_blank" rel="noopener noreferrer">Reaction Time</a></li>
+          </ul>
         </div>
       </div>
     </section>
