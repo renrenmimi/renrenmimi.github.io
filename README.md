@@ -1,0 +1,34 @@
+# renrenmimi.github.io
+
+**▶ [weiren feng — portfolio](https://renrenmimi.github.io/)**
+
+My personal site: what I build, where I have worked, and how to reach me.
+
+Hand-built from scratch — plain HTML, CSS and a little vanilla JavaScript. No template, no
+framework, no build step. Three files:
+
+| File | Role |
+|---|---|
+| `index.html` | The whole page, including inline SVG icons |
+| `styles.css` | Design tokens, layout, dark and light themes |
+| `assets/favicon.svg` | Favicon |
+
+## Sections
+
+- **Work** — three products built end to end: PetNote, ToneDown, GreenLane
+- **Experience** — most recently a multi-carrier shipping platform
+- **Teaching** — seven interactive course sites
+- **Lab** — sixteen single-file canvas experiments
+- **Skills** and **About**
+
+## Notes
+
+- Dark theme by default with a light toggle; the choice persists to `localStorage`
+- Scroll-reveal animations degrade gracefully and respect `prefers-reduced-motion`
+- No horizontal overflow from 375 px up; the layout collapses to one column on mobile
+
+Deployed by GitHub Pages straight from the default branch — pushing is deploying.
+
+---
+
+© 2026 Weiren Feng. All rights reserved.
