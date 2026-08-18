@@ -16,7 +16,7 @@
   </script>
 
   <title>Weiren Feng — Software Engineer (Frontend / Full-Stack)</title>
-  <meta name="description" content="Weiren Feng — frontend / full-stack software engineer in the SF Bay Area. I build production web apps end to end: React/TypeScript front ends, Node/Firebase/serverless back ends, and real AI/LLM integration. See PetNote and ToneDown.">
+  <meta name="description" content="Weiren Feng — frontend / full-stack software engineer in the SF Bay Area or Irvine, CA. I build production web apps end to end: React/TypeScript front ends, Node/Firebase/serverless back ends, and real AI/LLM integration. See PetNote and ToneDown.">
   <meta name="author" content="Weiren Feng">
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#0a0d14" id="theme-color-meta">
@@ -83,6 +83,14 @@
       <symbol id="i-layers" viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 2 1.5 7.5 12 13l10.5-5.5L12 2Zm0 2.27L18.7 7.5 12 10.73 5.3 7.5 12 4.27ZM3.6 11.2 1.5 12.3 12 17.8l10.5-5.5-2.1-1.1L12 15.5 3.6 11.2Zm0 4.5-2.1 1.1L12 22.3l10.5-5.5-2.1-1.1L12 20 3.6 15.7Z"/>
       </symbol>
+      <symbol id="i-checklist" viewBox="0 0 24 24" fill="currentColor">
+        <rect x="3" y="4.4" width="3.3" height="3.3" rx="1"/>
+        <rect x="8.7" y="5.1" width="12.3" height="1.9" rx=".95"/>
+        <rect x="3" y="10.35" width="3.3" height="3.3" rx="1"/>
+        <rect x="8.7" y="11.05" width="12.3" height="1.9" rx=".95"/>
+        <path d="M3.35 17.75a1.05 1.05 0 0 1 1.55-1.4l.95 1.05 2.25-2.45a1.05 1.05 0 1 1 1.55 1.4l-3 3.3a1.05 1.05 0 0 1-1.55 0Z"/>
+        <rect x="11.4" y="17" width="9.6" height="1.9" rx=".95"/>
+      </symbol>
       <symbol id="i-route" viewBox="0 0 24 24" fill="currentColor">
         <path d="M6 3a3 3 0 0 0-1 5.83V11a3 3 0 0 0 3 3h8a1 1 0 0 1 1 1v.17a3 3 0 1 0 2 0V15a3 3 0 0 0-3-3H8a1 1 0 0 1-1-1V8.83A3 3 0 0 0 6 3Zm0 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm12 12a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/>
       </symbol>
@@ -120,7 +128,7 @@
       <div class="container hero__inner">
         <p class="eyebrow hero__status">
           <span class="status-dot" aria-hidden="true"></span>
-          Open to Frontend / Full-Stack roles
+          Open to Frontend / Full-Stack roles · new grad through mid-level
         </p>
         <h1 class="hero__name">Weiren Feng</h1>
         <p class="hero__title">Software Engineer <span class="sep">·</span> Frontend &amp; Full-Stack</p>
@@ -128,7 +136,7 @@
           I build production web apps end to end — React/TypeScript front ends,
           Node/Firebase/serverless back ends, and real AI/LLM integration in between.
         </p>
-        <p class="hero__meta">SF Bay Area · Redwood City &nbsp;·&nbsp; English / 中文</p>
+        <p class="hero__meta">SF Bay Area or Irvine, CA &nbsp;·&nbsp; English / 中文</p>
         <div class="hero__actions">
           <a class="btn btn--primary" href="mailto:feng.weir@northeastern.edu">
             <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-mail"></use></svg>
@@ -155,8 +163,8 @@
       <div class="container">
         <header class="section__head reveal">
           <p class="eyebrow">// selected work</p>
-          <h2 id="work-h" class="section__title">Four things I built, front to back</h2>
-          <p class="section__sub">All four are live; three are open source. Pick one and click around.</p>
+          <h2 id="work-h" class="section__title">Five things I built, front to back</h2>
+          <p class="section__sub">Four are live on the web, one runs on your Mac. All but the client work are open source.</p>
         </header>
 
         <div class="cards">
@@ -324,6 +332,47 @@
               <span class="card__note">Source private &mdash; client work</span>
             </div>
           </article>
+
+          <!-- iCanDoIt -->
+          <article class="card card--wide reveal">
+            <div class="card__top">
+              <span class="card__logo" aria-hidden="true">
+                <svg class="icon" focusable="false"><use href="#i-checklist"></use></svg>
+              </span>
+              <span class="card__index">05</span>
+            </div>
+            <p class="card__kicker">Native macOS Day Planner</p>
+            <h3 class="card__title">iCanDoIt</h3>
+            <p class="card__desc">
+              A planner that pays you back: attach a reward to each task, clear them all, and
+              the app throws confetti for a Perfect Day. It builds as a plain Swift package —
+              no <code>.xcodeproj</code>, no third-party code — and ships two hidden flags: one
+              renders every screen to PNG offscreen without asking for screen-recording
+              permission, the other asserts what screenshots can't prove, like drag-and-drop
+              placement and schema backfill.
+            </p>
+            <ul class="stats" aria-label="Project highlights">
+              <li class="stat"><span class="stat__num">0</span><span class="stat__label">third-party deps</span></li>
+              <li class="stat"><span class="stat__num">182</span><span class="stat__label">day heat map</span></li>
+              <li class="stat"><span class="stat__num">2</span><span class="stat__label">self-check flags</span></li>
+            </ul>
+            <ul class="tags" aria-label="Tech stack">
+              <li>SwiftUI</li>
+              <li>SwiftData</li>
+              <li>Swift Package</li>
+              <li>macOS</li>
+            </ul>
+            <div class="card__actions">
+              <a class="btn btn--primary btn--sm" href="https://github.com/renrenmimi/iCanDoIt#readme" target="_blank" rel="noopener noreferrer">
+                Screenshots
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg>
+              </a>
+              <a class="btn btn--ghost btn--sm" href="https://github.com/renrenmimi/iCanDoIt" target="_blank" rel="noopener noreferrer">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-code"></use></svg>
+                Code
+              </a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -443,6 +492,7 @@
         <div class="lab__group reveal">
           <h3 class="lab__label">Games</h3>
           <ul class="pills">
+            <li><a href="https://renrenmimi.github.io/avatar-dash/" target="_blank" rel="noopener noreferrer">Avatar Dash</a></li>
             <li><a href="https://renrenmimi.github.io/dota-snake/" target="_blank" rel="noopener noreferrer">Dota Snake</a></li>
             <li><a href="https://renrenmimi.github.io/Tank/" target="_blank" rel="noopener noreferrer">Tank Battle</a></li>
             <li><a href="https://renrenmimi.github.io/Gomoku/" target="_blank" rel="noopener noreferrer">Gomoku</a></li>
@@ -538,7 +588,7 @@
             <dl>
               <div class="fact">
                 <dt>Location</dt>
-                <dd>Redwood City, CA · SF Bay Area</dd>
+                <dd>Redwood City, CA · open to SF Bay Area or Irvine</dd>
               </div>
               <div class="fact">
                 <dt>Education</dt>

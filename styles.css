@@ -403,6 +403,12 @@ ul { list-style: none; padding: 0; }
 }
 @media (min-width: 820px) {
   .cards { grid-template-columns: 1fr 1fr; }
+
+  /* Five cards in a two-column grid leaves a hole in the last row.
+     The odd one out spans instead; its copy is capped so the measure
+     stays readable at full width. */
+  .card--wide { grid-column: 1 / -1; }
+  .card--wide .card__desc { max-width: 64ch; }
 }
 
 .card {
@@ -660,6 +666,7 @@ ul { list-style: none; padding: 0; }
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
   .reveal-on .cards .card:nth-child(2),
+  .reveal-on .cards .card:nth-child(4),
   .reveal-on .skill-group:nth-child(2) { transition-delay: 0.06s; }
   .reveal-on .skill-group:nth-child(3) { transition-delay: 0.12s; }
   .reveal-on .skill-group:nth-child(4) { transition-delay: 0.18s; }
