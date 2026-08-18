@@ -33,4 +33,5 @@ GitHub Pages serves the default branch, so a push deploys.
 
 ---
 
-© 2026 Weiren Feng
+© 2026 Weiren Feng. All rights reserved. Published for reading and portfolio purposes; not
+licensed for reuse, modification, or redistribution.
