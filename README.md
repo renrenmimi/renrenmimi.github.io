@@ -4,25 +4,28 @@
 
 My personal site: what I build, where I have worked, and how to reach me.
 
-Plain HTML, CSS and vanilla JavaScript. Three files:
+Plain HTML, CSS and vanilla JavaScript — no build step and no dependencies. Open `index.html`
+in a browser and that is the whole development setup.
 
 | File | Role |
 |---|---|
-| `index.html` | The whole page, including inline SVG icons |
+| `index.html` | The whole page, including inline SVG icons and two short inline scripts |
 | `styles.css` | Design tokens, layout, dark and light themes |
 | `assets/favicon.svg` | Favicon |
+| `assets/kova.jpg` | Screenshot on the KOVA Flooring card |
 
 ## Sections
 
-- **Work** — three products built end to end: PetNote, ToneDown, GreenLane
-- **Experience** — most recently a multi-carrier shipping platform
-- **Teaching** — the interactive course sites
-- **Lab** — single-file canvas experiments
+- **Work** — PetNote, ToneDown, GreenLane, KOVA Flooring, iCanDoIt
+- **Experience** — WeShipItNow, a multi-carrier shipping platform, plus a teaching assistant role
+- **Teaching** — the course sites: DataData, AlgoAlgo, TSer, APIer, RedisVisual, AgentLab, SwiftLab
+- **Lab** — single-file builds: games, canvas and motion pieces, cognitive drills
 - **Skills** and **About**
 
 ## Notes
 
 - Dark theme by default with a light toggle; the choice persists to `localStorage`
+- The theme is applied by an inline script in `<head>`, before first paint, so there is no flash
 - Scroll-reveal animations respect `prefers-reduced-motion`
 - No horizontal overflow from 375 px up; the layout collapses to one column on mobile
 
@@ -30,4 +33,4 @@ GitHub Pages serves the default branch, so a push deploys.
 
 ---
 
-© 2026 Weiren Feng. All rights reserved.
+© 2026 Weiren Feng

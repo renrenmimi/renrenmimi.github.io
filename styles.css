@@ -906,11 +906,16 @@ ul { list-style: none; padding: 0; }
 }
 
 /* ---- Teaching: compact cards ------------------------------------------ */
+/* Seven is prime, so a grid always strands one card alone on the last row.
+   Wrapping flex items centre the short row instead. */
 .mini-grid {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: clamp(0.85rem, 2vw, 1.1rem);
-  grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
 }
+.mini { flex: 0 1 clamp(228px, 19vw, 244px); }
+@media (max-width: 560px) { .mini { flex: 1 1 100%; } }
 
 .mini {
   display: flex;
@@ -1016,100 +1021,126 @@ ul { list-style: none; padding: 0; }
   }
 }
 
-/* ---- Teaching fan ------------------------------------------------------
-   Seven cards sit as a stack and fan out when the group is hovered or
-   focused. Gated to fine pointers on wide screens: a fan cannot be hovered
-   on a touchscreen, and it will not fit a narrow one. Everything else keeps
-   the grid it always had. */
-@media (hover: hover) and (pointer: fine) and (min-width: 1000px) {
-  .fan {
-    display: block;
-    position: relative;
-    height: 306px;
-    margin-top: clamp(1rem, 3vw, 2rem);
-    margin-bottom: 46px;   /* room for the hint below the stack */
-  }
 
-  .fan .mini {
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    width: 208px;
-    height: 206px;
-    margin-left: -104px;
-    transform-origin: 50% 130%;
-    transition: transform 0.52s cubic-bezier(0.22, 1.12, 0.36, 1),
-                border-color 0.25s ease, box-shadow 0.35s ease;
-    will-change: transform;
-    box-shadow: 0 18px 40px -26px rgba(0, 0, 0, 0.75);
-  }
+/* ---- Teaching: a loop of the idea each course teaches -------------------
+   The section's claim is that every concept gets an animation, so the cards
+   make that claim instead of describing it. Each card runs the one idea its
+   course is about, in that site's own accent colour, in plain CSS. */
+.viz {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 46px;
+  margin-bottom: 0.15rem;
+}
+.viz i, .viz b, .viz s, .viz u, .viz em { display: block; }
+.viz b, .viz i { border-radius: 4px; background: color-mix(in oklab, var(--viz) 16%, transparent); }
 
-  .fan .mini__desc {
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  /* Say the stack is interactive, before anyone has reason to hover it. */
-  .fan::after {
-    content: 'hover to fan out';
-    position: absolute;
-    left: 50%;
-    bottom: -32px;
-    transform: translateX(-50%);
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-faint);
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-    z-index: 30;
-  }
-  .fan:hover::after { opacity: 0; }
-  .fan:has(:focus-visible)::after { opacity: 0; }
-
-  .fan .mini:nth-child(1) { z-index: 4; transform: translate(-21px, 8px) rotate(-6.6deg); transition-delay: 156ms; }
-  .fan:hover .mini:nth-child(1) { z-index: 1; transform: translate(-414px, 20px) rotate(-12.6deg); transition-delay: 0ms; }
-  .fan:has(:focus-visible) .mini:nth-child(1) { z-index: 1; transform: translate(-414px, 20px) rotate(-12.6deg); transition-delay: 0ms; }
-  .fan:hover .mini:nth-child(1):hover { z-index: 20; transform: translate(-414px, -0px) rotate(-12.6deg) scale(1.05); transition-delay: 0ms; }
-  .fan .mini:nth-child(1):focus-visible { z-index: 20; transform: translate(-414px, -0px) rotate(-12.6deg) scale(1.05); transition-delay: 0ms; }
-  .fan .mini:nth-child(2) { z-index: 5; transform: translate(-14px, 5px) rotate(-4.4deg); transition-delay: 130ms; }
-  .fan:hover .mini:nth-child(2) { z-index: 2; transform: translate(-276px, 9px) rotate(-8.4deg); transition-delay: 26ms; }
-  .fan:has(:focus-visible) .mini:nth-child(2) { z-index: 2; transform: translate(-276px, 9px) rotate(-8.4deg); transition-delay: 26ms; }
-  .fan:hover .mini:nth-child(2):hover { z-index: 20; transform: translate(-276px, -11px) rotate(-8.4deg) scale(1.05); transition-delay: 0ms; }
-  .fan .mini:nth-child(2):focus-visible { z-index: 20; transform: translate(-276px, -11px) rotate(-8.4deg) scale(1.05); transition-delay: 0ms; }
-  .fan .mini:nth-child(3) { z-index: 6; transform: translate(-7px, 2px) rotate(-2.2deg); transition-delay: 104ms; }
-  .fan:hover .mini:nth-child(3) { z-index: 3; transform: translate(-138px, 2px) rotate(-4.2deg); transition-delay: 52ms; }
-  .fan:has(:focus-visible) .mini:nth-child(3) { z-index: 3; transform: translate(-138px, 2px) rotate(-4.2deg); transition-delay: 52ms; }
-  .fan:hover .mini:nth-child(3):hover { z-index: 20; transform: translate(-138px, -18px) rotate(-4.2deg) scale(1.05); transition-delay: 0ms; }
-  .fan .mini:nth-child(3):focus-visible { z-index: 20; transform: translate(-138px, -18px) rotate(-4.2deg) scale(1.05); transition-delay: 0ms; }
-  .fan .mini:nth-child(4) { z-index: 7; transform: translate(0px, 0px) rotate(0.0deg); transition-delay: 78ms; }
-  .fan:hover .mini:nth-child(4) { z-index: 4; transform: translate(0px, 0px) rotate(0.0deg); transition-delay: 78ms; }
-  .fan:has(:focus-visible) .mini:nth-child(4) { z-index: 4; transform: translate(0px, 0px) rotate(0.0deg); transition-delay: 78ms; }
-  .fan:hover .mini:nth-child(4):hover { z-index: 20; transform: translate(0px, -20px) rotate(0.0deg) scale(1.05); transition-delay: 0ms; }
-  .fan .mini:nth-child(4):focus-visible { z-index: 20; transform: translate(0px, -20px) rotate(0.0deg) scale(1.05); transition-delay: 0ms; }
-  .fan .mini:nth-child(5) { z-index: 6; transform: translate(7px, 2px) rotate(2.2deg); transition-delay: 52ms; }
-  .fan:hover .mini:nth-child(5) { z-index: 5; transform: translate(138px, 2px) rotate(4.2deg); transition-delay: 104ms; }
-  .fan:has(:focus-visible) .mini:nth-child(5) { z-index: 5; transform: translate(138px, 2px) rotate(4.2deg); transition-delay: 104ms; }
-  .fan:hover .mini:nth-child(5):hover { z-index: 20; transform: translate(138px, -18px) rotate(4.2deg) scale(1.05); transition-delay: 0ms; }
-  .fan .mini:nth-child(5):focus-visible { z-index: 20; transform: translate(138px, -18px) rotate(4.2deg) scale(1.05); transition-delay: 0ms; }
-  .fan .mini:nth-child(6) { z-index: 5; transform: translate(14px, 5px) rotate(4.4deg); transition-delay: 26ms; }
-  .fan:hover .mini:nth-child(6) { z-index: 6; transform: translate(276px, 9px) rotate(8.4deg); transition-delay: 130ms; }
-  .fan:has(:focus-visible) .mini:nth-child(6) { z-index: 6; transform: translate(276px, 9px) rotate(8.4deg); transition-delay: 130ms; }
-  .fan:hover .mini:nth-child(6):hover { z-index: 20; transform: translate(276px, -11px) rotate(8.4deg) scale(1.05); transition-delay: 0ms; }
-  .fan .mini:nth-child(6):focus-visible { z-index: 20; transform: translate(276px, -11px) rotate(8.4deg) scale(1.05); transition-delay: 0ms; }
-  .fan .mini:nth-child(7) { z-index: 4; transform: translate(21px, 8px) rotate(6.6deg); transition-delay: 0ms; }
-  .fan:hover .mini:nth-child(7) { z-index: 7; transform: translate(414px, 20px) rotate(12.6deg); transition-delay: 156ms; }
-  .fan:has(:focus-visible) .mini:nth-child(7) { z-index: 7; transform: translate(414px, 20px) rotate(12.6deg); transition-delay: 156ms; }
-  .fan:hover .mini:nth-child(7):hover { z-index: 20; transform: translate(414px, -0px) rotate(12.6deg) scale(1.05); transition-delay: 0ms; }
-  .fan .mini:nth-child(7):focus-visible { z-index: 20; transform: translate(414px, -0px) rotate(12.6deg) scale(1.05); transition-delay: 0ms; }
+/* DataData — a pointer walking an array, each cell lighting as it lands */
+.viz--array i { width: 20px; height: 20px; animation: vizArray 3.6s infinite; }
+.viz--array i:nth-child(1) { animation-delay: 0s }
+.viz--array i:nth-child(2) { animation-delay: .18s }
+.viz--array i:nth-child(3) { animation-delay: .36s }
+.viz--array i:nth-child(4) { animation-delay: .54s }
+.viz--array i:nth-child(5) { animation-delay: .72s }
+.viz--array i:nth-child(6) { animation-delay: .90s }
+@keyframes vizArray {
+  0%, 4%   { background: var(--viz); transform: translateY(-4px); }
+  16%,100% { background: color-mix(in oklab, var(--viz) 16%, transparent); transform: none; }
 }
 
-/* The fan is decoration; with motion off it must not hide six cards in seven. */
+/* AlgoAlgo — a binary search closing in from both ends */
+.viz--bisect { position: relative; width: 100%; max-width: 168px; }
+.viz--bisect u { position: absolute; left: 0; right: 0; height: 2px; border-radius: 2px;
+                 background: color-mix(in oklab, var(--viz) 18%, transparent); }
+.viz--bisect b { position: absolute; width: 3px; height: 16px; border-radius: 2px; background: var(--viz); }
+.viz--bisect b.lo { left: 0;  animation: vizLo 3.4s cubic-bezier(.6,0,.4,1) infinite; }
+.viz--bisect b.hi { right: 0; animation: vizHi 3.4s cubic-bezier(.6,0,.4,1) infinite; }
+.viz--bisect s { position: absolute; left: 50%; width: 8px; height: 8px; margin-left: -4px;
+                 border-radius: 50%; background: var(--viz); opacity: 0;
+                 animation: vizMid 3.4s infinite; }
+@keyframes vizLo  { 0%,8% { left: 0 }   58%,100% { left: calc(50% - 14px) } }
+@keyframes vizHi  { 0%,8% { right: 0 }  58%,100% { right: calc(50% - 14px) } }
+@keyframes vizMid { 0%,55% { opacity: 0; transform: scale(.4) } 70%,88% { opacity: 1; transform: scale(1) } 100% { opacity: 0 } }
+
+/* TSer — a type surfacing above the value it describes */
+.viz--type { position: relative; padding-top: 14px; }
+.viz--type em { position: absolute; top: 0; left: 0;
+  font: 600 10px var(--mono); font-style: normal; letter-spacing: .06em;
+  color: var(--viz); opacity: 0; animation: vizType 3.4s infinite; }
+.viz--type i { width: 26px; height: 12px; }
+.viz--type i:nth-child(2) { width: 34px; background: color-mix(in oklab, var(--viz) 30%, transparent); }
+@keyframes vizType {
+  0%, 18%  { opacity: 0; transform: translateY(5px); }
+  34%, 82% { opacity: 1; transform: none; }
+  96%,100% { opacity: 0; transform: translateY(5px); }
+}
+
+/* APIer — a request going out and the response coming back */
+.viz--rtt { position: relative; width: 100%; max-width: 152px; }
+.viz--rtt b { width: 16px; height: 22px; background: color-mix(in oklab, var(--viz) 26%, transparent); }
+.viz--rtt b:last-child { margin-left: auto; }
+.viz--rtt u { position: absolute; left: 20px; right: 20px; height: 1.5px;
+              background: color-mix(in oklab, var(--viz) 16%, transparent); }
+.viz--rtt s { position: absolute; left: 20px; width: 7px; height: 7px; border-radius: 50%;
+              background: var(--viz); animation: vizRtt 3.2s cubic-bezier(.5,0,.5,1) infinite; }
+@keyframes vizRtt {
+  0%, 6%   { left: 20px;  opacity: 1 }
+  40%, 52% { left: calc(100% - 27px); opacity: 1 }
+  90%,100% { left: 20px;  opacity: 1 }
+}
+
+/* RedisVisual — most reads stop at the cache; some fall through to the store */
+.viz--cache { position: relative; width: 100%; max-width: 158px; }
+.viz--cache b { width: 15px; height: 20px; }
+.viz--cache b.hit { animation: vizHit 4s infinite; }
+.viz--cache b.db  { margin-left: auto; }
+.viz--cache u { flex: 1; height: 1.5px; background: color-mix(in oklab, var(--viz) 16%, transparent); }
+.viz--cache s { position: absolute; left: 17px; width: 6px; height: 6px; border-radius: 50%;
+                background: var(--viz); animation: vizRead 4s infinite; }
+@keyframes vizRead {
+  0%,4%    { left: 17px; opacity: 1 }
+  20%,30%  { left: 50px; opacity: 1 }     /* reaches the cache */
+  40%      { left: 17px; opacity: .35 }   /* served from cache */
+  55%      { left: 50px; opacity: 1 }
+  72%      { left: calc(100% - 22px) }    /* a miss goes on to the store */
+  92%,100% { left: 17px; opacity: 1 }
+}
+@keyframes vizHit {
+  0%,18%   { background: color-mix(in oklab, var(--viz) 16%, transparent) }
+  24%,34%  { background: var(--viz) }
+  44%,100% { background: color-mix(in oklab, var(--viz) 16%, transparent) }
+}
+
+/* AgentLab — the messages array growing one turn at a time */
+.viz--grow { align-items: flex-end; }
+.viz--grow i { width: 15px; height: 8px; transform-origin: bottom; animation: vizGrow 4s infinite; }
+.viz--grow i:nth-child(1) { animation-delay: 0s }
+.viz--grow i:nth-child(2) { animation-delay: .45s }
+.viz--grow i:nth-child(3) { animation-delay: .90s }
+.viz--grow i:nth-child(4) { animation-delay: 1.35s }
+.viz--grow i:nth-child(5) { animation-delay: 1.80s }
+@keyframes vizGrow {
+  0%, 6%   { height: 0;    opacity: 0 }
+  14%      { height: 22px; opacity: 1; background: var(--viz) }
+  22%, 62% { height: 22px; opacity: 1; background: color-mix(in oklab, var(--viz) 26%, transparent) }
+  74%,100% { height: 0;    opacity: 0 }
+}
+
+/* SwiftLab — the view is a function of the value */
+.viz--bind { flex-direction: column; align-items: flex-start; gap: 7px; }
+.viz--bind s { width: 74px; height: 3px; border-radius: 2px; position: relative;
+               background: color-mix(in oklab, var(--viz) 20%, transparent); }
+.viz--bind s::after { content: ''; position: absolute; top: -3.5px; width: 10px; height: 10px;
+  border-radius: 50%; background: var(--viz); animation: vizKnob 3.6s cubic-bezier(.5,0,.5,1) infinite; }
+.viz--bind b { height: 16px; border-radius: 4px; background: var(--viz);
+               animation: vizBar 3.6s cubic-bezier(.5,0,.5,1) infinite; }
+@keyframes vizKnob { 0%,8% { left: 0 } 46%,58% { left: 64px } 96%,100% { left: 0 } }
+@keyframes vizBar  { 0%,8% { width: 22px } 46%,58% { width: 96px } 96%,100% { width: 22px } }
+
 @media (prefers-reduced-motion: reduce) {
-  .fan { display: grid; height: auto; }
-  .fan .mini { position: static; width: auto; height: auto; margin-left: 0; transform: none; box-shadow: none; }
-  .fan::after { display: none; }
+  .viz i, .viz b, .viz s, .viz u, .viz em, .viz s::after { animation: none !important; }
+  .viz--grow i { height: 22px; opacity: 1 }
+  .viz--type em { opacity: 1 }
+  .viz--bind b { width: 60px }
 }
