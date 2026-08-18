@@ -181,13 +181,15 @@
             </div>
             <p class="card__kicker">Pet-Centric Social Platform</p>
             <h3 class="card__title">PetNote</h3>
-            <p class="card__desc">
-              A full social app for pet people: posts and feeds, multi-pet profiles,
-              check-ins at pet-friendly places, in-person meetups, notifications, and
-              moderation. It runs on React 19 with a callable-first Firebase backend —
-              Cloud Functions and Firestore security rules doing the heavy lifting,
-              with Cloudinary for media and Geoapify for places.
-            </p>
+            <div class="card__body">
+              <p class="card__desc">
+                A full social app for pet people: posts and feeds, multi-pet profiles,
+                check-ins at pet-friendly places, in-person meetups, notifications, and
+                moderation. It runs on React 19 with a callable-first Firebase backend —
+                Cloud Functions and Firestore security rules doing the heavy lifting,
+                with Cloudinary for media and Geoapify for places.
+              </p>
+            </div>
             <ul class="stats" aria-label="Project highlights">
               <li class="stat"><span class="stat__num">62</span><span class="stat__label">cloud functions</span></li>
               <li class="stat"><span class="stat__num">11</span><span class="stat__label">domain modules</span></li>
@@ -222,13 +224,15 @@
             </div>
             <p class="card__kicker">Real-Time AI Communication Coach</p>
             <h3 class="card__title">ToneDown</h3>
-            <p class="card__desc">
-              A real-time coach that scores how you're coming across as you speak — live
-              transcription, LLM tone analysis, and audio signals combined into one score.
-              It adds roleplay "sparring" personas, AI session recaps, and a zero-mic demo,
-              all served through a Vercel serverless proxy to Groq (Whisper + Llama 3.3 70B)
-              with a circuit-breaker fallback chain.
-            </p>
+            <div class="card__body">
+              <p class="card__desc">
+                A real-time coach that scores how you're coming across as you speak — live
+                transcription, LLM tone analysis, and audio signals combined into one score.
+                It adds roleplay "sparring" personas, AI session recaps, and a zero-mic demo,
+                all served through a Vercel serverless proxy to Groq (Whisper + Llama 3.3 70B)
+                with a circuit-breaker fallback chain.
+              </p>
+            </div>
             <ul class="stats" aria-label="Project highlights">
               <li class="stat"><span class="stat__num">101</span><span class="stat__label">tests in CI</span></li>
               <li class="stat"><span class="stat__num">Real-time</span><span class="stat__label">tone scoring</span></li>
@@ -264,13 +268,15 @@
             </div>
             <p class="card__kicker">Immigration Timeline Tracker</p>
             <h3 class="card__title">GreenLane</h3>
-            <p class="card__desc">
-              A server-rendered dashboard for immigration backlogs: US green card categories
-              (EB-1 through EB-5, NIW, family-based) alongside Canada's Express Entry draws.
-              Ten years of history, per-category wait estimates, and email alerts when a
-              cutoff date moves — fed by three scheduled pipelines that pull from official
-              sources only.
-            </p>
+            <div class="card__body">
+              <p class="card__desc">
+                A server-rendered dashboard for immigration backlogs: US green card categories
+                (EB-1 through EB-5, NIW, family-based) alongside Canada's Express Entry draws.
+                Ten years of history, per-category wait estimates, and email alerts when a
+                cutoff date moves — fed by three scheduled pipelines that pull from official
+                sources only.
+              </p>
+            </div>
             <ul class="stats" aria-label="Project highlights">
               <li class="stat"><span class="stat__num">10 yrs</span><span class="stat__label">of history charted</span></li>
               <li class="stat"><span class="stat__num">3</span><span class="stat__label">data pipelines</span></li>
@@ -304,14 +310,15 @@
             </div>
             <p class="card__kicker">Brand Site &amp; Dealer Portal</p>
             <h3 class="card__title">KOVA Flooring</h3>
-            <p class="card__desc">
-              A production site for a California waterproof-flooring brand, built in two
-              halves. The public brand site is statically exported — no server, no runtime
-              cost, and Firebase never reaches the public bundle. Behind a login sits a
-              dealer portal where each dealer sees the pricing for their own tier next to
-              live inventory, plus an admin console for editing price per product per tier
-              and importing stock by CSV.
-            </p>
+            <div class="card__body">
+              <a class="card__shot" href="https://www.kovaflooring.com" target="_blank" rel="noopener noreferrer">
+                <img src="assets/kova.jpg" alt="The KOVA Flooring brand site" loading="lazy" width="1000" height="672" />
+              </a>
+              <p class="card__desc">
+                Client work for a California flooring brand: a public brand site and a dealer
+                portal behind a login. I did the UI/UX, the front end and the back end.
+              </p>
+            </div>
             <ul class="stats" aria-label="Project highlights">
               <li class="stat"><span class="stat__num">3</span><span class="stat__label">dealer tiers</span></li>
               <li class="stat"><span class="stat__num">Static</span><span class="stat__label">export, no server</span></li>
@@ -342,13 +349,15 @@
             </div>
             <p class="card__kicker">Native macOS Day Planner</p>
             <h3 class="card__title">iCanDoIt</h3>
-            <p class="card__desc">
-              Attach a reward to each task; clear them all and the app throws confetti for a
-              Perfect Day. It builds as a plain Swift package, SwiftUI and SwiftData only.
-              Two hidden flags: <code>--snapshot</code> renders every screen to PNG offscreen,
-              <code>--selftest</code> checks what screenshots cannot, like drag-and-drop
-              placement and schema backfill.
-            </p>
+            <div class="card__body">
+              <p class="card__desc">
+                Attach a reward to each task; clear them all and the app throws confetti for a
+                Perfect Day. It builds as a plain Swift package, SwiftUI and SwiftData only.
+                Two hidden flags: <code>--snapshot</code> renders every screen to PNG offscreen,
+                <code>--selftest</code> checks what screenshots cannot, like drag-and-drop
+                placement and schema backfill.
+              </p>
+            </div>
             <ul class="stats" aria-label="Project highlights">
               <li class="stat"><span class="stat__num">0</span><span class="stat__label">third-party deps</span></li>
               <li class="stat"><span class="stat__num">182</span><span class="stat__label">day heat map</span></li>
@@ -362,7 +371,7 @@
             </ul>
             <div class="card__actions">
               <a class="btn btn--primary btn--sm" href="https://github.com/renrenmimi/iCanDoIt#readme" target="_blank" rel="noopener noreferrer">
-                Screenshots
+                Demo
                 <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg>
               </a>
               <a class="btn btn--ghost btn--sm" href="https://github.com/renrenmimi/iCanDoIt" target="_blank" rel="noopener noreferrer">
