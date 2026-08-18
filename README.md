@@ -4,7 +4,7 @@
 
 My personal site: what I build, where I have worked, and how to reach me.
 
-Plain HTML, CSS and a little vanilla JavaScript. Three files:
+Plain HTML, CSS and vanilla JavaScript. Three files:
 
 | File | Role |
 |---|---|
@@ -23,7 +23,7 @@ Plain HTML, CSS and a little vanilla JavaScript. Three files:
 ## Notes
 
 - Dark theme by default with a light toggle; the choice persists to `localStorage`
-- Scroll-reveal animations degrade gracefully and respect `prefers-reduced-motion`
+- Scroll-reveal animations respect `prefers-reduced-motion`
 - No horizontal overflow from 375 px up; the layout collapses to one column on mobile
 
 GitHub Pages serves the default branch, so a push deploys.
