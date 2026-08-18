@@ -167,7 +167,10 @@
           <p class="section__sub">Four are live on the web, one runs on your Mac. All but the client work are open source.</p>
         </header>
 
-        <div class="cards">
+        <div class="deck" data-deck>
+          <div class="deck__viewport" data-deck-viewport tabindex="0" role="group"
+               aria-label="Projects, scroll sideways or use the arrows">
+          <div class="cards">
           <!-- PetNote -->
           <article class="card reveal">
             <div class="card__top">
@@ -334,7 +337,7 @@
           </article>
 
           <!-- iCanDoIt -->
-          <article class="card card--wide reveal">
+          <article class="card reveal">
             <div class="card__top">
               <span class="card__logo" aria-hidden="true">
                 <svg class="icon" focusable="false"><use href="#i-checklist"></use></svg>
@@ -373,6 +376,20 @@
               </a>
             </div>
           </article>
+          </div>
+          </div>
+
+          <div class="deck__controls">
+            <div class="deck__dots" data-deck-dots aria-hidden="true"></div>
+            <div class="deck__arrows">
+              <button class="deck__arrow" type="button" data-deck-prev aria-label="Previous project">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5 8 12l7 7"/></svg>
+              </button>
+              <button class="deck__arrow" type="button" data-deck-next aria-label="Next project">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -437,7 +454,7 @@
           </p>
         </header>
 
-        <div class="mini-grid">
+        <div class="mini-grid fan">
           <a class="mini reveal" href="https://data-data.vercel.app" target="_blank" rel="noopener noreferrer">
             <h3 class="mini__title">DataData</h3>
             <p class="mini__desc">Data structures you can watch: memory diagrams, live visualizations, Java/Python/JS side by side.</p>
@@ -484,8 +501,7 @@
           <p class="eyebrow">// lab</p>
           <h2 id="lab-h" class="section__title">Small things, built to learn something</h2>
           <p class="section__sub">
-            Single-file canvas experiments — no build step, no dependencies. Click any of them
-            and it just runs.
+            Most of these took an afternoon. Click one and it plays.
           </p>
         </header>
 
@@ -532,7 +548,7 @@
         <header class="section__head reveal">
           <p class="eyebrow">// skills</p>
           <h2 id="skills-h" class="section__title">What I work with</h2>
-          <p class="section__sub">The stack I reach for, grouped.</p>
+          <p class="section__sub">The stack I reach for.</p>
         </header>
 
         <div class="skill-groups">
@@ -679,6 +695,70 @@
           });
         }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
         items.forEach(function (el) { io.observe(el); });
+      }
+
+      /* Work deck — arrows and progress on top of native snap scrolling.
+         Trackpad and touch already work through overflow-x; this only adds
+         the controls and keeps them in sync with wherever the user scrolled. */
+      var deck = document.querySelector('[data-deck]');
+      if (deck) {
+        var vp = deck.querySelector('[data-deck-viewport]');
+        var cards = deck.querySelectorAll('.cards > .card');
+        var dots = deck.querySelector('[data-deck-dots]');
+        var prev = deck.querySelector('[data-deck-prev]');
+        var next = deck.querySelector('[data-deck-next]');
+
+        for (var d = 0; d < cards.length; d++) {
+          dots.appendChild(document.createElement('span')).className = 'deck__dot';
+        }
+
+        function step() {
+          if (cards.length < 2) return vp.clientWidth;
+          return cards[1].getBoundingClientRect().left - cards[0].getBoundingClientRect().left;
+        }
+
+        function index() {
+          var s = step();
+          var i = s ? Math.round(vp.scrollLeft / s) : 0;
+          return i < 0 ? 0 : (i > cards.length - 1 ? cards.length - 1 : i);
+        }
+
+        function sync() {
+          var idx = index();
+          for (var i = 0; i < dots.children.length; i++) {
+            if (i === idx) dots.children[i].setAttribute('data-active', '');
+            else dots.children[i].removeAttribute('data-active');
+          }
+          prev.disabled = vp.scrollLeft <= 2;
+          next.disabled = vp.scrollLeft >= vp.scrollWidth - vp.clientWidth - 2;
+        }
+
+        function go(dir) {
+          /* scrollBy fights mandatory snapping — a smooth scroll of exactly one
+             card gets snapped back to where it started. Scrolling the target
+             card into view gives the snap engine the same destination, and it
+             honours scroll-padding, so the card lands on the text grid. */
+          var i = index() + dir;
+          if (i < 0) i = 0;
+          if (i > cards.length - 1) i = cards.length - 1;
+          cards[i].scrollIntoView({
+            behavior: reduce ? 'auto' : 'smooth',
+            inline: 'start',
+            block: 'nearest'
+          });
+        }
+
+        prev.addEventListener('click', function () { go(-1); });
+        next.addEventListener('click', function () { go(1); });
+
+        var tick;
+        vp.addEventListener('scroll', function () {
+          clearTimeout(tick);
+          tick = setTimeout(sync, 60);
+        }, { passive: true });
+
+        window.addEventListener('resize', function () { clearTimeout(tick); tick = setTimeout(sync, 120); });
+        sync();
       }
     })();
   </script>
