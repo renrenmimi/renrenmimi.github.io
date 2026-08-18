@@ -16,8 +16,8 @@ Plain HTML, CSS and a little vanilla JavaScript. Three files:
 
 - **Work** — three products built end to end: PetNote, ToneDown, GreenLane
 - **Experience** — most recently a multi-carrier shipping platform
-- **Teaching** — seven interactive course sites
-- **Lab** — sixteen single-file canvas experiments
+- **Teaching** — the interactive course sites
+- **Lab** — single-file canvas experiments
 - **Skills** and **About**
 
 ## Notes
@@ -26,7 +26,7 @@ Plain HTML, CSS and a little vanilla JavaScript. Three files:
 - Scroll-reveal animations degrade gracefully and respect `prefers-reduced-motion`
 - No horizontal overflow from 375 px up; the layout collapses to one column on mobile
 
-Deployed by GitHub Pages straight from the default branch — pushing is deploying.
+GitHub Pages serves the default branch, so a push deploys.
 
 ---
 
