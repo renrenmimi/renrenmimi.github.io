@@ -123,7 +123,10 @@ ul { list-style: none; padding: 0; }
 
 .section { padding-block: clamp(4rem, 9vw, 7rem); }
 
-.section__head { max-width: 60ch; margin-bottom: clamp(2rem, 4vw, 3rem); }
+/* 60ch is a reading measure sized off body text; on a 2.4rem heading it
+   wraps mid-phrase and leaves one word stranded. Headings can run the full
+   column — it is the sub-heading that needs the measure. */
+.section__head { margin-bottom: clamp(2rem, 4vw, 3rem); }
 
 .section__title {
   font-family: var(--font-display);
@@ -138,6 +141,7 @@ ul { list-style: none; padding: 0; }
   color: var(--text-dim);
   margin-top: 0.75rem;
   font-size: 1.05rem;
+  max-width: 60ch;
 }
 
 .eyebrow {
