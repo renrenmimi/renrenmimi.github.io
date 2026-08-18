@@ -80,6 +80,9 @@
         <circle cx="14" cy="7.1" r="2.15"/>
         <circle cx="17.7" cy="10.6" r="2.05"/>
       </symbol>
+      <symbol id="i-layers" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2 1.5 7.5 12 13l10.5-5.5L12 2Zm0 2.27L18.7 7.5 12 10.73 5.3 7.5 12 4.27ZM3.6 11.2 1.5 12.3 12 17.8l10.5-5.5-2.1-1.1L12 15.5 3.6 11.2Zm0 4.5-2.1 1.1L12 22.3l10.5-5.5-2.1-1.1L12 20 3.6 15.7Z"/>
+      </symbol>
       <symbol id="i-route" viewBox="0 0 24 24" fill="currentColor">
         <path d="M6 3a3 3 0 0 0-1 5.83V11a3 3 0 0 0 3 3h8a1 1 0 0 1 1 1v.17a3 3 0 1 0 2 0V15a3 3 0 0 0-3-3H8a1 1 0 0 1-1-1V8.83A3 3 0 0 0 6 3Zm0 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm12 12a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/>
       </symbol>
@@ -152,8 +155,8 @@
       <div class="container">
         <header class="section__head reveal">
           <p class="eyebrow">// selected work</p>
-          <h2 id="work-h" class="section__title">Three things I built, front to back</h2>
-          <p class="section__sub">All three are live and open source. Pick one and click around.</p>
+          <h2 id="work-h" class="section__title">Four things I built, front to back</h2>
+          <p class="section__sub">All four are live; three are open source. Pick one and click around.</p>
         </header>
 
         <div class="cards">
@@ -277,6 +280,48 @@
                 <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-code"></use></svg>
                 Code
               </a>
+            </div>
+          </article>
+
+          <!-- KOVA -->
+          <article class="card reveal">
+            <div class="card__top">
+              <span class="card__logo" aria-hidden="true">
+                <svg class="icon" focusable="false"><use href="#i-layers"></use></svg>
+              </span>
+              <span class="card__index">04</span>
+            </div>
+            <p class="card__kicker">Brand Site &amp; Dealer Portal</p>
+            <h3 class="card__title">KOVA Flooring</h3>
+            <a class="card__shot" href="https://www.kovaflooring.com" target="_blank" rel="noopener noreferrer">
+              <img src="assets/kova.jpg" alt="The KOVA Flooring brand site" loading="lazy" width="1000" height="672" />
+            </a>
+            <p class="card__desc">
+              A production site for a California waterproof-flooring brand, built in two
+              halves. The public brand site is statically exported — no server, no runtime
+              cost, and Firebase never reaches the public bundle. Behind a login sits a
+              dealer portal where each dealer sees the pricing for their own tier next to
+              live inventory, plus an admin console for editing price per product per tier
+              and importing stock by CSV.
+            </p>
+            <ul class="stats" aria-label="Project highlights">
+              <li class="stat"><span class="stat__num">3</span><span class="stat__label">dealer tiers</span></li>
+              <li class="stat"><span class="stat__num">Static</span><span class="stat__label">export, no server</span></li>
+              <li class="stat"><span class="stat__num">Live</span><span class="stat__label">kovaflooring.com</span></li>
+            </ul>
+            <ul class="tags" aria-label="Tech stack">
+              <li>Next.js 15</li>
+              <li>Static Export</li>
+              <li>Firebase Auth</li>
+              <li>Firestore</li>
+              <li>Cloudflare</li>
+            </ul>
+            <div class="card__actions">
+              <a class="btn btn--primary btn--sm" href="https://www.kovaflooring.com" target="_blank" rel="noopener noreferrer">
+                Visit site
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg>
+              </a>
+              <span class="card__note">Source private &mdash; client work</span>
             </div>
           </article>
         </div>

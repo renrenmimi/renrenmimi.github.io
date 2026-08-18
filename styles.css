@@ -672,6 +672,36 @@ ul { list-style: none; padding: 0; }
   .reveal-on .lab__group:nth-child(4) { transition-delay: 0.12s; }
 }
 
+
+/* ---- Card screenshot & private-source note ----------------------------- */
+.card__shot {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  line-height: 0;
+  background: var(--bg2);
+}
+
+.card__shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease;
+}
+
+.card__note {
+  align-self: center;
+  color: var(--text-faint);
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.02em;
+}
+
+@media (pointer: fine) {
+  .card__shot:hover img { transform: scale(1.025); }
+}
+
 /* ---- Experience ------------------------------------------------------- */
 .roles {
   list-style: none;
