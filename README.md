@@ -4,8 +4,7 @@
 
 My personal site: what I build, where I have worked, and how to reach me.
 
-Hand-built from scratch — plain HTML, CSS and a little vanilla JavaScript. No template, no
-framework, no build step. Three files:
+Plain HTML, CSS and a little vanilla JavaScript. Three files:
 
 | File | Role |
 |---|---|
