@@ -1030,7 +1030,7 @@ ul { list-style: none; padding: 0; }
   display: flex;
   align-items: center;
   gap: 4px;
-  height: 46px;
+  height: 58px;
   margin-bottom: 0.15rem;
 }
 .viz i, .viz b, .viz s, .viz u, .viz em { display: block; }
@@ -1063,31 +1063,82 @@ ul { list-style: none; padding: 0; }
 @keyframes vizHi  { 0%,8% { right: 0 }  58%,100% { right: calc(50% - 14px) } }
 @keyframes vizMid { 0%,55% { opacity: 0; transform: scale(.4) } 70%,88% { opacity: 1; transform: scale(1) } 100% { opacity: 0 } }
 
-/* TSer — a type surfacing above the value it describes */
-.viz--type { position: relative; padding-top: 14px; }
-.viz--type em { position: absolute; top: 0; left: 0;
-  font: 600 10px var(--mono); font-style: normal; letter-spacing: .06em;
-  color: var(--viz); opacity: 0; animation: vizType 3.4s infinite; }
-.viz--type i { width: 26px; height: 12px; }
-.viz--type i:nth-child(2) { width: 34px; background: color-mix(in oklab, var(--viz) 30%, transparent); }
+/* TSer — a value becomes a type: the result stays readable while inference runs */
+.viz--type { width: 100%; gap: 7px; font-family: var(--mono); }
+.type-code, .type-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 44px;
+  border: 1px solid color-mix(in oklab, var(--viz) 24%, var(--border));
+  border-radius: 7px;
+  background: color-mix(in oklab, var(--viz) 7%, transparent);
+}
+.type-code { flex: 1; min-width: 0; padding: 5px 7px; color: var(--text-faint); font-size: 8px; line-height: 1.25; }
+.type-code b { width: max-content; padding: 0; color: var(--text); background: none; font-size: 13px; }
+.type-arrow { color: var(--viz); font: 700 13px var(--mono); animation: vizInfer 3.2s infinite; }
+.type-result { width: 62px; padding: 4px 6px; opacity: .42; transform: translateX(-4px); animation: vizType 3.2s infinite; }
+.type-result small { color: var(--text-faint); font-size: 7px; line-height: 1; }
+.type-result strong { color: var(--viz); font-size: 10px; line-height: 1.45; }
+@keyframes vizInfer {
+  0%,18%,100% { opacity: .25; transform: translateX(-3px) }
+  34%,72% { opacity: 1; transform: translateX(2px) }
+}
 @keyframes vizType {
-  0%, 18%  { opacity: 0; transform: translateY(5px); }
-  34%, 82% { opacity: 1; transform: none; }
-  96%,100% { opacity: 0; transform: translateY(5px); }
+  0%,20%,100% { opacity: .42; transform: translateX(-4px); box-shadow: none }
+  38%,76% { opacity: 1; transform: none; box-shadow: 0 0 18px color-mix(in oklab, var(--viz) 20%, transparent) }
 }
 
-/* APIer — a request going out and the response coming back */
-.viz--rtt { position: relative; width: 100%; max-width: 152px; }
-.viz--rtt b { width: 16px; height: 22px; background: color-mix(in oklab, var(--viz) 26%, transparent); }
-.viz--rtt b:last-child { margin-left: auto; }
-.viz--rtt u { position: absolute; left: 20px; right: 20px; height: 1.5px;
-              background: color-mix(in oklab, var(--viz) 16%, transparent); }
-.viz--rtt s { position: absolute; left: 20px; width: 7px; height: 7px; border-radius: 50%;
-              background: var(--viz); animation: vizRtt 3.2s cubic-bezier(.5,0,.5,1) infinite; }
-@keyframes vizRtt {
-  0%, 6%   { left: 20px;  opacity: 1 }
-  40%, 52% { left: calc(100% - 27px); opacity: 1 }
-  90%,100% { left: 20px;  opacity: 1 }
+/* APIer — a labelled request goes out; a labelled response comes back */
+.viz--rtt { width: 100%; max-width: 190px; gap: 7px; font-family: var(--mono); }
+.api-node {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 30px;
+  border: 1px solid color-mix(in oklab, var(--viz) 27%, var(--border));
+  border-radius: 7px;
+  color: var(--text-dim);
+  background: color-mix(in oklab, var(--viz) 8%, transparent);
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+.api-lane { position: relative; flex: 1; height: 34px; }
+.api-lane::before, .api-lane::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: color-mix(in oklab, var(--viz) 22%, transparent);
+}
+.api-lane::before { top: 9px; }
+.api-lane::after { bottom: 9px; }
+.api-request, .api-response {
+  position: absolute;
+  z-index: 1;
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--viz);
+  font: 700 7px var(--mono);
+  font-style: normal;
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--viz) 22%, transparent);
+}
+.api-request { top: 3px; left: 0; animation: vizRequest 3.8s cubic-bezier(.45,0,.55,1) infinite; }
+.api-response { bottom: 3px; right: 0; animation: vizResponse 3.8s cubic-bezier(.45,0,.55,1) infinite; }
+@keyframes vizRequest {
+  0%,8% { left: 0; opacity: 0 }
+  14% { opacity: 1 }
+  42%,52% { left: calc(100% - 27px); opacity: 1 }
+  58%,100% { left: calc(100% - 27px); opacity: 0 }
+}
+@keyframes vizResponse {
+  0%,46% { right: 0; opacity: 0 }
+  54% { opacity: 1 }
+  84%,92% { right: calc(100% - 27px); opacity: 1 }
+  100% { right: calc(100% - 27px); opacity: 0 }
 }
 
 /* RedisVisual — most reads stop at the cache; some fall through to the store */
@@ -1112,35 +1163,95 @@ ul { list-style: none; padding: 0; }
   44%,100% { background: color-mix(in oklab, var(--viz) 16%, transparent) }
 }
 
-/* AgentLab — the messages array growing one turn at a time */
-.viz--grow { align-items: flex-end; }
-.viz--grow i { width: 15px; height: 8px; transform-origin: bottom; animation: vizGrow 4s infinite; }
-.viz--grow i:nth-child(1) { animation-delay: 0s }
-.viz--grow i:nth-child(2) { animation-delay: .45s }
-.viz--grow i:nth-child(3) { animation-delay: .90s }
-.viz--grow i:nth-child(4) { animation-delay: 1.35s }
-.viz--grow i:nth-child(5) { animation-delay: 1.80s }
-@keyframes vizGrow {
-  0%, 6%   { height: 0;    opacity: 0 }
-  14%      { height: 22px; opacity: 1; background: var(--viz) }
-  22%, 62% { height: 22px; opacity: 1; background: color-mix(in oklab, var(--viz) 26%, transparent) }
-  74%,100% { height: 0;    opacity: 0 }
+/* AgentLab — the messages array grows, then the loop starts another turn */
+.viz--grow { width: 100%; gap: 8px; font-family: var(--mono); }
+.agent-stack { display: flex; flex: 1; flex-direction: column; gap: 3px; }
+.agent-stack i {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 14px;
+  padding: 1px 4px;
+  border: 1px solid color-mix(in oklab, var(--viz) 18%, var(--border));
+  border-radius: 4px;
+  color: var(--text-faint);
+  background: color-mix(in oklab, var(--viz) 7%, transparent);
+  font: 7px var(--mono);
+  font-style: normal;
+  opacity: .22;
+  transform: translateY(4px);
+  animation: vizMessage 4.2s infinite;
+}
+.agent-stack i:nth-child(2) { animation-delay: .5s; }
+.agent-stack i:nth-child(3) { animation-delay: 1s; }
+.agent-stack b {
+  display: grid;
+  place-items: center;
+  width: 11px;
+  height: 10px;
+  border-radius: 3px;
+  color: var(--surface);
+  background: var(--viz);
+  font-size: 6px;
+}
+.agent-loop {
+  padding: 5px 6px;
+  border: 1px solid color-mix(in oklab, var(--viz) 24%, var(--border));
+  border-radius: 999px;
+  color: var(--viz);
+  background: color-mix(in oklab, var(--viz) 8%, transparent);
+  font: 700 7px var(--mono);
+  white-space: nowrap;
+  animation: vizLoop 4.2s infinite;
+}
+@keyframes vizMessage {
+  0%,8% { opacity: .22; transform: translateY(4px) }
+  18%,68% { opacity: 1; transform: none }
+  82%,100% { opacity: .22; transform: translateY(-2px) }
+}
+@keyframes vizLoop {
+  0%,50% { opacity: .35; transform: rotate(0) }
+  64%,78% { opacity: 1; transform: rotate(-5deg); box-shadow: 0 0 16px color-mix(in oklab, var(--viz) 20%, transparent) }
+  90%,100% { opacity: .35; transform: rotate(0); box-shadow: none }
 }
 
-/* SwiftLab — the view is a function of the value */
-.viz--bind { flex-direction: column; align-items: flex-start; gap: 7px; }
-.viz--bind s { width: 74px; height: 3px; border-radius: 2px; position: relative;
-               background: color-mix(in oklab, var(--viz) 20%, transparent); }
-.viz--bind s::after { content: ''; position: absolute; top: -3.5px; width: 10px; height: 10px;
-  border-radius: 50%; background: var(--viz); animation: vizKnob 3.6s cubic-bezier(.5,0,.5,1) infinite; }
-.viz--bind b { height: 16px; border-radius: 4px; background: var(--viz);
-               animation: vizBar 3.6s cubic-bezier(.5,0,.5,1) infinite; }
-@keyframes vizKnob { 0%,8% { left: 0 } 46%,58% { left: 64px } 96%,100% { left: 0 } }
-@keyframes vizBar  { 0%,8% { width: 22px } 46%,58% { width: 96px } 96%,100% { width: 22px } }
+/* SwiftLab — @State changes and the rendered View follows the same value */
+.viz--bind { width: 100%; gap: 7px; font-family: var(--mono); }
+.swift-state, .swift-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 42px;
+  border: 1px solid color-mix(in oklab, var(--viz) 24%, var(--border));
+  border-radius: 8px;
+  background: color-mix(in oklab, var(--viz) 7%, transparent);
+}
+.swift-state { flex: 1; padding: 5px 7px; }
+.swift-view { width: 46px; align-items: center; }
+.swift-state small, .swift-view small { color: var(--viz); font-size: 7px; line-height: 1; }
+.swift-state b { color: var(--text-dim); background: none; font-size: 8px; }
+.swift-view b { display: grid; place-items: center; color: var(--text); background: none; font-size: 15px; line-height: 1.2; }
+.swift-value { display: inline; border-radius: 0; background: none; }
+.swift-value::after { content: '0'; color: var(--text); animation: vizValue 4.2s steps(1, end) infinite; }
+.swift-state .swift-value::before { content: '= '; color: var(--text-faint); }
+.swift-flow { color: var(--viz); font: 700 13px var(--mono); animation: vizFlow 4.2s infinite; }
+.swift-view { animation: vizView 4.2s infinite; }
+@keyframes vizValue {
+  0%,24%,100% { content: '0' }
+  25%,54% { content: '1' }
+  55%,84% { content: '2' }
+  85%,99% { content: '3' }
+}
+@keyframes vizFlow {
+  0%,18%,100% { opacity: .25; transform: translateX(-2px) }
+  28%,84% { opacity: 1; transform: translateX(2px) }
+}
+@keyframes vizView {
+  0%,18%,100% { box-shadow: none }
+  28%,36%,58%,66%,86%,94% { box-shadow: 0 0 18px color-mix(in oklab, var(--viz) 22%, transparent); border-color: var(--viz) }
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .viz i, .viz b, .viz s, .viz u, .viz em, .viz s::after { animation: none !important; }
-  .viz--grow i { height: 22px; opacity: 1 }
-  .viz--type em { opacity: 1 }
-  .viz--bind b { width: 60px }
+  .viz i, .viz b, .viz s, .viz u, .viz em, .viz span, .viz s::after, .swift-value::after { animation: none !important; }
+  .type-result, .agent-stack i, .agent-loop { opacity: 1; transform: none; }
 }
