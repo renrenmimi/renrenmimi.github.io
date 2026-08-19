@@ -650,6 +650,28 @@
     </section>
   </main>
 
+  <!-- RENREN GUIDE -->
+  <aside class="renren-guide" data-renren aria-label="Renren site guide">
+    <div class="renren__bubble" data-renren-bubble aria-hidden="true">
+      <div class="renren__head">
+        <span><i aria-hidden="true"></i>RENREN · SITE GUIDE</span>
+        <button class="renren__close" type="button" data-renren-close aria-label="Close Renren guide">&#215;</button>
+      </div>
+      <p class="renren__copy" data-renren-copy aria-live="polite">Hi! I know every corner of this site.</p>
+      <div class="renren__actions">
+        <button type="button" data-renren-surprise>Surprise me</button>
+        <a href="mailto:feng.weir@northeastern.edu">Say hello <span aria-hidden="true">&#8599;</span></a>
+      </div>
+    </div>
+    <span class="renren__zzz" aria-hidden="true"><i>Z</i><i>z</i><i>z</i></span>
+    <button class="renren__launcher" type="button" data-renren-launcher aria-label="Ask Renren about this page" aria-expanded="false">
+      <span class="renren__face">
+        <img src="https://raw.githubusercontent.com/renrenmimi/renrenmimi/main/assets/dog.jpg" alt="" width="500" height="500" decoding="async">
+      </span>
+      <span class="renren__status" aria-hidden="true"></span>
+    </button>
+  </aside>
+
   <footer class="site-footer">
     <div class="container footer__inner">
       <p class="footer__copy">&#169; <span id="year">2026</span> Weiren Feng</p>
@@ -774,6 +796,127 @@
 
         window.addEventListener('resize', function () { clearTimeout(tick); tick = setTimeout(sync, 120); });
         sync();
+      }
+
+      /* Renren — a small, local guide. It reacts to the section in view,
+         sleeps when the page is idle, and can pick a project without sending
+         visitor data anywhere. */
+      var guide = document.querySelector('[data-renren]');
+      if (guide) {
+        var launcher = guide.querySelector('[data-renren-launcher]');
+        var bubble = guide.querySelector('[data-renren-bubble]');
+        var copy = guide.querySelector('[data-renren-copy]');
+        var close = guide.querySelector('[data-renren-close]');
+        var surprise = guide.querySelector('[data-renren-surprise]');
+        var activeMessage = 'Hi! I know every corner of this site.';
+        var welcomeTimer;
+        var idleTimer;
+        var interacted = false;
+        var lastPick = -1;
+        var messages = {
+          top: 'Hi! I’m Renren. I know every corner of this site.',
+          work: 'These are the things Weiren actually shipped.',
+          experience: 'Six years in data made the product instincts stick.',
+          teaching: 'Tiny animations, big ideas. Pick a course and watch it work.',
+          lab: 'This is where the playful experiments live.',
+          skills: 'A practical stack — chosen for shipping, not collecting logos.',
+          about: 'You made it this far. We should probably say hello.'
+        };
+
+        function setCopy(message) {
+          if (!message || copy.textContent === message) return;
+          copy.textContent = message;
+          if (!reduce && copy.animate) {
+            copy.animate([
+              { opacity: 0, transform: 'translateY(4px)' },
+              { opacity: 1, transform: 'translateY(0)' }
+            ], { duration: 220, easing: 'cubic-bezier(.2,.7,.2,1)' });
+          }
+        }
+
+        function openGuide(message) {
+          clearTimeout(welcomeTimer);
+          setCopy(message || activeMessage);
+          guide.classList.add('is-open');
+          bubble.setAttribute('aria-hidden', 'false');
+          launcher.setAttribute('aria-expanded', 'true');
+        }
+
+        function closeGuide() {
+          guide.classList.remove('is-open');
+          bubble.setAttribute('aria-hidden', 'true');
+          launcher.setAttribute('aria-expanded', 'false');
+        }
+
+        launcher.addEventListener('click', function () {
+          interacted = true;
+          if (guide.classList.contains('is-open')) closeGuide();
+          else openGuide(activeMessage);
+        });
+        close.addEventListener('click', function () { interacted = true; closeGuide(); launcher.focus(); });
+
+        surprise.addEventListener('click', function () {
+          interacted = true;
+          var choices = document.querySelectorAll('.cards > .card, .mini-grid > .mini');
+          if (!choices.length) return;
+          var pick = Math.floor(Math.random() * choices.length);
+          if (choices.length > 1 && pick === lastPick) pick = (pick + 1) % choices.length;
+          lastPick = pick;
+          var target = choices[pick];
+          var title = target.querySelector('.card__title, .mini__title');
+          setCopy('Renren picked ' + (title ? title.textContent.trim() : 'this one') + '. Good choice.');
+          target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center', inline: 'center' });
+          target.classList.add('renren-picked');
+          window.setTimeout(function () { target.classList.remove('renren-picked'); }, 1800);
+        });
+
+        document.addEventListener('keydown', function (event) {
+          if (event.key === 'Escape' && guide.classList.contains('is-open')) closeGuide();
+        });
+
+        if ('IntersectionObserver' in window) {
+          var sectionObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting || !messages[entry.target.id]) return;
+              activeMessage = messages[entry.target.id];
+              if (guide.classList.contains('is-open')) setCopy(activeMessage);
+              else if (!reduce && launcher.animate) {
+                launcher.animate([
+                  { transform: 'scale(1)' },
+                  { transform: 'scale(1.06)' },
+                  { transform: 'scale(1)' }
+                ], { duration: 420, easing: 'cubic-bezier(.2,.8,.2,1)' });
+              }
+            });
+          }, { rootMargin: '-38% 0px -52% 0px', threshold: 0 });
+          Object.keys(messages).forEach(function (id) {
+            var section = document.getElementById(id);
+            if (section) sectionObserver.observe(section);
+          });
+        }
+
+        function wakeRenren() {
+          guide.classList.remove('is-idle');
+          clearTimeout(idleTimer);
+          idleTimer = window.setTimeout(function () { guide.classList.add('is-idle'); }, 12000);
+        }
+        ['scroll', 'pointerdown', 'keydown'].forEach(function (eventName) {
+          window.addEventListener(eventName, wakeRenren, { passive: true });
+        });
+        wakeRenren();
+
+        var welcomed = false;
+        try { welcomed = sessionStorage.getItem('renren-welcomed') === '1'; } catch (e) {}
+        if (!welcomed) {
+          window.setTimeout(function () {
+            if (interacted) return;
+            openGuide(messages.top);
+            try { sessionStorage.setItem('renren-welcomed', '1'); } catch (e) {}
+            welcomeTimer = window.setTimeout(function () {
+              if (!interacted) closeGuide();
+            }, 6500);
+          }, reduce ? 0 : 900);
+        }
       }
     })();
   </script>
