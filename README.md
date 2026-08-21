@@ -18,7 +18,7 @@ in a browser and that is the whole development setup.
 
 - **Work** — PetNote, ToneDown, GreenLane, KOVA Flooring, iCanDoIt
 - **Experience** — WeShipItNow, a multi-carrier shipping platform, plus a teaching assistant role
-- **Teaching** — the course sites: DrillLab, DataData, AlgoAlgo, APIer, TSer, RedisVisual, AgentLab, SwiftLab
+- **Teaching** — the course sites: DataData, AlgoAlgo, APIer, TSer, RedisVisual, DrillLab, AgentLab, SwiftLab
 - **Lab** — browser experiments, games, canvas and motion pieces, cognitive drills
 - **Skills** and **About**
 

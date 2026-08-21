@@ -1035,41 +1035,85 @@ ul { list-style: none; padding: 0; }
 .viz i, .viz b, .viz s, .viz u, .viz em { display: block; }
 .viz b, .viz i { border-radius: 4px; background: color-mix(in oklab, var(--viz) 16%, transparent); }
 
-/* DrillLab — four tracks remove one layer of scaffolding at a time */
-.viz--drill { width: 100%; gap: 6px; }
-.viz--drill > i {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: center;
-  gap: 4px;
-  height: 42px;
-  padding: 6px;
-  border: 1px solid color-mix(in oklab, var(--viz) 22%, var(--border));
-  border-radius: 7px;
-  background: color-mix(in oklab, var(--viz) 7%, transparent);
-  animation: vizDrill 4s infinite;
-}
-.viz--drill > i:nth-child(2) { animation-delay: .5s; }
-.viz--drill > i:nth-child(3) { animation-delay: 1s; }
-.viz--drill > i:nth-child(4) { animation-delay: 1.5s; }
-.viz--drill b {
+/* DrillLab — the four practice modes light up as the scaffolding falls away */
+.viz--drill {
+  position: relative;
+  justify-content: space-between;
   width: 100%;
-  height: 3px;
-  border-radius: 3px;
-  background: color-mix(in oklab, var(--viz) 38%, transparent);
+  padding: 0 2px;
+  font-family: var(--mono);
 }
-.viz--drill > i:nth-child(4) b {
-  width: 8px;
-  height: 8px;
-  align-self: center;
-  border-radius: 50%;
+.drill-rail {
+  position: absolute;
+  top: 20px;
+  right: 9%;
+  left: 9%;
+  height: 1px;
+  overflow: hidden;
+  background: color-mix(in oklab, var(--viz) 18%, var(--border));
+}
+.drill-rail::after {
+  position: absolute;
+  inset: 0;
+  content: "";
   background: var(--viz);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: drillRail 5.2s ease-in-out infinite;
 }
-@keyframes vizDrill {
-  0%,14%,100% { opacity: .46; transform: translateY(2px); box-shadow: none; }
-  24%,46% { opacity: 1; transform: none; box-shadow: 0 0 16px color-mix(in oklab, var(--viz) 18%, transparent); }
-  58% { opacity: .68; transform: none; }
+.viz--drill > i {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 24%;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  background: transparent;
+  color: var(--muted);
+}
+.viz--drill > i b {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  border: 1px solid color-mix(in oklab, var(--viz) 30%, var(--border));
+  border-radius: 8px;
+  background: color-mix(in oklab, var(--viz) 8%, var(--bg));
+  color: inherit;
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: -.04em;
+}
+.viz--drill > i small {
+  font-size: 6px;
+  font-weight: 650;
+  letter-spacing: .06em;
+}
+.viz--drill > i:nth-of-type(1) { animation: drillStepOne 5.2s ease-in-out infinite; }
+.viz--drill > i:nth-of-type(2) { animation: drillStepTwo 5.2s ease-in-out infinite; }
+.viz--drill > i:nth-of-type(3) { animation: drillStepThree 5.2s ease-in-out infinite; }
+.viz--drill > i:nth-of-type(4) { animation: drillStepFour 5.2s ease-in-out infinite; }
+@keyframes drillStepOne {
+  0%,24%,100% { color: var(--muted); filter: none; opacity: .62; transform: translateY(1px); }
+  8%,18% { color: var(--viz); filter: drop-shadow(0 0 6px color-mix(in oklab, var(--viz) 35%, transparent)); opacity: 1; transform: translateY(-2px); }
+}
+@keyframes drillStepTwo {
+  0%,20%,42%,100% { color: var(--muted); filter: none; opacity: .62; transform: translateY(1px); }
+  26%,36% { color: var(--viz); filter: drop-shadow(0 0 6px color-mix(in oklab, var(--viz) 35%, transparent)); opacity: 1; transform: translateY(-2px); }
+}
+@keyframes drillStepThree {
+  0%,38%,60%,100% { color: var(--muted); filter: none; opacity: .62; transform: translateY(1px); }
+  44%,54% { color: var(--viz); filter: drop-shadow(0 0 6px color-mix(in oklab, var(--viz) 35%, transparent)); opacity: 1; transform: translateY(-2px); }
+}
+@keyframes drillStepFour {
+  0%,56%,82%,100% { color: var(--muted); filter: none; opacity: .62; transform: translateY(1px); }
+  62%,76% { color: var(--viz); filter: drop-shadow(0 0 6px color-mix(in oklab, var(--viz) 35%, transparent)); opacity: 1; transform: translateY(-2px); }
+}
+@keyframes drillRail {
+  0%,5% { opacity: 0; transform: scaleX(0); }
+  68%,82% { opacity: 1; transform: scaleX(1); }
+  100% { opacity: 0; transform: scaleX(1); }
 }
 
 /* DataData — a pointer walking an array, each cell lighting as it lands */
