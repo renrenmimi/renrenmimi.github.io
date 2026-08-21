@@ -1038,74 +1038,66 @@ ul { list-style: none; padding: 0; }
 .viz i, .viz b, .viz s, .viz u, .viz em { display: block; }
 .viz b, .viz i { border-radius: 4px; background: color-mix(in oklab, var(--viz) 16%, transparent); }
 
-/* DrillLab — a quiet four-step progress path, intentionally text-free */
+/* DrillLab — one quiet page turn for learning, then practice */
 .viz--drill {
-  position: relative;
-  justify-content: space-between;
-  width: min(100%, 150px);
+  width: 100%;
   margin-inline: auto;
-  padding-inline: 3px;
+  perspective: 320px;
 }
-.drill-rail {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  left: 10px;
-  height: 1px;
-  overflow: hidden;
-  background: color-mix(in oklab, var(--viz) 18%, var(--border));
-  transform: translateY(-50%);
-}
-.drill-rail::after {
-  position: absolute;
-  inset: 0;
-  content: "";
-  background: var(--viz);
-  transform: scaleX(0);
-  transform-origin: left;
-  animation: drillRail 5.2s ease-in-out infinite;
-}
-.viz--drill > i {
+.drill-book {
   position: relative;
-  z-index: 1;
-  width: 18px;
-  height: 18px;
-  border: 1px solid color-mix(in oklab, var(--viz) 30%, var(--border));
-  border-radius: 6px;
-  background: color-mix(in oklab, var(--viz) 7%, var(--surface));
-  box-shadow: 0 0 0 4px var(--surface);
+  display: block;
+  width: 88px;
+  height: 50px;
+  filter: drop-shadow(0 8px 7px rgba(0, 0, 0, .12));
+  transform: rotateX(5deg);
+  transform-style: preserve-3d;
 }
-.viz--drill > i::after {
+.drill-book::before,
+.drill-book::after,
+.drill-page {
   position: absolute;
-  inset: 5px;
-  border-radius: 50%;
-  background: currentColor;
+  top: 3px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid color-mix(in oklab, var(--viz) 24%, var(--border));
+  background:
+    repeating-linear-gradient(to bottom,
+      transparent 0 9px,
+      color-mix(in oklab, var(--viz) 12%, transparent) 9px 10px),
+    color-mix(in oklab, var(--viz) 5%, var(--surface-2));
   content: "";
 }
-.viz--drill > i:nth-of-type(1) { animation: drillStepOne 5.2s ease-in-out infinite; }
-.viz--drill > i:nth-of-type(2) { animation: drillStepTwo 5.2s ease-in-out infinite; }
-.viz--drill > i:nth-of-type(3) { animation: drillStepThree 5.2s ease-in-out infinite; }
-.viz--drill > i:nth-of-type(4) { animation: drillStepFour 5.2s ease-in-out infinite; }
-@keyframes drillStepOne {
-  0%,24%,100% { color: var(--text-faint); transform: scale(.82); }
-  8%,18% { border-color: var(--viz); color: var(--viz); transform: scale(1); }
+.drill-book::before {
+  left: 0;
+  border-radius: 7px 2px 3px 7px;
+  box-shadow: inset -4px 0 7px rgba(0, 0, 0, .08);
+  transform: skewY(2deg);
 }
-@keyframes drillStepTwo {
-  0%,20%,42%,100% { color: var(--text-faint); transform: scale(.82); }
-  26%,36% { border-color: var(--viz); color: var(--viz); transform: scale(1); }
+.drill-book::after {
+  right: 0;
+  border-radius: 2px 7px 7px 3px;
+  box-shadow: inset 4px 0 7px rgba(0, 0, 0, .08);
+  transform: skewY(-2deg);
 }
-@keyframes drillStepThree {
-  0%,38%,60%,100% { color: var(--text-faint); transform: scale(.82); }
-  44%,54% { border-color: var(--viz); color: var(--viz); transform: scale(1); }
+.drill-page {
+  z-index: 2;
+  left: 50%;
+  border-radius: 2px 7px 7px 2px;
+  background:
+    repeating-linear-gradient(to bottom,
+      transparent 0 9px,
+      color-mix(in oklab, var(--viz) 16%, transparent) 9px 10px),
+    color-mix(in oklab, var(--viz) 8%, var(--surface-2));
+  box-shadow: 3px 1px 7px rgba(0, 0, 0, .1);
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  animation: drillPageTurn 4.8s cubic-bezier(.55, .08, .35, .96) infinite;
 }
-@keyframes drillStepFour {
-  0%,56%,82%,100% { color: var(--text-faint); transform: scale(.82); }
-  62%,76% { border-color: var(--viz); color: var(--viz); transform: scale(1); }
-}
-@keyframes drillRail {
-  0%,5% { opacity: 0; transform: scaleX(0); }
-  68%,82% { opacity: 1; transform: scaleX(1); }
-  100% { opacity: 0; transform: scaleX(1); }
+@keyframes drillPageTurn {
+  0%,18% { border-color: color-mix(in oklab, var(--viz) 24%, var(--border)); transform: rotateY(0); }
+  48%,68% { border-color: color-mix(in oklab, var(--viz) 55%, var(--border)); transform: rotateY(-176deg); }
+  98%,100% { border-color: color-mix(in oklab, var(--viz) 24%, var(--border)); transform: rotateY(0); }
 }
 
 /* DataData — a pointer walking an array, each cell lighting as it lands */
