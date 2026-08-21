@@ -906,15 +906,18 @@ ul { list-style: none; padding: 0; }
 }
 
 /* ---- Teaching: compact cards ------------------------------------------ */
-/* Wrapping flex items keep each row balanced as the course list grows. */
+/* Eight courses always form complete rows: 4 × 2, 2 × 4, then 1 × 8. */
 .mini-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(0.85rem, 2vw, 1.1rem);
 }
-.mini { flex: 0 1 clamp(228px, 19vw, 244px); }
-@media (max-width: 560px) { .mini { flex: 1 1 100%; } }
+@media (max-width: 900px) {
+  .mini-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .mini-grid { grid-template-columns: 1fr; }
+}
 
 .mini {
   display: flex;
@@ -1035,22 +1038,23 @@ ul { list-style: none; padding: 0; }
 .viz i, .viz b, .viz s, .viz u, .viz em { display: block; }
 .viz b, .viz i { border-radius: 4px; background: color-mix(in oklab, var(--viz) 16%, transparent); }
 
-/* DrillLab — the four practice modes light up as the scaffolding falls away */
+/* DrillLab — a quiet four-step progress path, intentionally text-free */
 .viz--drill {
   position: relative;
   justify-content: space-between;
-  width: 100%;
-  padding: 0 2px;
-  font-family: var(--mono);
+  width: min(100%, 150px);
+  margin-inline: auto;
+  padding-inline: 3px;
 }
 .drill-rail {
   position: absolute;
-  top: 20px;
-  right: 9%;
-  left: 9%;
+  top: 50%;
+  right: 10px;
+  left: 10px;
   height: 1px;
   overflow: hidden;
   background: color-mix(in oklab, var(--viz) 18%, var(--border));
+  transform: translateY(-50%);
 }
 .drill-rail::after {
   position: absolute;
@@ -1064,51 +1068,39 @@ ul { list-style: none; padding: 0; }
 .viz--drill > i {
   position: relative;
   z-index: 1;
-  display: flex;
-  width: 24%;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  background: transparent;
-  color: var(--muted);
-}
-.viz--drill > i b {
-  display: grid;
-  width: 27px;
-  height: 27px;
-  place-items: center;
+  width: 18px;
+  height: 18px;
   border: 1px solid color-mix(in oklab, var(--viz) 30%, var(--border));
-  border-radius: 8px;
-  background: color-mix(in oklab, var(--viz) 8%, var(--bg));
-  color: inherit;
-  font-size: 9px;
-  font-weight: 650;
-  letter-spacing: -.04em;
+  border-radius: 6px;
+  background: color-mix(in oklab, var(--viz) 7%, var(--surface));
+  box-shadow: 0 0 0 4px var(--surface);
 }
-.viz--drill > i small {
-  font-size: 6px;
-  font-weight: 650;
-  letter-spacing: .06em;
+.viz--drill > i::after {
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  content: "";
 }
 .viz--drill > i:nth-of-type(1) { animation: drillStepOne 5.2s ease-in-out infinite; }
 .viz--drill > i:nth-of-type(2) { animation: drillStepTwo 5.2s ease-in-out infinite; }
 .viz--drill > i:nth-of-type(3) { animation: drillStepThree 5.2s ease-in-out infinite; }
 .viz--drill > i:nth-of-type(4) { animation: drillStepFour 5.2s ease-in-out infinite; }
 @keyframes drillStepOne {
-  0%,24%,100% { color: var(--muted); filter: none; opacity: .62; transform: translateY(1px); }
-  8%,18% { color: var(--viz); filter: drop-shadow(0 0 6px color-mix(in oklab, var(--viz) 35%, transparent)); opacity: 1; transform: translateY(-2px); }
+  0%,24%,100% { color: var(--text-faint); transform: scale(.82); }
+  8%,18% { border-color: var(--viz); color: var(--viz); transform: scale(1); }
 }
 @keyframes drillStepTwo {
-  0%,20%,42%,100% { color: var(--muted); filter: none; opacity: .62; transform: translateY(1px); }
-  26%,36% { color: var(--viz); filter: drop-shadow(0 0 6px color-mix(in oklab, var(--viz) 35%, transparent)); opacity: 1; transform: translateY(-2px); }
+  0%,20%,42%,100% { color: var(--text-faint); transform: scale(.82); }
+  26%,36% { border-color: var(--viz); color: var(--viz); transform: scale(1); }
 }
 @keyframes drillStepThree {
-  0%,38%,60%,100% { color: var(--muted); filter: none; opacity: .62; transform: translateY(1px); }
-  44%,54% { color: var(--viz); filter: drop-shadow(0 0 6px color-mix(in oklab, var(--viz) 35%, transparent)); opacity: 1; transform: translateY(-2px); }
+  0%,38%,60%,100% { color: var(--text-faint); transform: scale(.82); }
+  44%,54% { border-color: var(--viz); color: var(--viz); transform: scale(1); }
 }
 @keyframes drillStepFour {
-  0%,56%,82%,100% { color: var(--muted); filter: none; opacity: .62; transform: translateY(1px); }
-  62%,76% { color: var(--viz); filter: drop-shadow(0 0 6px color-mix(in oklab, var(--viz) 35%, transparent)); opacity: 1; transform: translateY(-2px); }
+  0%,56%,82%,100% { color: var(--text-faint); transform: scale(.82); }
+  62%,76% { border-color: var(--viz); color: var(--viz); transform: scale(1); }
 }
 @keyframes drillRail {
   0%,5% { opacity: 0; transform: scaleX(0); }
