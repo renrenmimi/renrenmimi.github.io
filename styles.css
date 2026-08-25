@@ -1276,45 +1276,66 @@ ul { list-style: none; padding: 0; }
   90%,100% { opacity: .35; transform: rotate(0); box-shadow: none }
 }
 
-/* SwiftLab — @State changes and the rendered View follows the same value */
-.viz--bind { width: 100%; gap: 7px; font-family: var(--mono); }
-.swift-state, .swift-view {
+/* Bug Museum — move from the failing state to the tested fix */
+.viz--museum { width: 100%; max-width: 174px; gap: 8px; font-family: var(--mono); }
+.museum-case {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  height: 42px;
+  width: 56px;
+  height: 46px;
   border: 1px solid color-mix(in oklab, var(--viz) 24%, var(--border));
   border-radius: 8px;
   background: color-mix(in oklab, var(--viz) 7%, transparent);
 }
-.swift-state { flex: 1; padding: 5px 7px; }
-.swift-view { width: 46px; align-items: center; }
-.swift-state small, .swift-view small { color: var(--viz); font-size: 7px; line-height: 1; }
-.swift-state b { color: var(--text-dim); background: none; font-size: 8px; }
-.swift-view b { display: grid; place-items: center; color: var(--text); background: none; font-size: 15px; line-height: 1.2; }
-.swift-value { display: inline; border-radius: 0; background: none; }
-.swift-value::after { content: '0'; color: var(--text); animation: vizValue 4.2s steps(1, end) infinite; }
-.swift-state .swift-value::before { content: '= '; color: var(--text-faint); }
-.swift-flow { color: var(--viz); font: 700 13px var(--mono); animation: vizFlow 4.2s infinite; }
-.swift-view { animation: vizView 4.2s infinite; }
-@keyframes vizValue {
-  0%,24%,100% { content: '0' }
-  25%,54% { content: '1' }
-  55%,84% { content: '2' }
-  85%,99% { content: '3' }
+.museum-case b {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  color: var(--surface);
+  background: var(--viz);
+  font-size: 12px;
+  line-height: 1;
 }
-@keyframes vizFlow {
-  0%,18%,100% { opacity: .25; transform: translateX(-2px) }
-  28%,84% { opacity: 1; transform: translateX(2px) }
+.museum-case small {
+  margin-top: 4px;
+  color: var(--text-faint);
+  font-size: 6px;
+  line-height: 1;
+  letter-spacing: .08em;
+  text-transform: uppercase;
 }
-@keyframes vizView {
-  0%,18%,100% { box-shadow: none }
-  28%,36%,58%,66%,86%,94% { box-shadow: 0 0 18px color-mix(in oklab, var(--viz) 22%, transparent); border-color: var(--viz) }
+.museum-arrow {
+  color: var(--viz);
+  font: 700 13px var(--mono);
+  animation: museumArrow 4.2s ease-in-out infinite;
+}
+.museum-case--broken { animation: museumBroken 4.2s ease-in-out infinite; }
+.museum-case--fixed { animation: museumFixed 4.2s ease-in-out infinite; }
+.museum-case--fixed b { background: var(--viz-fixed); }
+.museum-case--fixed small { color: var(--viz-fixed); }
+@keyframes museumBroken {
+  0%,22%,100% { border-color: var(--viz); box-shadow: 0 0 18px color-mix(in oklab, var(--viz) 22%, transparent); opacity: 1; }
+  40%,88% { border-color: color-mix(in oklab, var(--viz) 20%, var(--border)); box-shadow: none; opacity: .55; }
+}
+@keyframes museumArrow {
+  0%,24%,100% { opacity: .25; transform: translateX(-2px); }
+  38%,74% { opacity: 1; transform: translateX(2px); }
+  88% { opacity: .25; transform: translateX(2px); }
+}
+@keyframes museumFixed {
+  0%,44%,100% { border-color: color-mix(in oklab, var(--viz-fixed) 20%, var(--border)); box-shadow: none; opacity: .55; }
+  56%,88% { border-color: var(--viz-fixed); box-shadow: 0 0 18px color-mix(in oklab, var(--viz-fixed) 22%, transparent); opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .viz i, .viz b, .viz s, .viz u, .viz em, .viz span, .viz s::after, .swift-value::after { animation: none !important; }
+  .viz i, .viz b, .viz s, .viz u, .viz em, .viz span, .viz s::after { animation: none !important; }
   .type-result, .agent-stack i, .agent-loop { opacity: 1; transform: none; }
+  .museum-case--broken { opacity: .55; box-shadow: none; }
+  .museum-case--fixed { opacity: 1; border-color: var(--viz-fixed); }
 }
 
 /* ---- Renren: the site guide ------------------------------------------- */
