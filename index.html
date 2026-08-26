@@ -875,9 +875,7 @@
         var close = guide.querySelector('[data-renren-close]');
         var surprise = guide.querySelector('[data-renren-surprise]');
         var activeMessage = 'Hi! I know every corner of this site.';
-        var welcomeTimer;
         var idleTimer;
-        var interacted = false;
         var lastPick = -1;
         var messages = {
           top: 'Hi! I’m Renren. I know every corner of this site.',
@@ -901,7 +899,6 @@
         }
 
         function openGuide(message) {
-          clearTimeout(welcomeTimer);
           setCopy(message || activeMessage);
           guide.classList.add('is-open');
           bubble.setAttribute('aria-hidden', 'false');
@@ -915,14 +912,12 @@
         }
 
         launcher.addEventListener('click', function () {
-          interacted = true;
           if (guide.classList.contains('is-open')) closeGuide();
           else openGuide(activeMessage);
         });
-        close.addEventListener('click', function () { interacted = true; closeGuide(); launcher.focus(); });
+        close.addEventListener('click', function () { closeGuide(); launcher.focus(); });
 
         surprise.addEventListener('click', function () {
-          interacted = true;
           var choices = document.querySelectorAll('.cards > .card, .mini-grid > .mini');
           if (!choices.length) return;
           var pick = Math.floor(Math.random() * choices.length);
@@ -970,19 +965,6 @@
           window.addEventListener(eventName, wakeRenren, { passive: true });
         });
         wakeRenren();
-
-        var welcomed = false;
-        try { welcomed = sessionStorage.getItem('renren-welcomed') === '1'; } catch (e) {}
-        if (!welcomed) {
-          window.setTimeout(function () {
-            if (interacted) return;
-            openGuide(messages.top);
-            try { sessionStorage.setItem('renren-welcomed', '1'); } catch (e) {}
-            welcomeTimer = window.setTimeout(function () {
-              if (!interacted) closeGuide();
-            }, 6500);
-          }, reduce ? 0 : 900);
-        }
       }
     })();
   </script>
