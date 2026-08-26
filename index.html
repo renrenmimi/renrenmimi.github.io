@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="styles.css?v=20260821-5">
+  <link rel="stylesheet" href="styles.css?v=20260825-2">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -100,6 +100,11 @@
         <rect x="11.5" y="2.5" width="2" height="19" rx="1"/>
         <rect x="16" y="6.5" width="2" height="11" rx="1"/>
         <rect x="20.5" y="8.5" width="2" height="7" rx="1"/>
+      </symbol>
+      <symbol id="i-history" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3.5 12a8.5 8.5 0 1 0 2.49-6.01L3.5 8.5"/>
+        <path d="M3.5 4.5v4h4"/>
+        <path d="M12 7.5V12l3 1.8"/>
       </symbol>
     </defs>
   </svg>
@@ -191,7 +196,7 @@
               </p>
             </div>
             <ul class="stats" aria-label="Project highlights">
-              <li class="stat"><span class="stat__num">62</span><span class="stat__label">cloud functions</span></li>
+              <li class="stat"><span class="stat__num">62</span><span class="stat__label">functions</span></li>
               <li class="stat"><span class="stat__num">11</span><span class="stat__label">domain modules</span></li>
               <li class="stat"><span class="stat__num">React 19</span><span class="stat__label">front end</span></li>
             </ul>
@@ -278,7 +283,7 @@
               </p>
             </div>
             <ul class="stats" aria-label="Project highlights">
-              <li class="stat"><span class="stat__num">10 yrs</span><span class="stat__label">of history charted</span></li>
+              <li class="stat"><span class="stat__num">10 yrs</span><span class="stat__label">history</span></li>
               <li class="stat"><span class="stat__num">3</span><span class="stat__label">data pipelines</span></li>
               <li class="stat"><span class="stat__num">SSR</span><span class="stat__label">Next.js 15</span></li>
             </ul>
@@ -319,8 +324,8 @@
             </div>
             <ul class="stats" aria-label="Project highlights">
               <li class="stat"><span class="stat__num">3</span><span class="stat__label">business tiers</span></li>
-              <li class="stat"><span class="stat__num">Solo</span><span class="stat__label">design and build</span></li>
-              <li class="stat"><span class="stat__num">Live</span><span class="stat__label">kovaflooring.com</span></li>
+              <li class="stat"><span class="stat__num">Solo</span><span class="stat__label">design/build</span></li>
+              <li class="stat"><span class="stat__num">Live</span><span class="stat__label">client site</span></li>
             </ul>
             <ul class="tags" aria-label="Tech stack">
               <li>UI/UX</li>
@@ -337,13 +342,55 @@
             </div>
           </article>
 
+          <!-- Repo Time Machine -->
+          <article class="card reveal">
+            <div class="card__top">
+              <span class="card__logo" aria-hidden="true">
+                <svg class="icon" focusable="false"><use href="#i-history"></use></svg>
+              </span>
+              <span class="card__index">05</span>
+            </div>
+            <p class="card__kicker">Visual Git History Explorer</p>
+            <h3 class="card__title">Repo Time Machine</h3>
+            <div class="card__body">
+              <p class="card__desc">
+                Paste a public GitHub repository and watch its default branch grow commit by
+                commit. The app reconstructs file trees from checkpoints and diffs, keeps the
+                GitHub token on the server, and includes a synthetic demo that works without
+                touching GitHub's API.
+              </p>
+            </div>
+            <ul class="stats" aria-label="Project highlights">
+              <li class="stat"><span class="stat__num">16</span><span class="stat__label">demo commits</span></li>
+              <li class="stat"><span class="stat__num">0</span><span class="stat__label">GitHub calls</span></li>
+              <li class="stat"><span class="stat__num">1,000</span><span class="stat__label">commit ceiling</span></li>
+            </ul>
+            <ul class="tags" aria-label="Tech stack">
+              <li>Next.js 16</li>
+              <li>TypeScript</li>
+              <li>GitHub REST API</li>
+              <li>Vitest</li>
+              <li>Playwright</li>
+            </ul>
+            <div class="card__actions">
+              <a class="btn btn--primary btn--sm" href="https://repo-time-machine.vercel.app" target="_blank" rel="noopener noreferrer">
+                Live demo
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg>
+              </a>
+              <a class="btn btn--ghost btn--sm" href="https://github.com/renrenmimi/RepoTimeMachine" target="_blank" rel="noopener noreferrer">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-code"></use></svg>
+                Code
+              </a>
+            </div>
+          </article>
+
           <!-- iCanDoIt -->
           <article class="card reveal">
             <div class="card__top">
               <span class="card__logo" aria-hidden="true">
                 <svg class="icon" focusable="false"><use href="#i-checklist"></use></svg>
               </span>
-              <span class="card__index">05</span>
+              <span class="card__index">06</span>
             </div>
             <p class="card__kicker">Native macOS Day Planner</p>
             <h3 class="card__title">iCanDoIt</h3>
@@ -357,9 +404,9 @@
               </p>
             </div>
             <ul class="stats" aria-label="Project highlights">
-              <li class="stat"><span class="stat__num">0</span><span class="stat__label">third-party deps</span></li>
+              <li class="stat"><span class="stat__num">0</span><span class="stat__label">external deps</span></li>
               <li class="stat"><span class="stat__num">182</span><span class="stat__label">day heat map</span></li>
-              <li class="stat"><span class="stat__num">2</span><span class="stat__label">self-check flags</span></li>
+              <li class="stat"><span class="stat__num">2</span><span class="stat__label">test modes</span></li>
             </ul>
             <ul class="tags" aria-label="Tech stack">
               <li>SwiftUI</li>
@@ -377,6 +424,10 @@
               <a class="btn btn--ghost btn--sm" href="https://github.com/renrenmimi/iCanDoIt" target="_blank" rel="noopener noreferrer">
                 <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-code"></use></svg>
                 Code
+              </a>
+              <a class="btn btn--ghost btn--sm" href="https://renrenmimi.github.io/SwiftLab/" target="_blank" rel="noopener noreferrer">
+                Learn with SwiftLab
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg>
               </a>
             </div>
           </article>
@@ -512,15 +563,15 @@
             <p class="mini__desc">A visual introduction to message history, tool calls and the agent loop, followed by a guided coding exercise.</p>
             <span class="mini__go">3 stops<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
           </a>
-          <a class="mini reveal" href="https://renrenmimi.github.io/SwiftLab/" target="_blank" rel="noopener noreferrer" style="--viz: #FB923C">
-            <span class="viz viz--bind" aria-hidden="true">
-              <span class="swift-state"><small>@State</small><b>count <i class="swift-value"></i></b></span>
-              <span class="swift-flow">→</span>
-              <span class="swift-view"><small>View</small><b class="swift-value"></b></span>
+          <a class="mini reveal" href="https://bugmuseum.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #FB7185; --viz-fixed: #4ADE9C">
+            <span class="viz viz--museum" aria-hidden="true">
+              <span class="museum-case museum-case--broken"><b>×</b><small>broken</small></span>
+              <span class="museum-arrow">→</span>
+              <span class="museum-case museum-case--fixed"><b>✓</b><small>fixed</small></span>
             </span>
-            <h3 class="mini__title">SwiftLab</h3>
-            <p class="mini__desc">Swift and SwiftUI from zero, built around a macOS app — one idea throughout: the UI is a function of your data.</p>
-            <span class="mini__go">4 stops<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
+            <h3 class="mini__title">Bug Museum</h3>
+            <p class="mini__desc">Six real debugging cases you can break, fix, and lock down with the regression test that catches each one.</p>
+            <span class="mini__go">6 exhibits<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
           </a>
         </div>
       </div>
@@ -824,9 +875,7 @@
         var close = guide.querySelector('[data-renren-close]');
         var surprise = guide.querySelector('[data-renren-surprise]');
         var activeMessage = 'Hi! I know every corner of this site.';
-        var welcomeTimer;
         var idleTimer;
-        var interacted = false;
         var lastPick = -1;
         var messages = {
           top: 'Hi! I’m Renren. I know every corner of this site.',
@@ -850,7 +899,6 @@
         }
 
         function openGuide(message) {
-          clearTimeout(welcomeTimer);
           setCopy(message || activeMessage);
           guide.classList.add('is-open');
           bubble.setAttribute('aria-hidden', 'false');
@@ -864,14 +912,12 @@
         }
 
         launcher.addEventListener('click', function () {
-          interacted = true;
           if (guide.classList.contains('is-open')) closeGuide();
           else openGuide(activeMessage);
         });
-        close.addEventListener('click', function () { interacted = true; closeGuide(); launcher.focus(); });
+        close.addEventListener('click', function () { closeGuide(); launcher.focus(); });
 
         surprise.addEventListener('click', function () {
-          interacted = true;
           var choices = document.querySelectorAll('.cards > .card, .mini-grid > .mini');
           if (!choices.length) return;
           var pick = Math.floor(Math.random() * choices.length);
@@ -919,19 +965,6 @@
           window.addEventListener(eventName, wakeRenren, { passive: true });
         });
         wakeRenren();
-
-        var welcomed = false;
-        try { welcomed = sessionStorage.getItem('renren-welcomed') === '1'; } catch (e) {}
-        if (!welcomed) {
-          window.setTimeout(function () {
-            if (interacted) return;
-            openGuide(messages.top);
-            try { sessionStorage.setItem('renren-welcomed', '1'); } catch (e) {}
-            welcomeTimer = window.setTimeout(function () {
-              if (!interacted) closeGuide();
-            }, 6500);
-          }, reduce ? 0 : 900);
-        }
       }
     })();
   </script>
