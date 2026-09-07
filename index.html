@@ -239,10 +239,10 @@
             <div class="card__body">
               <p class="card__desc">
                 Drop a Claude Code transcript on the page and step through the run: the messages
-                array as it grew, the step that blew up the context, and what the agent had read
-                before it wrote. Parsing is incremental and entirely in the browser, so nothing
-                is uploaded. A rule set runs the same checks from the command line and exits
-                non-zero when a run breaks one, so it fits in CI.
+                array as it grew, the step that blew up the context, and what it had read before
+                it wrote. Compare two runs, or index every session on your machine at once — all
+                parsed incrementally in the browser, nothing uploaded. A rule set runs the same
+                checks from the command line and exits non-zero, so it fits in CI.
               </p>
             </div>
             <ul class="stats" aria-label="Project highlights">
@@ -283,7 +283,7 @@
               <p class="card__desc">
                 A real-time coach that scores how you're coming across as you speak — live
                 transcription, LLM tone analysis, and audio signals combined into one score.
-                It adds roleplay "sparring" personas, AI session recaps, and a zero-mic demo,
+                It adds roleplay "sparring" personas, an explanation timeline behind every reminder, AI recaps and a zero-mic demo,
                 all served through a Vercel serverless proxy to Groq (Whisper + Llama 3.3 70B)
                 with a circuit-breaker fallback chain.
               </p>
@@ -402,10 +402,10 @@
             <h3 class="card__title">Repo Time Machine</h3>
             <div class="card__body">
               <p class="card__desc">
-                Paste a public GitHub repository and watch its default branch grow commit by
-                commit. The app reconstructs file trees from checkpoints and diffs, keeps the
-                GitHub token on the server, and includes a synthetic demo that works without
-                touching GitHub's API.
+                Three views over a public repository: Replay walks the default branch commit by
+                commit, Compare puts any two points side by side, and Insights tracks how size
+                and structure moved. File trees are rebuilt from checkpoints and diffs, the
+                GitHub token stays on the server, and a synthetic demo spends no API quota.
               </p>
             </div>
             <ul class="stats" aria-label="Project highlights">
@@ -559,13 +559,13 @@
           <a class="mini reveal" href="https://data-data.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #67E8F9">
             <span class="viz viz--array" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
             <h3 class="mini__title">DataData</h3>
-            <p class="mini__desc">Data structures you can watch: memory diagrams, live visualizations, Java/Python/JS side by side.</p>
+            <p class="mini__desc">Data structures you can watch: memory diagrams, animations you can step or predict, Java/Python/JS side by side.</p>
             <span class="mini__go">14 chapters<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
           </a>
           <a class="mini reveal" href="https://algo-algo.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #F0B45C">
             <span class="viz viz--bisect" aria-hidden="true"><u></u><b class="lo"></b><b class="hi"></b><s></s></span>
             <h3 class="mini__title">AlgoAlgo</h3>
-            <p class="mini__desc">Algorithms, frame by frame — decision trees, DP tables and shrinking intervals played back step by step.</p>
+            <p class="mini__desc">Algorithms, frame by frame — decision trees, DP tables, shrinking intervals, plus a race that bills each sort in comparisons and moves.</p>
             <span class="mini__go">13 chapters<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
           </a>
           <a class="mini reveal" href="https://apier-eta.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #4ADE9C">
@@ -575,7 +575,7 @@
               <span class="api-node">API</span>
             </span>
             <h3 class="mini__title">APIer</h3>
-            <p class="mini__desc">HTTP, REST and GraphQL end to end — from your first fetch to versioning, caching and auth.</p>
+            <p class="mini__desc">HTTP, REST and GraphQL end to end — versioning, caching, auth — against a mock API that runs in your own browser.</p>
             <span class="mini__go">12 chapters<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
           </a>
           <a class="mini reveal" href="https://tser.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #7AB5F5">
@@ -585,13 +585,13 @@
               <span class="type-result"><small>inferred</small><strong>number</strong></span>
             </span>
             <h3 class="mini__title">TSer</h3>
-            <p class="mini__desc">TypeScript from first principles: inference, generics, conditional types and the strict family.</p>
+            <p class="mini__desc">TypeScript from first principles, with the real tsc in a Web Worker: your code, its own error codes and positions.</p>
             <span class="mini__go">12 chapters<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
           </a>
           <a class="mini reveal" href="https://redis-visual.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #F2758A">
             <span class="viz viz--cache" aria-hidden="true"><b></b><u></u><b class="hit"></b><u class="d"></u><b class="db"></b><s></s></span>
             <h3 class="mini__title">RedisVisual</h3>
-            <p class="mini__desc">Redis through a single system: caching, concurrency guards and read models, plus a hands-on lab.</p>
+            <p class="mini__desc">Redis through a single system: caching, concurrency guards, read models, a hands-on lab and a fault simulator.</p>
             <span class="mini__go">8 stops<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
           </a>
           <a class="mini reveal" href="https://drill-lab-three.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #84CC16">
@@ -599,7 +599,7 @@
               <span class="drill-stairs"><i></i><i></i><i></i><i></i><s></s></span>
             </span>
             <h3 class="mini__title">DrillLab</h3>
-            <p class="mini__desc">Practice that gradually removes the scaffolding: review, guided exercises, coding workspaces and timed builds.</p>
+            <p class="mini__desc">Scaffolding taken away a step at a time: 105 recall questions, 148 exercises, 25 coding problems, 7 timed builds, six guided plans.</p>
             <span class="mini__go">80 lessons<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
           </a>
           <a class="mini reveal" href="https://agent-lab-blond.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #A78BFA">
@@ -608,7 +608,7 @@
               <span class="agent-loop">LOOP ↻</span>
             </span>
             <h3 class="mini__title">AgentLab</h3>
-            <p class="mini__desc">A visual introduction to message history, tool calls and the agent loop — you write a working agent by stop three, then go on to cost, context, failure and trust.</p>
+            <p class="mini__desc">Message history, tool calls and the agent loop — you write a working agent by stop three, then cost, context, failure and trust.</p>
             <span class="mini__go">14 stops<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
           </a>
           <a class="mini reveal" href="https://bugmuseum.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #FB7185; --viz-fixed: #4ADE9C">
