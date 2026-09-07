@@ -483,6 +483,21 @@ ul { list-style: none; padding: 0; }
   letter-spacing: 0.015em;
   white-space: nowrap;
 }
+
+/* Three columns is right until the card gets narrow, and then it is not: the
+   grid is repeat(3, minmax(0, 1fr)) with min-width: 0 on the tile, so the
+   columns keep shrinking past their contents while the label stays nowrap.
+   Measured at 440px: fourteen labels were being silently clipped mid-word,
+   `commit ceiling` and `domain modules` worst at 88px of text in a 71px box.
+   Wrapping does not fix it - `design/build` is one token with no break
+   opportunity - so below 480px the row becomes two columns and the third tile
+   takes the full width rather than sitting as a half-width orphan. Checked
+   from 320 to 1440px: no clipping at any width, and tiles sharing a row are
+   still the same height. */
+@media (max-width: 479px) {
+  .deck .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .deck .stats > .stat:nth-child(3) { grid-column: 1 / -1; }
+}
 .deck .tags { gap: 0.34rem; }
 .deck .tags li {
   padding: 0.28em 0.56em;
