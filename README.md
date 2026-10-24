@@ -26,8 +26,8 @@ in a browser and that is the whole development setup.
 
 - Dark theme by default with a light toggle; the choice persists to `localStorage`
 - The theme is applied by an inline script in `<head>`, before first paint, so there is no flash
-- Teaching cards unfold once from a stack into a three-by-three grid on desktop; smaller screens show an open grid
-- Scroll-reveal animations respect `prefers-reduced-motion`; keyboard focus opens the course grid immediately
+- Teaching uses a compact three-by-three desktop grid, with all nine courses visible together at common laptop sizes
+- Course diagrams are static; other scroll-reveal animations respect `prefers-reduced-motion`
 - No horizontal overflow from 375 px up; the layout collapses to one column on mobile
 
 GitHub Pages serves the default branch, so a push deploys.
