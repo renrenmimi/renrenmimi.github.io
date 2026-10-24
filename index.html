@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="styles.css?v=20260907-2">
+  <link rel="stylesheet" href="styles.css?v=20261024-1">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -100,6 +100,10 @@
         <rect x="11.5" y="2.5" width="2" height="19" rx="1"/>
         <rect x="16" y="6.5" width="2" height="11" rx="1"/>
         <rect x="20.5" y="8.5" width="2" height="7" rx="1"/>
+      </symbol>
+      <symbol id="i-calculator" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="5" y="2.5" width="14" height="19" rx="2.5"/>
+        <path d="M8.5 6.5h7M8.5 11h1M14.5 11h1M8.5 15h1M14.5 15h1M8.5 18h1M14.5 18h1"/>
       </symbol>
       <symbol id="i-history" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
         <path d="M3.5 12a8.5 8.5 0 1 0 2.49-6.01L3.5 8.5"/>
@@ -433,13 +437,53 @@
             </div>
           </article>
 
+          <!-- TaxLot -->
+          <article class="card reveal">
+            <div class="card__top">
+              <span class="card__logo" aria-hidden="true">
+                <svg class="icon" focusable="false"><use href="#i-calculator"></use></svg>
+              </span>
+              <span class="card__index">07</span>
+            </div>
+            <p class="card__kicker">Investment Tracking &amp; Tax Estimates</p>
+            <h3 class="card__title">TaxLot</h3>
+            <div class="card__body">
+              <p class="card__desc">
+                Track investment lots, explain realized gains, and check wash sales across a
+                household's accounts. Import transactions, reconcile them against brokerage
+                statements, and try a sale before making it. A standalone TypeScript engine
+                handles the calculations; the bilingual Expo app keeps your data in your
+                own browser, with safeguards against competing writes from other tabs.
+              </p>
+            </div>
+            <ul class="stats" aria-label="Project highlights">
+              <li class="stat"><span class="stat__num">Local</span><span class="stat__label">data storage</span></li>
+              <li class="stat"><span class="stat__num">Pure TS</span><span class="stat__label">calculation engine</span></li>
+              <li class="stat"><span class="stat__num">EN / 中文</span><span class="stat__label">bilingual</span></li>
+            </ul>
+            <ul class="tags" aria-label="Tech stack">
+              <li>TypeScript</li>
+              <li>React Native</li>
+              <li>Expo</li>
+              <li>IndexedDB</li>
+              <li>Jest</li>
+            </ul>
+            <div class="card__actions">
+              <a class="btn btn--primary btn--sm" href="https://taxlot.vercel.app" target="_blank" rel="noopener noreferrer">
+                Live demo
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg>
+              </a>
+              <span class="card__note">Private source</span>
+            </div>
+          </article>
+
           <!-- iCanDoIt -->
           <article class="card reveal">
             <div class="card__top">
               <span class="card__logo" aria-hidden="true">
                 <svg class="icon" focusable="false"><use href="#i-checklist"></use></svg>
               </span>
-              <span class="card__index">07</span>
+              <span class="card__index">08</span>
             </div>
             <p class="card__kicker">Native macOS Day Planner</p>
             <h3 class="card__title">iCanDoIt</h3>
@@ -556,20 +600,36 @@
             independent drills.</p>
         </header>
 
-        <div class="mini-grid">
-          <a class="mini reveal" href="https://data-data.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #67E8F9">
+        <div class="course-shelf" data-course-shelf>
+          <div class="mini-grid" data-course-grid>
+          <a class="mini" href="https://boxarrow.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #5EEAD4">
+            <span class="viz viz--system" aria-hidden="true">
+              <svg viewBox="0 0 200 64" fill="none" focusable="false">
+                <path class="system-wire" d="M49 32h42m28 0h32"/>
+                <path class="system-arrow" d="m81 27 6 5-6 5m61-10 6 5-6 5"/>
+                <rect class="system-node system-node--one" x="13" y="17" width="36" height="30" rx="7"/>
+                <rect class="system-node system-node--two" x="91" y="17" width="28" height="30" rx="7"/>
+                <rect class="system-node system-node--three" x="151" y="17" width="36" height="30" rx="7"/>
+                <circle class="system-packet" r="3" cy="32" cx="53"/>
+              </svg>
+            </span>
+            <h3 class="mini__title">BoxArrow</h3>
+            <p class="mini__desc">How large applications work, one interactive diagram at a time. A bilingual system design course built from boxes and arrows.</p>
+            <span class="mini__go">Explore course<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
+          </a>
+          <a class="mini" href="https://data-data.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #67E8F9">
             <span class="viz viz--array" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
             <h3 class="mini__title">DataData</h3>
             <p class="mini__desc">Data structures you can watch: memory diagrams, animations you can step or predict, Java/Python/JS side by side.</p>
             <span class="mini__go">14 chapters<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
           </a>
-          <a class="mini reveal" href="https://algo-algo.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #F0B45C">
+          <a class="mini" href="https://algo-algo.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #F0B45C">
             <span class="viz viz--bisect" aria-hidden="true"><u></u><b class="lo"></b><b class="hi"></b><s></s></span>
             <h3 class="mini__title">AlgoAlgo</h3>
             <p class="mini__desc">Algorithms, frame by frame — decision trees, DP tables, shrinking intervals, plus a race that bills each sort in comparisons and moves.</p>
             <span class="mini__go">13 chapters<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
           </a>
-          <a class="mini reveal" href="https://apier-eta.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #4ADE9C">
+          <a class="mini" href="https://apier-eta.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #4ADE9C">
             <span class="viz viz--rtt" aria-hidden="true">
               <span class="api-node">CLIENT</span>
               <span class="api-lane"><i class="api-request">GET</i><i class="api-response">200</i></span>
@@ -579,7 +639,7 @@
             <p class="mini__desc">HTTP, REST and GraphQL end to end — versioning, caching, auth — against a mock API that runs in your own browser.</p>
             <span class="mini__go">12 chapters<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
           </a>
-          <a class="mini reveal" href="https://tser.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #7AB5F5">
+          <a class="mini" href="https://tser.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #7AB5F5">
             <span class="viz viz--type" aria-hidden="true">
               <span class="type-code"><span>const score =</span><b>42</b></span>
               <span class="type-arrow">→</span>
@@ -589,13 +649,13 @@
             <p class="mini__desc">TypeScript from first principles, with the real tsc in a Web Worker: your code, its own error codes and positions.</p>
             <span class="mini__go">12 chapters<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
           </a>
-          <a class="mini reveal" href="https://redis-visual.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #F2758A">
+          <a class="mini" href="https://redis-visual.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #F2758A">
             <span class="viz viz--cache" aria-hidden="true"><b></b><u></u><b class="hit"></b><u class="d"></u><b class="db"></b><s></s></span>
             <h3 class="mini__title">RedisVisual</h3>
             <p class="mini__desc">Redis through a single system: caching, concurrency guards, read models, a hands-on lab and a fault simulator.</p>
             <span class="mini__go">8 stops<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
           </a>
-          <a class="mini reveal" href="https://drill-lab-three.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #84CC16">
+          <a class="mini" href="https://drill-lab-three.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #84CC16">
             <span class="viz viz--drill" aria-hidden="true">
               <span class="drill-stairs"><i></i><i></i><i></i><i></i><s></s></span>
             </span>
@@ -603,7 +663,7 @@
             <p class="mini__desc">Scaffolding taken away a step at a time: 105 recall questions, 148 exercises, 25 coding problems, 7 timed builds, six guided plans.</p>
             <span class="mini__go">80 lessons<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
           </a>
-          <a class="mini reveal" href="https://agent-lab-blond.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #A78BFA">
+          <a class="mini" href="https://agent-lab-blond.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #A78BFA">
             <span class="viz viz--grow" aria-hidden="true">
               <span class="agent-stack"><i><b>U</b><span>plan</span></i><i><b>A</b><span>tool?</span></i><i><b>T</b><span>result</span></i></span>
               <span class="agent-loop">LOOP ↻</span>
@@ -612,7 +672,7 @@
             <p class="mini__desc">Message history, tool calls and the agent loop — you write a working agent by stop three, then cost, context, failure and trust.</p>
             <span class="mini__go">14 stops<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
           </a>
-          <a class="mini reveal" href="https://bugmuseum.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #FB7185; --viz-fixed: #4ADE9C">
+          <a class="mini" href="https://bugmuseum.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #FB7185; --viz-fixed: #4ADE9C">
             <span class="viz viz--museum" aria-hidden="true">
               <span class="museum-case museum-case--broken"><b>×</b><small>broken</small></span>
               <span class="museum-arrow">→</span>
@@ -622,6 +682,7 @@
             <p class="mini__desc">Six real debugging cases you can break, fix, and lock down with the regression test that catches each one.</p>
             <span class="mini__go">6 exhibits<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
           </a>
+          </div>
         </div>
       </div>
     </section>
@@ -848,6 +909,73 @@
           });
         }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
         items.forEach(function (el) { io.observe(el); });
+      }
+
+      /* A one-time deal from a stack into the course grid. The grid always
+         keeps its natural height, so unfolding never moves the next section. */
+      var shelf = document.querySelector('[data-course-shelf]');
+      var motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (shelf && !motionQuery.matches && 'IntersectionObserver' in window) {
+        var grid = shelf.querySelector('[data-course-grid]');
+        var courses = Array.prototype.slice.call(grid.querySelectorAll('.mini'));
+        var desktop = window.matchMedia('(min-width: 901px)');
+        var dealt = false;
+        var shelfObserver;
+        var shelfTimer;
+
+        function finishDeal() {
+          dealt = true;
+          shelf.classList.remove('is-stacked', 'is-dealing');
+          courses.forEach(function (card) { card.style.removeProperty('will-change'); });
+          if (shelfObserver) shelfObserver.disconnect();
+          window.clearTimeout(shelfTimer);
+        }
+
+        function openShelf(instant) {
+          if (dealt) return;
+          dealt = true;
+          if (shelfObserver) shelfObserver.disconnect();
+          if (instant) {
+            finishDeal();
+            return;
+          }
+          shelf.classList.add('is-dealing');
+          shelf.classList.remove('is-stacked');
+          shelfTimer = window.setTimeout(finishDeal, 1700);
+        }
+
+        function stackShelf() {
+          if (dealt || !desktop.matches || motionQuery.matches) return;
+          var bounds = grid.getBoundingClientRect();
+          // Deep links and restored scroll positions should be immediately usable.
+          if (bounds.top < window.innerHeight * 0.8) {
+            finishDeal();
+            return;
+          }
+          courses.forEach(function (card, i) {
+            var box = card.getBoundingClientRect();
+            card.style.setProperty('--deal-x', (bounds.left + bounds.width / 2 - box.left - box.width / 2 + (i - 4) * 7) + 'px');
+            card.style.setProperty('--deal-y', (bounds.top - box.top + (8 - i) * 5 + 22) + 'px');
+            card.style.setProperty('--deal-angle', ((i - 4) * 2.1) + 'deg');
+            card.style.setProperty('--deal-delay', ((8 - i) * 42) + 'ms');
+            card.style.setProperty('--deal-layer', 9 - i);
+          });
+          shelf.classList.add('is-stacked');
+        }
+
+        stackShelf();
+        if (!dealt && desktop.matches) {
+          shelfObserver = new IntersectionObserver(function (entries) {
+            if (entries[0].isIntersecting) openShelf(false);
+          }, { rootMargin: '0px 0px -28% 0px', threshold: 0 });
+          shelfObserver.observe(shelf);
+        }
+        // Focusing a card opens it immediately, including during the animation.
+        shelf.addEventListener('focusin', finishDeal);
+        shelf.addEventListener('pointerdown', function () { openShelf(true); });
+        // Resizing clears the measured offsets; the layout then stays open.
+        window.addEventListener('resize', finishDeal, { once: true });
+        motionQuery.addEventListener('change', finishDeal, { once: true });
       }
 
       /* Work deck — arrows and progress on top of native snap scrolling.

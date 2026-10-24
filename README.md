@@ -16,9 +16,9 @@ in a browser and that is the whole development setup.
 
 ## Sections
 
-- **Work** — PetNote, ToneDown, KOVA Flooring, GreenLane, Repo Time Machine, iCanDoIt
+- **Work** — PetNote, AgentTape, ToneDown, KOVA Flooring, GreenLane, Repo Time Machine, TaxLot, iCanDoIt
 - **Experience** — WeShipItNow, a multi-carrier shipping platform, plus a teaching assistant role
-- **Teaching** — DataData, AlgoAlgo, APIer, TSer, RedisVisual, DrillLab, AgentLab, and Bug Museum; SwiftLab is linked from iCanDoIt
+- **Teaching** — BoxArrow, DataData, AlgoAlgo, APIer, TSer, RedisVisual, DrillLab, AgentLab, and Bug Museum; SwiftLab is linked from iCanDoIt
 - **Lab** — browser experiments, games, canvas and motion pieces, cognitive drills
 - **Skills** and **About**
 
@@ -26,7 +26,8 @@ in a browser and that is the whole development setup.
 
 - Dark theme by default with a light toggle; the choice persists to `localStorage`
 - The theme is applied by an inline script in `<head>`, before first paint, so there is no flash
-- Scroll-reveal animations respect `prefers-reduced-motion`
+- Teaching cards unfold once from a stack into a three-by-three grid on desktop; smaller screens show an open grid
+- Scroll-reveal animations respect `prefers-reduced-motion`; keyboard focus opens the course grid immediately
 - No horizontal overflow from 375 px up; the layout collapses to one column on mobile
 
 GitHub Pages serves the default branch, so a push deploys.
