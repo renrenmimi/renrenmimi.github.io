@@ -1331,10 +1331,11 @@ ul { list-style: none; padding: 0; }
   min-width: 0;
   min-height: clamp(134px, calc((100svh - 310px) / 3), 160px);
   padding: 14px 18px 12px;
-  border: 1px solid var(--border);
+  border: 1px solid color-mix(in oklab, var(--viz) 27%, var(--border));
+  border-top-color: color-mix(in oklab, var(--viz) 58%, var(--border));
   border-radius: 10px;
-  background: var(--surface);
-  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  background: linear-gradient(135deg, color-mix(in oklab, var(--viz) 11%, var(--surface)), color-mix(in oklab, var(--viz) 3%, var(--surface)));
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .course-shelf .mini__title {
   grid-column: 1;
@@ -1343,6 +1344,7 @@ ul { list-style: none; padding: 0; }
   font-size: 1rem;
   line-height: 1.25;
   font-weight: 600;
+  color: var(--course-ink);
 }
 .course-shelf .mini__desc {
   grid-column: 1 / -1;
@@ -1357,8 +1359,8 @@ ul { list-style: none; padding: 0; }
   grid-row: 3;
   justify-content: space-between;
   padding-top: 7px;
-  border-top: 1px solid var(--border);
-  color: var(--text-faint);
+  border-top: 1px solid color-mix(in oklab, var(--viz) 15%, var(--border));
+  color: var(--course-ink);
   font-size: 0.67rem;
   line-height: 1.3;
 }
@@ -1379,11 +1381,10 @@ ul { list-style: none; padding: 0; }
 @media (hover: hover) {
   .course-shelf .mini:hover {
     transform: none;
-    background: color-mix(in oklab, var(--viz) 3%, var(--surface));
     border-color: color-mix(in oklab, var(--viz) 45%, var(--border));
     box-shadow: 0 6px 22px -18px color-mix(in oklab, var(--viz) 40%, transparent);
   }
-  .course-shelf .mini:hover .mini__go { color: var(--text-dim); }
+  .course-shelf .mini:hover .mini__go { color: var(--course-ink); }
 }
 @media (max-width: 900px) {
   .teaching { padding-block: 3rem; }
@@ -1394,3 +1395,14 @@ ul { list-style: none; padding: 0; }
   .teaching .section__title { max-width: 18ch; }
   .course-shelf .mini { min-height: 144px; padding: 16px 18px; }
 }
+
+/* BoxArrow depicts a whole system: ingress, replicas, storage and a queue. */
+.course-shelf .mini--system { grid-template-columns: minmax(0, 1fr) 138px; }
+.mini--system .course-diagram { width: 138px; height: 48px; margin-block: -9px; }
+.system-map .system-boundary {
+  stroke-dasharray: 2 2;
+  stroke: color-mix(in oklab, var(--course-ink) 35%, transparent);
+  fill: color-mix(in oklab, var(--viz) 4%, transparent);
+}
+.system-map .system-link { stroke: color-mix(in oklab, var(--course-ink) 70%, transparent); }
+.system-map .system-gateway, .system-map .system-data { stroke: var(--course-ink); }
