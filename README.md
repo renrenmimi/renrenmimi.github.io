@@ -18,7 +18,7 @@ in a browser and that is the whole development setup.
 
 - **Work** — PetNote, AgentTape, ToneDown, KOVA Flooring, GreenLane, Repo Time Machine, TaxLot, iCanDoIt
 - **Experience** — WeShipItNow, a multi-carrier shipping platform, plus a teaching assistant role
-- **Teaching** — BoxArrow, DataData, AlgoAlgo, APIer, TSer, RedisVisual, DrillLab, AgentLab, and Bug Museum; SwiftLab is linked from iCanDoIt
+- **Learning Tools** — BoxArrow, DataData, AlgoAlgo, APIer, TSer, RedisVisual, DrillLab, AgentLab, and Bug Museum; SwiftLab is linked from iCanDoIt
 - **Lab** — browser experiments, games, canvas and motion pieces, cognitive drills
 - **Skills** and **About**
 
@@ -26,7 +26,7 @@ in a browser and that is the whole development setup.
 
 - Dark theme by default with a light toggle; the choice persists to `localStorage`
 - The theme is applied by an inline script in `<head>`, before first paint, so there is no flash
-- Teaching uses a compact three-by-three desktop grid, with all nine courses visible together at common laptop sizes
+- Learning Tools uses a three-by-three desktop grid, with beginner-friendly course descriptions, live links and the deployed sites' theme colors
 - Each original course animation and full description is preserved; animations respect `prefers-reduced-motion`
 - No horizontal overflow from 375 px up; the layout collapses to one column on mobile
 

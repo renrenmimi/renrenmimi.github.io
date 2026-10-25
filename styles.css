@@ -443,6 +443,7 @@ ul { list-style: none; padding: 0; }
    One grid owns the rows and every card is a subgrid of it, so each band is
    as tall as the tallest card needs and they all line up across the deck. */
 .cards {
+  zoom: 0.9;
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: var(--card-w);
@@ -512,16 +513,13 @@ ul { list-style: none; padding: 0; }
 }
 .card__body .card__desc { margin: 0; }
 
-/* Without trailing room the scroll bottoms out with two cards still sharing
-   the view, so the last dots never light up and the arrow stops responding
-   early. A flex item works where trailing padding does not — scroll
-   containers leave that padding out of scrollWidth. */
+/* Leave one viewport of trailing room so the final card can reach the
+   same snap line. The grid is displayed at 90%, so convert that room back
+   into the grid's layout units before subtracting the card and gap. */
 .cards::after {
   content: '';
-  /* Also has to make up the right-hand bleed, which the scroll container
-     leaves out of scrollWidth for the same reason. */
   grid-row: 1 / -1;
-  width: max(0px, calc(100% - var(--card-w) - var(--deck-gap) + (100vw - 100%) / 2));
+  width: max(0px, calc((100vw - max(var(--gutter), calc((100vw - var(--maxw)) / 2 + var(--gutter)))) / 0.9 - var(--card-w) - var(--deck-gap)));
 }
 
 .deck .card {
@@ -1627,37 +1625,59 @@ ul { list-style: none; padding: 0; }
 }
 
 
-/* ---- Teaching: a compact course collection --------------------------- */
-.teaching { padding-block: clamp(14px, 2svh, 24px); }
-.teaching .container { max-width: 1200px; }
-.teaching .section__head { margin-bottom: 14px; }
-.teaching .eyebrow { font-size: 0.7rem; line-height: 1.5; }
-.teaching .section__title { font-size: clamp(1.65rem, 2.6vw, 2rem); line-height: 1.15; margin-top: 6px; }
-.teaching .section__sub { max-width: none; font-size: 0.9rem; line-height: 1.5; margin-top: 8px; }
-.course-shelf .mini-grid { gap: 12px; }
+/* ---- Learning Tools: a course collection --------------------------- */
+.learning-tools { padding-block: clamp(16px, 2svh, 28px); }
+.learning-tools .container { max-width: 1280px; }
+.learning-tools .section__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 24px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.learning-tools .section__head > :not(.learning-availability) { grid-column: 1; }
+.learning-availability {
+  grid-column: 2;
+  grid-row: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  color: var(--text-dim);
+  font: 0.75rem var(--mono);
+  white-space: nowrap;
+}
+.learning-availability > span { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.learning-tools .eyebrow { font-size: 0.7rem; line-height: 1.5; }
+.learning-tools .section__title { font-size: clamp(1.65rem, 2.6vw, 2rem); line-height: 1.15; margin-top: 6px; }
+.learning-tools .section__sub { max-width: none; font-size: 0.9rem; line-height: 1.5; margin-top: 8px; }
+.course-shelf .mini-grid { gap: clamp(12px, 1.55svh, 14px); }
 .course-shelf .mini {
   position: relative;
   display: grid;
-  --course-viz-width: clamp(144px, 14vw, 180px);
+  --course-viz-width: clamp(152px, 15vw, 200px);
   grid-template-columns: max-content minmax(0, 1fr);
-  grid-template-rows: 48px 1fr auto;
+  grid-template-rows: 54px 1fr auto;
   column-gap: 8px;
-  row-gap: 5px;
+  row-gap: 7px;
   --course-ink: var(--viz);
+  --course-surface: var(--course-bg, var(--surface));
   min-width: 0;
-  min-height: 0;
-  padding: 10px 14px;
+  min-height: 176px;
+  padding: clamp(10px, 1.4svh, 14px) 16px;
   border: 1px solid color-mix(in oklab, var(--viz) 27%, var(--border));
   border-top-color: color-mix(in oklab, var(--viz) 58%, var(--border));
   border-radius: 10px;
-  background: linear-gradient(135deg, color-mix(in oklab, var(--viz) 11%, var(--surface)), color-mix(in oklab, var(--viz) 3%, var(--surface)));
+  background: linear-gradient(135deg, color-mix(in oklab, var(--viz) 9%, var(--course-surface)), color-mix(in oklab, var(--viz) 3%, var(--course-surface)));
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .course-shelf .mini__title {
   grid-column: 1;
   grid-row: 1;
   align-self: center;
-  font-size: 1rem;
+  font-size: 1.05rem;
   line-height: 1.25;
   font-weight: 600;
   color: var(--course-ink);
@@ -1666,29 +1686,29 @@ ul { list-style: none; padding: 0; }
   grid-column: 1 / -1;
   grid-row: 2;
   align-self: start;
-  font-size: 0.875rem;
-  line-height: 1.45;
+  font-size: 0.9rem;
+  line-height: 1.5;
   color: var(--text-dim);
 }
 .course-shelf .mini__go {
   grid-column: 1 / -1;
   grid-row: 3;
   justify-content: space-between;
-  padding-top: 5px;
+  padding-top: 7px;
   border-top: 1px solid color-mix(in oklab, var(--viz) 15%, var(--border));
   color: var(--course-ink);
-  font-size: 0.67rem;
+  font-size: 0.72rem;
   line-height: 1.3;
 }
 .course-shelf .mini__go .icon { width: 13px; height: 13px; color: var(--course-ink); }
-:root[data-theme="light"] .course-shelf .mini { --course-ink: color-mix(in oklab, var(--viz) 60%, #172b3a); }
+:root[data-theme="light"] .course-shelf .mini { --course-surface: var(--surface); --course-ink: color-mix(in oklab, var(--viz) 60%, #172b3a); }
 /* Original course animations share the title row; their contents and motion
    stay at their original size. No scaling, text clipping or shortened copy. */
 .course-shelf .viz, .course-diagram {
   grid-column: 2;
   grid-row: 1;
   width: min(100%, var(--course-viz-width));
-  height: 48px;
+  height: 54px;
   margin: 0;
   align-self: center;
   justify-self: end;
@@ -1713,12 +1733,12 @@ ul { list-style: none; padding: 0; }
   .course-shelf .mini:hover .mini__go { color: var(--course-ink); }
 }
 @media (max-width: 900px) {
-  .teaching { padding-block: 3rem; }
+  .learning-tools { padding-block: 3rem; }
   .course-shelf .mini { min-height: 148px; }
   .course-shelf .mini:last-child { grid-column: 1 / -1; }
 }
 @media (max-width: 560px) {
-  .teaching .section__title { max-width: 18ch; }
+  .learning-tools .section__title { max-width: 18ch; }
   .course-shelf .mini { min-height: 144px; padding: 16px 18px; }
 }
 
@@ -1731,19 +1751,65 @@ ul { list-style: none; padding: 0; }
 .system-map .system-link { stroke: color-mix(in oklab, var(--course-ink) 70%, transparent); }
 .system-map .system-gateway, .system-map .system-data { stroke: var(--course-ink); }
 
-/* On shorter laptop viewports, reclaim heading whitespace rather than
-   shrinking the animation contents or removing any course description. */
-@media (min-width: 1100px) and (max-height: 700px) {
-  .teaching { padding-block: 10px; scroll-margin-top: -16px; }
-  .teaching .section__head {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    column-gap: 16px;
-    row-gap: 6px;
-    margin-bottom: 10px;
-  }
-  .teaching .section__title { margin-top: 0; font-size: 1.65rem; }
-  .teaching .section__sub { grid-column: 1 / -1; margin-top: 0; }
-  .course-shelf .mini-grid { gap: 8px; }
+
+/* A request is routed to a service replica, then to storage, cache or a queue. */
+.system-packet { fill: var(--course-ink); filter: drop-shadow(0 0 2px var(--course-ink)); opacity: 0; }
+.system-packet--read { animation: systemRead 6s linear infinite; }
+.system-packet--cache { animation: systemCache 6s linear -2s infinite; }
+.system-packet--queue { animation: systemQueue 6s linear -4s infinite; }
+.system-map .system-replica { stroke: var(--course-ink); animation: systemService 6s ease-in-out infinite; }
+.system-map .system-replica--two { animation-delay: -2s; }
+.system-map .system-replica--three { animation-delay: -4s; }
+@keyframes systemRead {
+  0% { transform: translate(17px, 19px); opacity: 0; }
+  6% { transform: translate(17px, 19px); opacity: 1; }
+  12% { transform: translate(24px, 19px); }
+  20% { transform: translate(24px, 31px); }
+  36% { transform: translate(57px, 31px); }
+  46% { transform: translate(57px, 14px); }
+  57% { transform: translate(84px, 14px); }
+  76% { transform: translate(130px, 14px); opacity: 1; }
+  84%, 100% { transform: translate(130px, 14px); opacity: 0; }
+}
+@keyframes systemCache {
+  0% { transform: translate(17px, 19px); opacity: 0; }
+  6% { transform: translate(17px, 19px); opacity: 1; }
+  12% { transform: translate(24px, 19px); }
+  20% { transform: translate(24px, 31px); }
+  51% { transform: translate(84px, 31px); }
+  76% { transform: translate(124px, 31px); opacity: 1; }
+  84%, 100% { transform: translate(124px, 31px); opacity: 0; }
+}
+@keyframes systemQueue {
+  0% { transform: translate(17px, 43px); opacity: 0; }
+  6% { transform: translate(17px, 43px); opacity: 1; }
+  12% { transform: translate(24px, 43px); }
+  20% { transform: translate(24px, 31px); }
+  36% { transform: translate(57px, 31px); }
+  44% { transform: translate(57px, 45px); }
+  57% { transform: translate(84px, 45px); }
+  65% { transform: translate(84px, 59px); }
+  86% { transform: translate(124px, 59px); opacity: 1; }
+  94%, 100% { transform: translate(124px, 59px); opacity: 0; }
+}
+@keyframes systemService {
+  0%, 40%, 80%, 100% { fill: color-mix(in oklab, var(--viz) 5%, var(--surface)); }
+  52%, 64% { fill: color-mix(in oklab, var(--viz) 38%, var(--surface)); }
+}
+@media (max-width: 700px) {
+  .learning-tools .section__head { display: block; }
+  .learning-availability { width: max-content; margin-top: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .system-packet { display: none; }
+  .system-map .system-replica { animation: none; }
+}
+
+@media (min-width: 1100px) and (max-height: 740px) {
+  .learning-tools { padding-block: 12px; scroll-margin-top: -12px; }
+  .learning-tools .section__head { grid-template-columns: auto minmax(0, 1fr) auto; column-gap: 16px; row-gap: 6px; margin-bottom: 12px; }
+  .learning-tools .section__head > .eyebrow { grid-column: 1; grid-row: 1; }
+  .learning-tools .section__head > .section__title { grid-column: 2; grid-row: 1; margin-top: 0; font-size: 1.65rem; }
+  .learning-tools .section__head > .section__sub { grid-column: 1 / -1; grid-row: 2; margin-top: 0; }
+  .learning-availability { grid-column: 3; grid-row: 1; }
 }
