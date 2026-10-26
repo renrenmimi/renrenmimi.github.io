@@ -9,7 +9,10 @@ Renren is my nickname; my dog is Jelly.
 
 - `index.html`: projects, nine Learning Tools, about, experience and experiments.
 - `open-form.css`: base layout and typography.
-- `course-motion.css`: learning tool illustrations and animations.
+- `course-motion.css`: the eight original course animations.
+- `learning-tools.css`, `learning-tools.js`: the Learning Tools panel. Nine courses on a dark
+  panel with BoxArrow in the middle, running a small live system; pointing at a course lights
+  the part of that system it teaches. All nine fit one laptop screen at 100% zoom.
 - `open-form-motion.css`: interactive previews and motion.
 - `open-form-refined.css`: final palette, responsive layout and project/tool browser.
 - `open-form.js`: particle canvas, preview controls, dialog and motion preferences.
