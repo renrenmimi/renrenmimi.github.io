@@ -1,0 +1,195 @@
+/* =========================================================================
+   The two project previews: autoplay cues, and the AgentTape window.
+   Both previews move on their own until a visitor clicks something, so it
+   is clear they can be clicked. A thin line under the active tab or step
+   fills while it waits for the next one.
+   ========================================================================= */
+
+/* ---- Autoplay cue: a line that fills while the preview waits ---------- */
+.pet-controls button { position: relative; }
+.pet-controls button::before,
+.at-row::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 3px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+.pet-controls button::before { color: #c58a55; }
+.is-auto .pet-controls button[aria-pressed="true"]::before,
+.is-auto .at-row[aria-pressed="true"]::before {
+  opacity: 0.85;
+  animation: autoFill var(--auto-ms, 3600ms) linear forwards;
+}
+.is-auto.is-paused .pet-controls button[aria-pressed="true"]::before,
+.is-auto.is-paused .at-row[aria-pressed="true"]::before { animation-play-state: paused; }
+@keyframes autoFill { to { transform: scaleX(1); } }
+
+/* ---- AgentTape cover: lilac, to pair with PetNote's blue-grey ---------- */
+.tape-cover {
+  background:
+    radial-gradient(60% 55% at 50% 46%, #f3f1fb 0%, transparent 72%),
+    linear-gradient(155deg, #ebe7f7 0%, #e4e6f5 100%);
+  color: #5b5784;
+}
+.tape-cover .cover-orbit { border-color: #8a80c62e; }
+.tape-cover .cover-top,
+.tape-cover .cover-bottom { color: #6b6894; }
+.tape-cover .cover-bottom > span:first-child { text-transform: uppercase; transition: opacity 0.25s ease; }
+
+/* The sticky note, PetNote's "Pets welcome." in AgentTape's lilac. */
+.floating-note--tape { background: #e3dcfb; color: #4a4276; transform: translateZ(55px) rotate(-7deg); right: -26px; left: auto; top: -26px; }
+
+/* ---- AgentTape window --------------------------------------------------- */
+.at-window {
+  --at-ink: #eceaf6;
+  --at-dim: #9a9cba;
+  --at-faint: #6f7392;
+  --at-violet: #c4b2f5;
+  --at-amber: #f2b45c;
+  width: 100%;
+  max-width: 430px;
+  overflow: hidden;
+  border: 1px solid #3c4060;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #24273b 0%, #1c1f2f 100%);
+  color: var(--at-ink);
+  box-shadow: 0 30px 40px -24px #3c356d80, 0 5px 18px #2c284e14;
+  transform: translateZ(25px);
+}
+.at-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 15px;
+  border-bottom: 1px solid #ffffff12;
+}
+.at-brand { display: flex; align-items: center; gap: 7px; font: 500 13px 'Space Grotesk', sans-serif; letter-spacing: -0.01em; }
+.at-brand i { width: 11px; height: 14px; border-radius: 2px; background: #b8a5f1; box-shadow: inset 3px 0 #dcd2f7; }
+/* Sits under the sticky note, the way PetNote's label does. */
+.at-example { margin-right: 46px; font: 7px 'Space Grotesk', sans-serif; letter-spacing: 0.06em; color: var(--at-faint); }
+
+/* The messages array. Rows not yet reached are ghosts: the array grows. */
+.at-list { list-style: none; margin: 0; padding: 7px 8px 4px; display: grid; gap: 2px; }
+.at-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  height: 25px;
+  padding: 0 9px 0 6px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--at-dim);
+  font: 11px/1 'DM Sans', sans-serif;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, opacity 0.35s ease;
+}
+.at-row::before { color: var(--at-violet); left: 33px; bottom: 2px; height: 1.5px; }
+.at-row:hover { background: #ffffff08; color: var(--at-ink); }
+.at-row.is-future { opacity: 0.22; }
+.at-row[aria-pressed="true"] {
+  border-color: #c4b2f540;
+  background: linear-gradient(90deg, #c4b2f51f, #c4b2f50a);
+  color: var(--at-ink);
+}
+.at-row.is-entering { animation: atEnter 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
+@keyframes atEnter { from { opacity: 0.2; transform: translateY(4px); } }
+.at-role {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  font: 600 9px 'Space Grotesk', sans-serif;
+  color: #1c1f2f;
+}
+.at-role--user { background: #9fbdff; }
+.at-role--assistant { background: var(--at-violet); }
+.at-role--tool { background: #8fdcc0; }
+.at-text { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.at-tok { font: 10px 'Space Grotesk', sans-serif; color: var(--at-faint); }
+.at-row[aria-pressed="true"] .at-tok { color: var(--at-dim); }
+
+/* How full the context is after this step. A step that adds a lot is
+   drawn in amber: the step that blew up the context. */
+.at-context { display: flex; align-items: center; gap: 10px; padding: 6px 15px 9px; font: 10px 'Space Grotesk', sans-serif; color: var(--at-dim); }
+.at-meter { position: relative; flex: 1; height: 5px; border-radius: 5px; background: #ffffff10; overflow: hidden; }
+.at-fill, .at-jump { position: absolute; top: 0; bottom: 0; border-radius: 5px; }
+.at-fill { left: 0; width: var(--fill, 2%); background: var(--at-violet); transition: width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.at-jump { left: var(--jump-from, 0%); width: var(--jump, 0%); background: var(--at-amber); transition: width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), left 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.at-pct { white-space: nowrap; }
+.at-pct span { color: var(--at-ink); }
+.at-badge {
+  padding: 3px 7px;
+  border-radius: 99px;
+  background: #f2b45c1f;
+  color: var(--at-amber);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(3px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.at-window.is-jump .at-badge { opacity: 1; transform: none; }
+
+.at-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px 8px;
+  border-top: 1px solid #ffffff0d;
+}
+.at-controls button {
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #b3b6cf;
+  font: 13px 'DM Sans', sans-serif;
+  padding: 7px 11px;
+  cursor: pointer;
+}
+.at-controls button:hover { background: #ffffff0c; color: #fff; }
+.at-play { display: flex; align-items: center; gap: 8px; color: #d4c2fe !important; font-size: 10px !important; }
+.at-play > span:first-child { font-size: 8px; }
+.at-count { margin-left: auto; margin-right: 4px; font: 10px 'Space Grotesk', sans-serif; color: var(--at-dim); }
+.at-row:focus-visible, .at-controls button:focus-visible { outline: 2px solid #d4c2fe; outline-offset: 1px; }
+
+/* ---- Smaller covers ----------------------------------------------------- */
+@media (max-width: 1050px) {
+  .at-top { padding: 10px 12px; }
+  .at-row { height: 23px; font-size: 10px; gap: 7px; }
+  .at-context { padding-inline: 12px; }
+  .at-badge { padding: 2px 6px; font-size: 9px; }
+}
+@media (max-width: 760px) {
+  .at-top { padding: 12px 15px; }
+  .at-row { height: 27px; font-size: 11.5px; }
+  .floating-note--tape { right: -18px; top: -24px; }
+}
+@media (max-width: 450px) {
+  .at-example { display: none; }
+  .at-row { height: 24px; font-size: 10.5px; gap: 7px; }
+  .at-tok { font-size: 9px; }
+  .at-context { padding: 5px 11px 7px; gap: 7px; }
+  .at-pct { display: none; }
+  .at-controls { padding: 4px 6px 6px; }
+  .at-controls button { padding: 9px 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .at-row.is-entering { animation: none; }
+  .at-fill, .at-jump { transition: none; }
+}
+html[data-motion="paused"] .at-row.is-entering { animation: none; }
