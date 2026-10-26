@@ -46,3 +46,22 @@ html[data-motion="paused"] .meetup-smiley,html[data-motion="paused"] .smiley-res
 
 /* Dusty rose gives Jelly’s white fur a soft, distinct backdrop. */
 .pet-portrait img,.meetup-friends img{background-color:#dab9c6}
+
+/* Keep navigation labels on one line and tighten section rhythm gently. */
+.site-header{min-height:96px}
+.site-header nav a{display:inline-flex;align-items:center;min-height:44px;line-height:1.2;white-space:nowrap}
+.site-header nav sup{align-self:center;line-height:1;transform:translateY(-.35em);margin-left:5px}
+.site-header .contact-link span{font-size:20px;line-height:1;margin-left:8px}
+.about{padding-top:56px;padding-bottom:52px}
+.about-grid{margin-top:36px;margin-bottom:40px}
+.playground{padding-block:36px}
+.play-inner{align-items:start}
+.play-inner h2{margin-top:12px}
+@media(max-width:760px){
+ .site-header{min-height:88px;padding-block:18px}
+ .site-header .contact-link{display:none}
+ .about{padding-top:36px;padding-bottom:32px}
+ .about-grid{margin-block:28px;gap:24px}
+ .playground{padding-block:30px}
+ .play-inner{gap:24px}
+}
