@@ -16,7 +16,9 @@ Renren is my nickname; my dog is Jelly.
 - `open-form-motion.css`: interactive previews and motion.
 - `open-form-refined.css`: final palette, responsive layout and project/tool browser.
 - `open-form.js`: particle canvas, preview controls, dialog and motion preferences.
-- `assets/`: favicon, Jelly’s photo and KOVA image.
+- `assets/favicon.svg`: the tab icon, a lowercase w and its blue full stop. `favicon.ico` and
+  `assets/apple-touch-icon.png` are the same mark for older browsers and phone home screens.
+- `assets/`: also Jelly’s photos, the PetNote paw and the KOVA image.
 
 Run `python3 -m http.server 8000` and open http://localhost:8000.
 GitHub Pages serves the default branch; pushing deploys the site.

@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Weiren Feng — W">
-  <rect width="64" height="64" rx="17" fill="#f3f3ec"/>
-  <path d="M7 17h10l6 23 8-19h8l5 19 7-23h9L49 48H39l-5-16-6 16H18Z" fill="#294ce2"/>
-  <path d="m31 21 8 0-5 11-6 16H18Z" fill="#7086ef"/>
-  <path d="m31 21 8 0 5 19-5 8-5-16Z" fill="#294ce2"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Weiren Feng — w.">
+  <!-- The wordmark in one glyph: a lowercase w and its blue full stop. -->
+  <rect width="32" height="32" rx="8" fill="#202320"/>
+  <path d="M5.2 11.4 8.9 21.6 12.7 13.6 16.5 21.6 20.2 11.4" fill="none" stroke="#f3f3ec" stroke-width="3.3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="25.2" cy="20.4" r="2.6" fill="#5c79ff"/>
 </svg>
