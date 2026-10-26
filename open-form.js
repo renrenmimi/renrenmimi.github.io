@@ -76,21 +76,25 @@
     wakeMark=function(){settleFrames=0;if(!markFrame&&visible&&!document.hidden){lastMarkTime=0;markFrame=requestAnimationFrame(draw);}};
     canvas.addEventListener('pointermove',e=>{if(!fine.matches||!motion)return;const box=canvas.getBoundingClientRect();pointer={x:e.clientX-box.left,y:e.clientY-box.top};wakeMark();});canvas.addEventListener('pointerleave',()=>{pointer={x:-1000,y:-1000};wakeMark();});
     new ResizeObserver(resizeMark).observe(canvas);new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible)wakeMark();else if(markFrame){cancelAnimationFrame(markFrame);markFrame=0;lastMarkTime=0;angularVelocity=0;}},{threshold:0}).observe(canvas);
-    // A wider circular interaction area lets the mouse orbit around the mark,
-    // while the canvas's own pointer listener retains the original dot repulsion.
+    // The full-width introduction and featured cards control the rotor.
+    // ToneDown starts the quiet zone; only the canvas itself repels the dots.
+    const interactionEnd=document.querySelector('.project-index');
     document.addEventListener('pointermove',e=>{
       if(!fine.matches||!motion||!visible||e.pointerType==='touch')return;
-      const box=canvas.getBoundingClientRect(),x=e.clientX-box.left-box.width/2,y=e.clientY-box.top-box.height/2;
-      const radius=Math.hypot(x,y),reach=box.width*.85,now=performance.now();
-      if(radius>reach||!box.width){if(rotor.inside)releaseRotor();return;}
-      const influence=1-Math.max(0,(radius-reach*.72)/(reach*.28));
+      const end=interactionEnd?.getBoundingClientRect().top??0;
+      if(e.clientY<0||e.clientY>=end||e.clientX<0||e.clientX>innerWidth||document.querySelector('.project-picker[open]')){if(rotor.inside)releaseRotor();return;}
+      const box=canvas.getBoundingClientRect();if(!box.width)return;
+      const x=e.clientX-box.left-box.width/2,y=e.clientY-box.top-box.height/2;
+      const radius=Math.hypot(x,y),now=performance.now();
+      // Compensate gently at a distance so moving on the left still feels alive.
+      const reachGain=Math.min(3,Math.max(1,radius/(box.width*.7)));
       let speed=0;
       if(rotor.inside&&rotor.time&&now-rotor.time<180&&radius>box.width*.15&&Math.hypot(rotor.x,rotor.y)>box.width*.15){
         const turn=Math.atan2(rotor.x*y-rotor.y*x,rotor.x*x+rotor.y*y);
-        speed=Math.max(-4.8,Math.min(4.8,turn/Math.max((now-rotor.time)/1000,1/240)*.85))*influence;
+        speed=Math.max(-4.8,Math.min(4.8,turn/Math.max((now-rotor.time)/1000,1/240)*.85*reachGain));
       }
       rotor.orbitSpeed=rotor.inside?rotor.orbitSpeed*.25+speed*.75:speed;
-      rotor.positionSpeed=Math.max(-.65,Math.min(.65,y/(box.height*.65)*.65))*influence;
+      rotor.positionSpeed=Math.max(-.65,Math.min(.65,y/(box.height*.65)*.65));
       rotor.inside=true;rotor.x=x;rotor.y=y;rotor.time=now;
       wakeMark();
     },{passive:true});
