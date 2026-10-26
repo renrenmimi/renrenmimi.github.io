@@ -1,36 +1,8 @@
 /* =========================================================================
-   The two project previews: autoplay cues, and the AgentTape window.
+   The two project previews and the AgentTape window.
    Both previews move on their own until a visitor clicks something, so it
-   is clear they can be clicked. A thin line under the active tab or step
-   fills while it waits for the next one.
+   is clear they can be clicked.
    ========================================================================= */
-
-/* ---- Autoplay cue: a line that fills while the preview waits ---------- */
-.pet-controls button { position: relative; }
-.pet-controls button::before,
-.at-row::before {
-  content: "";
-  position: absolute;
-  left: 12px;
-  right: 12px;
-  bottom: 3px;
-  height: 2px;
-  border-radius: 2px;
-  background: currentColor;
-  opacity: 0;
-  transform: scaleX(0);
-  transform-origin: left;
-  pointer-events: none;
-}
-.pet-controls button::before { color: #c58a55; }
-.is-auto .pet-controls button[aria-pressed="true"]::before,
-.is-auto .at-row[aria-pressed="true"]::before {
-  opacity: 0.85;
-  animation: autoFill var(--auto-ms, 3600ms) linear forwards;
-}
-.is-auto.is-paused .pet-controls button[aria-pressed="true"]::before,
-.is-auto.is-paused .at-row[aria-pressed="true"]::before { animation-play-state: paused; }
-@keyframes autoFill { to { transform: scaleX(1); } }
 
 /* ---- AgentTape cover: lilac, to pair with PetNote's blue-grey ---------- */
 .tape-cover {
@@ -97,7 +69,6 @@
   cursor: pointer;
   transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, opacity 0.35s ease;
 }
-.at-row::before { color: var(--at-violet); left: 33px; bottom: 2px; height: 1.5px; }
 .at-row:hover { background: #ffffff08; color: var(--at-ink); }
 .at-row.is-future { opacity: 0.22; }
 .at-row[aria-pressed="true"] {
@@ -147,6 +118,7 @@
 .at-controls {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 4px;
   padding: 6px 10px 8px;
   border-top: 1px solid #ffffff0d;
@@ -161,9 +133,7 @@
   cursor: pointer;
 }
 .at-controls button:hover { background: #ffffff0c; color: #fff; }
-.at-play { display: flex; align-items: center; gap: 8px; color: #d4c2fe !important; font-size: 10px !important; }
-.at-play > span:first-child { font-size: 8px; }
-.at-count { margin-left: auto; margin-right: 4px; font: 10px 'Space Grotesk', sans-serif; color: var(--at-dim); }
+.at-count { font: 10px 'Space Grotesk', sans-serif; letter-spacing: 0.04em; color: var(--at-dim); }
 .at-row:focus-visible, .at-controls button:focus-visible { outline: 2px solid #d4c2fe; outline-offset: 1px; }
 
 /* ---- Smaller covers ----------------------------------------------------- */
