@@ -43,3 +43,6 @@ body:has(.project-picker[open]){overflow:hidden}
 @keyframes meetupGrin{0%,10%,100%{opacity:0}24%,76%{opacity:1}}
 @media(prefers-reduced-motion:reduce){.pet-state.is-entering .meetup-smiley,.pet-state.is-entering .smiley-rest,.pet-state.is-entering .smiley-grin{animation:none!important}}
 html[data-motion="paused"] .meetup-smiley,html[data-motion="paused"] .smiley-rest,html[data-motion="paused"] .smiley-grin{animation:none!important}
+
+/* Dusty rose gives Jelly’s white fur a soft, distinct backdrop. */
+.pet-portrait img,.meetup-friends img{background-color:#dab9c6}
