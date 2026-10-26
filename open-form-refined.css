@@ -69,3 +69,5 @@ html[data-motion="paused"] .meetup-smiley,html[data-motion="paused"] .smiley-res
 /* Vector dots stay cobalt on iOS; no platform emoji substitution. */
 .learning .heading-star{color:#294ce2;flex:0 0 auto;line-height:1}
 .learning-curiosity{display:block;width:1em;height:1em;overflow:visible}
+
+.fan-mark svg{width:54px;height:31px}.fan-rotor{transform-origin:27px 15.5px;animation:fanSpin 1.4s linear infinite;animation-play-state:paused}@keyframes fanSpin{to{transform:rotate(360deg)}}
