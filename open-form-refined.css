@@ -30,4 +30,16 @@ body:has(.project-picker[open]){overflow:hidden}
 .all-experiments{border-top:1px solid #d9cfc1;margin-top:0}.all-experiments summary{cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:20px 0;font-size:13px;list-style:none}.all-experiments summary::-webkit-details-marker{display:none}.all-experiments summary span{font-size:22px}.all-experiments[open] summary span{transform:rotate(45deg)}.experiment-directory{display:grid;grid-template-columns:1fr 1fr;gap:24px 20px;padding:5px 0 25px}.experiment-directory h3{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#7a7166;margin:0 0 12px}.experiment-directory ul{list-style:none;padding:0;margin:0}.experiment-directory a{display:inline-block;font-size:13px;padding:6px 0;text-underline-offset:4px}.experiment-directory a:hover{text-decoration:underline}#teaching{display:block;scroll-margin-top:85px}#experience,#skills,#lab{scroll-margin-top:85px}@media(max-width:380px){.experiment-directory{grid-template-columns:1fr}}
 
 /* PetNote’s original brand mark, shared by its two product sketches. */
-.pet-brand-paw{display:inline-block;width:24px;height:24px;margin-left:4px;vertical-align:-5px;object-fit:contain}.meetup-spark{width:36px;height:36px;object-fit:contain}
+.pet-brand-paw{display:inline-block;width:24px;height:24px;margin-left:-1px;vertical-align:-5px;object-fit:contain}
+
+/* A brief greeting when the meetup tab opens; no idle loop. */
+.meetup-smiley{position:absolute;right:-6px;top:-13px;width:38px;height:38px;overflow:visible;transform:rotate(9deg);filter:drop-shadow(0 2px 2px #88593416)}
+.smiley-grin{opacity:0}
+.pet-state.is-entering .meetup-smiley{animation:meetupHello 1.5s ease-in-out both}
+.pet-state.is-entering .smiley-rest{animation:meetupRest 1.5s ease-in-out both}
+.pet-state.is-entering .smiley-grin{animation:meetupGrin 1.5s ease-in-out both}
+@keyframes meetupHello{0%,100%{transform:rotate(9deg) scale(1)}22%{transform:translateY(-2px) rotate(-8deg) scale(1.1)}42%{transform:rotate(5deg) scale(1.06)}65%{transform:rotate(-3deg) scale(1.06)}}
+@keyframes meetupRest{0%,10%,100%{opacity:1}24%,76%{opacity:0}}
+@keyframes meetupGrin{0%,10%,100%{opacity:0}24%,76%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.pet-state.is-entering .meetup-smiley,.pet-state.is-entering .smiley-rest,.pet-state.is-entering .smiley-grin{animation:none!important}}
+html[data-motion="paused"] .meetup-smiley,html[data-motion="paused"] .smiley-rest,html[data-motion="paused"] .smiley-grin{animation:none!important}
