@@ -1,5 +1,5 @@
 /* The two project previews.
-   Both advance every two seconds while they are on screen, so a visitor can
+   PetNote advances every 2.6 seconds; AgentTape every 2 seconds, so a visitor can
    see they are interactive. Pointing at a preview pauses it; the first real
    click hands it over for good. Nothing moves with reduced motion or with
    the footer's Motion off switch. */
@@ -8,7 +8,6 @@
 
   var root = document.documentElement;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-  var EVERY = 2000;
   function moving() { return !reduce.matches && root.dataset.motion !== 'paused'; }
 
   /* A preview that advances itself on a timer until a visitor takes over. */
@@ -23,7 +22,7 @@
         if (!running()) return;
         opts.next();
         schedule();
-      }, EVERY);
+      }, opts.interval);
     }
     function stop() {
       if (!auto) return;
@@ -52,6 +51,7 @@
   if (pet) {
     var tabs = Array.prototype.slice.call(pet.querySelectorAll('[data-pet-select]'));
     autoplay(pet, {
+      interval: 2600,
       live: pet.querySelector('.pet-stage'),
       next: function () {
         var i = tabs.findIndex(function (b) { return b.getAttribute('aria-pressed') === 'true'; });
@@ -90,7 +90,7 @@
     caption.textContent = rows[step].dataset.caption;
   }
 
-  autoplay(tape, { live: caption, next: function () { render(step + 1); } });
+  autoplay(tape, { interval: 2000, live: caption, next: function () { render(step + 1); } });
 
   rows.forEach(function (row, n) { row.addEventListener('click', function () { render(n); }); });
   tape.querySelector('[data-at-prev]').addEventListener('click', function () { render(step - 1); });
