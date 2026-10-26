@@ -383,3 +383,16 @@ html[data-motion="paused"] .lt-grid__amb { display: none; }
   .lt-card--hub .sysmap { max-width: none; height: auto; aspect-ratio: 240 / 62; }
 }
 @media not all and (hover: hover) and (min-width: 1081px) { .lt-grid__amb { display: none; } }
+
+/* ---- About: what I'm working on now ------------------------------------ */
+/* Jelly already appears in the PetNote preview; this spot says what I am
+   building at the moment instead. */
+.now-note { display: flex; gap: 12px; max-width: 31ch; margin-top: 30px; color: #4f554e; font-size: 14px; line-height: 1.6; }
+.now-note small { display: block; margin-bottom: 4px; color: var(--muted); font: 500 10px/1.5 'Space Grotesk', sans-serif; letter-spacing: 0.09em; }
+.now-note a { color: var(--blue); border-bottom: 1px solid #294ce240; transition: border-color 0.2s ease; }
+.now-note a:hover { border-color: var(--blue); }
+.now-dot { position: relative; flex: none; width: 7px; height: 7px; margin-top: 5px; border-radius: 50%; background: var(--blue); }
+.now-dot::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: var(--blue); animation: nowPing 2.6s cubic-bezier(0, 0, 0.2, 1) infinite; }
+@keyframes nowPing { 0% { transform: scale(1); opacity: 0.5; } 75%, 100% { transform: scale(2.8); opacity: 0; } }
+@media (max-width: 760px) { .now-note { margin-top: 20px; font-size: 13px; } }
+@media (prefers-reduced-motion: reduce) { .now-dot::after { animation: none; } }
