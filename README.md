@@ -1,38 +1,22 @@
-# renrenmimi.github.io
+# Weiren Feng — portfolio
 
-**▶ [weiren feng — portfolio](https://renrenmimi.github.io/)**
+[renrenmimi.github.io](https://renrenmimi.github.io/)
 
-My personal site: what I build, where I have worked, and how to reach me.
+Personal portfolio built with HTML, CSS and vanilla JavaScript. No build step.
+Renren is my nickname; my dog is Jelly.
 
-Plain HTML, CSS and vanilla JavaScript — no build step and no dependencies. Open `index.html`
-in a browser and that is the whole development setup.
+## Files
 
-| File | Role |
-|---|---|
-| `index.html` | The whole page, including inline SVG icons and two short inline scripts |
-| `styles.css` | Design tokens, layout, dark and light themes |
-| `assets/favicon.svg` | Favicon |
-| `assets/kova.jpg` | Screenshot on the KOVA Flooring card |
+- `index.html`: projects, nine Learning Tools, about, experience and experiments.
+- `open-form.css`: base layout and typography.
+- `course-motion.css`: learning tool illustrations and animations.
+- `open-form-motion.css`: interactive previews and motion.
+- `open-form-refined.css`: final palette, responsive layout and project/tool browser.
+- `open-form.js`: particle canvas, preview controls, dialog and motion preferences.
+- `assets/`: favicon, Jelly’s photo and KOVA image.
 
-## Sections
+Run `python3 -m http.server 8000` and open http://localhost:8000.
+GitHub Pages serves the default branch; pushing deploys the site.
+Animations respect reduced motion and can be paused with the footer control.
 
-- **Work** — PetNote, AgentTape, ToneDown, KOVA Flooring, GreenLane, Repo Time Machine, TaxLot, iCanDoIt
-- **Experience** — WeShipItNow, a multi-carrier shipping platform, plus a teaching assistant role
-- **Learning Tools** — BoxArrow, DataData, AlgoAlgo, APIer, TSer, RedisVisual, DrillLab, AgentLab, and Bug Museum; SwiftLab is linked from iCanDoIt
-- **Lab** — browser experiments, games, canvas and motion pieces, cognitive drills
-- **Skills** and **About**
-
-## Notes
-
-- Dark theme by default with a light toggle; the choice persists to `localStorage`
-- The theme is applied by an inline script in `<head>`, before first paint, so there is no flash
-- Learning Tools uses a three-by-three desktop grid, with beginner-friendly course descriptions, live links and the deployed sites' theme colors
-- Each original course animation and full description is preserved; animations respect `prefers-reduced-motion`
-- No horizontal overflow from 375 px up; the layout collapses to one column on mobile
-
-GitHub Pages serves the default branch, so a push deploys.
-
----
-
-© 2026 Weiren Feng. All rights reserved. Published for reading and portfolio purposes; not
-licensed for reuse, modification, or redistribution.
+© 2026 Weiren Feng. All rights reserved. Published for reading and portfolio purposes; not licensed for reuse, modification, or redistribution.

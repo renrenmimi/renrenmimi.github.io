@@ -1,607 +1,92 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Set theme before first paint to avoid a flash (dark is the default). -->
-  <script>
-    (function () {
-      try {
-        var t = localStorage.getItem('theme');
-        if (t !== 'light' && t !== 'dark') t = 'dark';
-        document.documentElement.setAttribute('data-theme', t);
-      } catch (e) {}
-    })();
-  </script>
-
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Weiren Feng — Software Engineer (Frontend / Full-Stack)</title>
-  <meta name="description" content="Weiren Feng — frontend / full-stack software engineer in the SF Bay Area / Irvine, CA. I build production web apps end to end: React/TypeScript front ends, Node/Firebase/serverless back ends, and AI/LLM integration. See PetNote and ToneDown.">
   <meta name="author" content="Weiren Feng">
-  <meta name="color-scheme" content="dark light">
-  <meta name="theme-color" content="#0a0d14" id="theme-color-meta">
+  <meta name="theme-color" content="#f3f3ec">
   <link rel="canonical" href="https://renrenmimi.github.io/">
-
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Weiren Feng — Software Engineer (Frontend / Full-Stack)">
-  <meta property="og:description" content="Production web apps end to end — React/TypeScript, Node/Firebase/serverless, and AI/LLM integration. See PetNote and ToneDown.">
+  <meta property="og:title" content="Weiren Feng — Software Engineer">
+  <meta property="og:description" content="Web apps you can use and free tools to help you learn programming.">
   <meta property="og:url" content="https://renrenmimi.github.io/">
   <meta name="twitter:card" content="summary">
-
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="styles.css?v=20261024-5">
+  <meta name="description" content="Software by Weiren Feng. Production web apps, interactive learning tools, and browser experiments. Renren is my nickname.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="course-motion.css?v=20261025-openform"><link rel="stylesheet" href="open-form.css?v=20261025-openform"><link rel="stylesheet" href="open-form-motion.css?v=20261025-openform"><link rel="stylesheet" href="open-form-refined.css?v=20261025-openform">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <!-- Icon sprite (decorative; referenced via <use>) -->
-  <svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-      </symbol>
-      <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
-      </symbol>
-      <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="5" width="18" height="14" rx="2.2"/>
-        <path d="m4 7.5 8 5 8-5"/>
-      </symbol>
-      <symbol id="i-arrow-up-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M7 17 17 7"/>
-        <path d="M8 7h9v9"/>
-      </symbol>
-      <symbol id="i-arrow-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 5v13"/>
-        <path d="m6 12 6 6 6-6"/>
-      </symbol>
-      <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="m9 18-6-6 6-6"/>
-        <path d="m15 6 6 6-6 6"/>
-      </symbol>
-      <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="4"/>
-        <path d="M12 2v2"/><path d="M12 20v2"/>
-        <path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/>
-        <path d="M2 12h2"/><path d="M20 12h2"/>
-        <path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
-      </symbol>
-      <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-      </symbol>
-      <symbol id="i-paw" viewBox="0 0 24 24" fill="currentColor">
-        <ellipse cx="12" cy="15.6" rx="5.4" ry="4.4"/>
-        <circle cx="6.3" cy="10.6" r="2.05"/>
-        <circle cx="10" cy="7.1" r="2.15"/>
-        <circle cx="14" cy="7.1" r="2.15"/>
-        <circle cx="17.7" cy="10.6" r="2.05"/>
-      </symbol>
-      <symbol id="i-layers" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2 1.5 7.5 12 13l10.5-5.5L12 2Zm0 2.27L18.7 7.5 12 10.73 5.3 7.5 12 4.27ZM3.6 11.2 1.5 12.3 12 17.8l10.5-5.5-2.1-1.1L12 15.5 3.6 11.2Zm0 4.5-2.1 1.1L12 22.3l10.5-5.5-2.1-1.1L12 20 3.6 15.7Z"/>
-      </symbol>
-      <symbol id="i-checklist" viewBox="0 0 24 24" fill="currentColor">
-        <rect x="3" y="4.4" width="3.3" height="3.3" rx="1"/>
-        <rect x="8.7" y="5.1" width="12.3" height="1.9" rx=".95"/>
-        <rect x="3" y="10.35" width="3.3" height="3.3" rx="1"/>
-        <rect x="8.7" y="11.05" width="12.3" height="1.9" rx=".95"/>
-        <path d="M3.35 17.75a1.05 1.05 0 0 1 1.55-1.4l.95 1.05 2.25-2.45a1.05 1.05 0 1 1 1.55 1.4l-3 3.3a1.05 1.05 0 0 1-1.55 0Z"/>
-        <rect x="11.4" y="17" width="9.6" height="1.9" rx=".95"/>
-      </symbol>
-      <symbol id="i-route" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M6 3a3 3 0 0 0-1 5.83V11a3 3 0 0 0 3 3h8a1 1 0 0 1 1 1v.17a3 3 0 1 0 2 0V15a3 3 0 0 0-3-3H8a1 1 0 0 1-1-1V8.83A3 3 0 0 0 6 3Zm0 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm12 12a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/>
-      </symbol>
-      <symbol id="i-wave" viewBox="0 0 24 24" fill="currentColor">
-        <rect x="2.5" y="9" width="2" height="6" rx="1"/>
-        <rect x="7" y="5.5" width="2" height="13" rx="1"/>
-        <rect x="11.5" y="2.5" width="2" height="19" rx="1"/>
-        <rect x="16" y="6.5" width="2" height="11" rx="1"/>
-        <rect x="20.5" y="8.5" width="2" height="7" rx="1"/>
-      </symbol>
-      <symbol id="i-calculator" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="5" y="2.5" width="14" height="19" rx="2.5"/>
-        <path d="M8.5 6.5h7M8.5 11h1M14.5 11h1M8.5 15h1M14.5 15h1M8.5 18h1M14.5 18h1"/>
-      </symbol>
-      <symbol id="i-history" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3.5 12a8.5 8.5 0 1 0 2.49-6.01L3.5 8.5"/>
-        <path d="M3.5 4.5v4h4"/>
-        <path d="M12 7.5V12l3 1.8"/>
-      </symbol>
-      <symbol id="i-tape" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3.6 8.5v7"/>
-        <path d="M20.4 8.5v7"/>
-        <path d="M3.6 12h5.2"/>
-        <path d="M14 12h6.4"/>
-        <circle cx="11.4" cy="12" r="2.6"/>
-      </symbol>
-    </defs>
-  </svg>
-
-  <header class="site-header">
-    <div class="container header__inner">
-      <a class="wordmark" href="#top">Weiren&nbsp;Feng<span class="dot">.</span></a>
-      <nav class="nav" aria-label="Primary">
-        <a href="#work">Work</a>
-        <a href="#experience">Experience</a>
-        <a href="#teaching">Learning Tools</a>
-        <a href="#about">About</a>
-      </nav>
-      <button class="theme-toggle" type="button" aria-label="Switch to light theme">
-        <svg class="icon icon-sun" aria-hidden="true" focusable="false"><use href="#i-sun"></use></svg>
-        <svg class="icon icon-moon" aria-hidden="true" focusable="false"><use href="#i-moon"></use></svg>
-      </button>
-    </div>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="wordmark" href="#top" aria-label="Weiren Feng, home">weiren<span>feng<span class="logo-period">.</span></span></a>
+    <div class="header-note">Software engineer<br>Frontend & full-stack</div>
+    <nav aria-label="Main navigation"><a href="#work">Projects <sup>08</sup></a><a href="#learning">Learning Tools <sup>09</sup></a><a href="#about">About</a><a href="mailto:feng.weir@northeastern.edu" class="contact-link">Let’s talk <span aria-hidden="true">↗</span></a></nav>
   </header>
-
   <main id="main">
-    <!-- HERO -->
-    <section class="hero" id="top">
-      <div class="hero__aurora" aria-hidden="true"></div>
-      <div class="hero__grain" aria-hidden="true"></div>
-      <div class="container hero__inner">
-        <p class="eyebrow hero__status">
-          <span class="status-dot" aria-hidden="true"></span>
-          Open to Frontend / Full-Stack roles · new grad through mid-level
-        </p>
-        <h1 class="hero__name">Weiren Feng</h1>
-        <p class="hero__title">Software Engineer <span class="sep">·</span> Frontend &amp; Full-Stack</p>
-        <p class="hero__lede">
-          I build production web apps end to end — React/TypeScript front ends,
-          Node/Firebase/serverless back ends, and AI/LLM integration in between.
-        </p>
-        <p class="hero__meta">SF Bay Area / Irvine, CA &nbsp;·&nbsp; English / 中文</p>
-        <div class="hero__actions">
-          <a class="btn btn--primary" href="mailto:feng.weir@northeastern.edu">
-            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-mail"></use></svg>
-            Email me
-          </a>
-          <a class="btn btn--ghost" href="https://github.com/renrenmimi" target="_blank" rel="noopener noreferrer">
-            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-github"></use></svg>
-            GitHub
-          </a>
-          <a class="btn btn--ghost" href="https://www.linkedin.com/in/fengweiren" target="_blank" rel="noopener noreferrer">
-            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-linkedin"></use></svg>
-            LinkedIn
-          </a>
-        </div>
-        <a class="hero__jump" href="#work">
-          See my work
-          <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-down"></use></svg>
-        </a>
-      </div>
+    <section class="hero wrap" id="top" aria-labelledby="hero-title">
+      <div class="hero-top"><details class="availability-capsule"><summary><i class="status-dot" aria-hidden="true"></i> OPEN TO FRONTEND / FULL-STACK ROLES</summary><div class="availability-popover"><p>I’m looking for my next role.</p><span>Frontend & full-stack engineering.<br>SF Bay Area / Irvine, CA.<br>No visa sponsorship required.</span><a href="mailto:feng.weir@northeastern.edu">Email me <span aria-hidden="true">↗</span></a></div></details><span>SF BAY AREA / IRVINE, CA</span></div>
+      <h1 id="hero-title"><span class="title-line"><span>Hi, I’m Weiren.</span></span><span class="title-line"><span>I build web apps.</span></span></h1><div class="hero-art" aria-hidden="true"><canvas id="curiosity-mark" width="420" height="420"></canvas><span>CURIOSITY, IN MOTION</span></div>
+      <div class="hero-bottom"><p class="hero-signature">Frontend & full-stack<br><span>React, TypeScript, Node.js</span></p><div class="hero-intro-group"><p class="hero-intro">I turn my ideas into apps you can use. I also make free learning tools for people who are getting started with programming or want more practice.</p><div class="hero-paths" aria-label="Explore the two collections"><a href="#work"><span>08</span> Projects <b aria-hidden="true">↘</b></a><a href="#learning"><span>09</span> Learning Tools <b aria-hidden="true">↘</b></a></div></div><button class="round-link" type="button" data-open-project-picker aria-haspopup="dialog" aria-label="Browse projects and learning tools"><span>Take<br>a look</span><span class="round-arrow" aria-hidden="true">↗</span></button></div>
     </section>
 
-    <!-- WORK -->
-    <section class="section work" id="work" aria-labelledby="work-h">
-      <div class="container">
-        <header class="section__head reveal">
-          <p class="eyebrow">// selected work</p>
-          <h2 id="work-h" class="section__title">Things I built from frontend to backend</h2>
-          <p class="section__sub">Please pick one and click around.</p>
-        </header>
-
-        <div class="deck" data-deck>
-          <div class="deck__viewport" data-deck-viewport tabindex="0" role="group"
-               aria-label="Projects, scroll sideways or use the arrows">
-          <div class="cards">
-          <!-- PetNote -->
-          <article class="card reveal">
-            <div class="card__top">
-              <span class="card__logo" aria-hidden="true">
-                <svg class="icon" focusable="false"><use href="#i-paw"></use></svg>
-              </span>
-              <span class="card__index">01</span>
-            </div>
-            <p class="card__kicker">Pet-Centric Social Platform</p>
-            <h3 class="card__title">PetNote</h3>
-            <div class="card__body">
-              <p class="card__desc">
-                A full social app for pet people: posts and feeds, multi-pet profiles,
-                check-ins at pet-friendly places, in-person meetups, notifications, and
-                moderation. It runs on React 19 with a callable-first Firebase backend —
-                Cloud Functions and Firestore security rules doing the heavy lifting,
-                with Cloudinary for media and Geoapify for places.
-              </p>
-            </div>
-            <ul class="stats" aria-label="Project highlights">
-              <li class="stat"><span class="stat__num">69</span><span class="stat__label">functions</span></li>
-              <li class="stat"><span class="stat__num">13</span><span class="stat__label">domain modules</span></li>
-              <li class="stat"><span class="stat__num">React 19</span><span class="stat__label">front end</span></li>
-            </ul>
-            <ul class="tags" aria-label="Tech stack">
-              <li>Firebase</li>
-              <li>Cloud Functions</li>
-              <li>Firestore Rules</li>
-              <li>Cloudinary</li>
-              <li>Geoapify</li>
-            </ul>
-            <div class="card__actions">
-              <a class="btn btn--primary btn--sm" href="https://petnote.vercel.app" target="_blank" rel="noopener noreferrer">
-                Live demo
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg>
-              </a>
-              <a class="btn btn--ghost btn--sm" href="https://github.com/renrenmimi/PetNote" target="_blank" rel="noopener noreferrer">
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-code"></use></svg>
-                Code
-              </a>
-            </div>
-          </article>
-
-          <!-- AgentTape -->
-          <article class="card reveal">
-            <div class="card__top">
-              <span class="card__logo" aria-hidden="true">
-                <svg class="icon" focusable="false"><use href="#i-tape"></use></svg>
-              </span>
-              <span class="card__index">02</span>
-            </div>
-            <p class="card__kicker">AI Agent Session Replay</p>
-            <h3 class="card__title">AgentTape</h3>
-            <div class="card__body">
-              <p class="card__desc">
-                Drop a Claude Code transcript on the page and step through the run: the messages
-                array as it grew, the step that blew up the context, and what it had read before
-                it wrote. Compare two runs, or index every session on your machine at once — all
-                parsed incrementally in the browser, nothing uploaded. A rule set runs the same
-                checks from the command line and exits non-zero, so it fits in CI.
-              </p>
-            </div>
-            <ul class="stats" aria-label="Project highlights">
-              <li class="stat"><span class="stat__num">697</span><span class="stat__label">checks in CI</span></li>
-              <li class="stat"><span class="stat__num">382</span><span class="stat__label">files in 2.5s</span></li>
-              <li class="stat"><span class="stat__num">Zero</span><span class="stat__label">bytes uploaded</span></li>
-            </ul>
-            <ul class="tags" aria-label="Tech stack">
-              <li>Next.js 15</li>
-              <li>TypeScript</li>
-              <li>File System Access</li>
-              <li>Virtual scrolling</li>
-              <li>Node CLI</li>
-            </ul>
-            <div class="card__actions">
-              <a class="btn btn--primary btn--sm" href="https://agenttape.vercel.app" target="_blank" rel="noopener noreferrer">
-                Live demo
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg>
-              </a>
-              <a class="btn btn--ghost btn--sm" href="https://github.com/renrenmimi/AgentTape" target="_blank" rel="noopener noreferrer">
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-code"></use></svg>
-                Code
-              </a>
-            </div>
-          </article>
-
-          <!-- ToneDown -->
-          <article class="card reveal">
-            <div class="card__top">
-              <span class="card__logo" aria-hidden="true">
-                <svg class="icon" focusable="false"><use href="#i-wave"></use></svg>
-              </span>
-              <span class="card__index">03</span>
-            </div>
-            <p class="card__kicker">Real-Time AI Communication Coach</p>
-            <h3 class="card__title">ToneDown</h3>
-            <div class="card__body">
-              <p class="card__desc">
-                A real-time coach that scores how you're coming across as you speak — live
-                transcription, LLM tone analysis, and audio signals combined into one score.
-                It adds roleplay "sparring" personas, an explanation timeline behind every reminder, AI recaps and a zero-mic demo,
-                all served through a Vercel serverless proxy to Groq (Whisper + Llama 3.3 70B)
-                with a circuit-breaker fallback chain.
-              </p>
-            </div>
-            <ul class="stats" aria-label="Project highlights">
-              <li class="stat"><span class="stat__num">163</span><span class="stat__label">tests in CI</span></li>
-              <li class="stat"><span class="stat__num">Real-time</span><span class="stat__label">tone scoring</span></li>
-              <li class="stat"><span class="stat__num">Zero-mic</span><span class="stat__label">instant demo</span></li>
-            </ul>
-            <ul class="tags" aria-label="Tech stack">
-              <li>React</li>
-              <li>Vercel Serverless</li>
-              <li>Groq</li>
-              <li>Whisper</li>
-              <li>Llama 3.3 70B</li>
-              <li>Web Audio API</li>
-            </ul>
-            <div class="card__actions">
-              <a class="btn btn--primary btn--sm" href="https://tone-down.vercel.app" target="_blank" rel="noopener noreferrer">
-                Live demo
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg>
-              </a>
-              <a class="btn btn--ghost btn--sm" href="https://github.com/renrenmimi/ToneDown" target="_blank" rel="noopener noreferrer">
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-code"></use></svg>
-                Code
-              </a>
-            </div>
-          </article>
-
-          <!-- KOVA -->
-          <article class="card reveal">
-            <div class="card__top">
-              <span class="card__logo" aria-hidden="true">
-                <svg class="icon" focusable="false"><use href="#i-layers"></use></svg>
-              </span>
-              <span class="card__index">04</span>
-            </div>
-            <p class="card__kicker">Brand Site &amp; Dealer Portal</p>
-            <h3 class="card__title">KOVA Flooring</h3>
-            <div class="card__body">
-              <a class="card__shot" href="https://www.kovaflooring.com" target="_blank" rel="noopener noreferrer">
-                <img src="assets/kova.jpg" alt="The KOVA Flooring brand site" loading="lazy" width="1000" height="672" />
-              </a>
-            </div>
-            <ul class="stats" aria-label="Project highlights">
-              <li class="stat"><span class="stat__num">3</span><span class="stat__label">business tiers</span></li>
-              <li class="stat"><span class="stat__num">Solo</span><span class="stat__label">design/build</span></li>
-              <li class="stat"><span class="stat__num">Live</span><span class="stat__label">client site</span></li>
-            </ul>
-            <ul class="tags" aria-label="Tech stack">
-              <li>UI/UX</li>
-              <li>Next.js 15</li>
-              <li>Firebase Auth</li>
-              <li>Firestore</li>
-              <li>Cloudflare</li>
-            </ul>
-            <div class="card__actions">
-              <a class="btn btn--primary btn--sm" href="https://www.kovaflooring.com" target="_blank" rel="noopener noreferrer">
-                Visit site
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg>
-              </a>
-            </div>
-          </article>
-
-          <!-- GreenLane -->
-          <article class="card reveal">
-            <div class="card__top">
-              <span class="card__logo" aria-hidden="true">
-                <svg class="icon" focusable="false"><use href="#i-route"></use></svg>
-              </span>
-              <span class="card__index">05</span>
-            </div>
-            <p class="card__kicker">Immigration Timeline Tracker</p>
-            <h3 class="card__title">GreenLane</h3>
-            <div class="card__body">
-              <p class="card__desc">
-                A statically generated dashboard for immigration backlogs: US green card
-                categories (EB-1 through EB-5 and family-based) alongside Canada's Express Entry
-                draws.
-                Ten years of history, per-category wait estimates, and official regulatory news
-                — fed by three scheduled pipelines that pull from official sources only.
-              </p>
-            </div>
-            <ul class="stats" aria-label="Project highlights">
-              <li class="stat"><span class="stat__num">10 yrs</span><span class="stat__label">history</span></li>
-              <li class="stat"><span class="stat__num">3</span><span class="stat__label">data pipelines</span></li>
-              <li class="stat"><span class="stat__num">Static</span><span class="stat__label">Next.js 16</span></li>
-            </ul>
-            <ul class="tags" aria-label="Tech stack">
-              <li>Next.js 16</li>
-              <li>TypeScript</li>
-              <li>Python</li>
-              <li>Headless Chrome</li>
-              <li>Scheduled jobs</li>
-            </ul>
-            <div class="card__actions">
-              <a class="btn btn--primary btn--sm" href="https://greenlane-beryl.vercel.app" target="_blank" rel="noopener noreferrer">
-                Live demo
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg>
-              </a>
-              <a class="btn btn--ghost btn--sm" href="https://github.com/renrenmimi/greenlane" target="_blank" rel="noopener noreferrer">
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-code"></use></svg>
-                Code
-              </a>
-            </div>
-          </article>
-
-          <!-- Repo Time Machine -->
-          <article class="card reveal">
-            <div class="card__top">
-              <span class="card__logo" aria-hidden="true">
-                <svg class="icon" focusable="false"><use href="#i-history"></use></svg>
-              </span>
-              <span class="card__index">06</span>
-            </div>
-            <p class="card__kicker">Visual Git History Explorer</p>
-            <h3 class="card__title">Repo Time Machine</h3>
-            <div class="card__body">
-              <p class="card__desc">
-                Three views over a public repository: Replay walks the default branch commit by
-                commit, Compare puts any two points side by side, and Insights tracks how size
-                and structure moved. File trees are rebuilt from checkpoints and diffs, the
-                GitHub token stays on the server, and a synthetic demo spends no API quota.
-              </p>
-            </div>
-            <ul class="stats" aria-label="Project highlights">
-              <li class="stat"><span class="stat__num">16</span><span class="stat__label">demo commits</span></li>
-              <li class="stat"><span class="stat__num">0</span><span class="stat__label">GitHub calls</span></li>
-              <li class="stat"><span class="stat__num">1,000</span><span class="stat__label">commit ceiling</span></li>
-            </ul>
-            <ul class="tags" aria-label="Tech stack">
-              <li>Next.js 16</li>
-              <li>TypeScript</li>
-              <li>GitHub REST API</li>
-              <li>Vitest</li>
-              <li>Playwright</li>
-            </ul>
-            <div class="card__actions">
-              <a class="btn btn--primary btn--sm" href="https://repo-time-machine.vercel.app" target="_blank" rel="noopener noreferrer">
-                Live demo
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg>
-              </a>
-              <a class="btn btn--ghost btn--sm" href="https://github.com/renrenmimi/RepoTimeMachine" target="_blank" rel="noopener noreferrer">
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-code"></use></svg>
-                Code
-              </a>
-            </div>
-          </article>
-
-          <!-- TaxLot -->
-          <article class="card reveal">
-            <div class="card__top">
-              <span class="card__logo" aria-hidden="true">
-                <svg class="icon" focusable="false"><use href="#i-calculator"></use></svg>
-              </span>
-              <span class="card__index">07</span>
-            </div>
-            <p class="card__kicker">Investment Tracking &amp; Tax Estimates</p>
-            <h3 class="card__title">TaxLot</h3>
-            <div class="card__body">
-              <p class="card__desc">
-                Track investment lots, explain realized gains, and check wash sales across a
-                household's accounts. Import transactions, reconcile them against brokerage
-                statements, and try a sale before making it. A standalone TypeScript engine
-                handles the calculations; the bilingual Expo app keeps your data in your
-                own browser, with safeguards against competing writes from other tabs.
-              </p>
-            </div>
-            <ul class="stats" aria-label="Project highlights">
-              <li class="stat"><span class="stat__num">Local</span><span class="stat__label">data storage</span></li>
-              <li class="stat"><span class="stat__num">Pure TS</span><span class="stat__label">calculation engine</span></li>
-              <li class="stat"><span class="stat__num">EN / 中文</span><span class="stat__label">bilingual</span></li>
-            </ul>
-            <ul class="tags" aria-label="Tech stack">
-              <li>TypeScript</li>
-              <li>React Native</li>
-              <li>Expo</li>
-              <li>IndexedDB</li>
-              <li>Jest</li>
-            </ul>
-            <div class="card__actions">
-              <a class="btn btn--primary btn--sm" href="https://taxlot.vercel.app" target="_blank" rel="noopener noreferrer">
-                Live demo
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg>
-              </a>
-            </div>
-          </article>
-
-          <!-- iCanDoIt -->
-          <article class="card reveal">
-            <div class="card__top">
-              <span class="card__logo" aria-hidden="true">
-                <svg class="icon" focusable="false"><use href="#i-checklist"></use></svg>
-              </span>
-              <span class="card__index">08</span>
-            </div>
-            <p class="card__kicker">Native macOS Day Planner</p>
-            <h3 class="card__title">iCanDoIt</h3>
-            <div class="card__body">
-              <p class="card__desc">
-                Attach a reward to each task; clear them all and the app throws confetti for a
-                Perfect Day. It builds as a plain Swift package, SwiftUI and SwiftData only.
-                Two hidden flags: <code>--snapshot</code> renders every screen to PNG offscreen,
-                <code>--selftest</code> checks what screenshots cannot, like drag-and-drop
-                placement and schema backfill.
-              </p>
-            </div>
-            <ul class="stats" aria-label="Project highlights">
-              <li class="stat"><span class="stat__num">0</span><span class="stat__label">external deps</span></li>
-              <li class="stat"><span class="stat__num">182</span><span class="stat__label">day heat map</span></li>
-              <li class="stat"><span class="stat__num">2</span><span class="stat__label">test modes</span></li>
-            </ul>
-            <ul class="tags" aria-label="Tech stack">
-              <li>SwiftUI</li>
-              <li>SwiftData</li>
-              <li>SQLite</li>
-              <li>Canvas</li>
-              <li>Swift Package</li>
-              <li>macOS</li>
-            </ul>
-            <div class="card__actions">
-              <a class="btn btn--primary btn--sm" href="https://github.com/renrenmimi/iCanDoIt#readme" target="_blank" rel="noopener noreferrer">
-                Demo
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg>
-              </a>
-              <a class="btn btn--ghost btn--sm" href="https://github.com/renrenmimi/iCanDoIt" target="_blank" rel="noopener noreferrer">
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-code"></use></svg>
-                Code
-              </a>
-              <a class="btn btn--ghost btn--sm" href="https://renrenmimi.github.io/SwiftLab/" target="_blank" rel="noopener noreferrer">
-                Learn with SwiftLab
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg>
-              </a>
-            </div>
-          </article>
-          </div>
-          </div>
-
-          <div class="deck__controls">
-            <div class="deck__dots" data-deck-dots aria-hidden="true"></div>
-            <div class="deck__arrows">
-              <button class="deck__arrow" type="button" data-deck-prev aria-label="Previous project">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5 8 12l7 7"/></svg>
-              </button>
-              <button class="deck__arrow" type="button" data-deck-next aria-label="Next project">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 7 7-7 7"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
+    <section id="work" class="work wrap" aria-labelledby="work-title">
+      <div class="section-rule"><span class="eyebrow">01 / SELECTED WORK</span><span>Apps you can try</span></div>
+      <div class="work-head"><h2 id="work-title">A few things I’ve built.</h2><p>Apps for pet owners, developers, and everyday tasks.</p></div>
+      <div class="featured-work"><article class="featured-project"><header class="project-header"><span class="project-number">01</span><div class="project-caption"><h3>PetNote</h3><span>Pet-Centric Social Platform</span></div><p class="project-short">A social app for pet owners. Share photos, make pet profiles, find pet-friendly places, and meet other owners.</p><div class="project-links"><a href="https://petnote.vercel.app" target="_blank" rel="noopener noreferrer">Live demo <span aria-hidden="true">↗</span></a><a href="https://github.com/renrenmimi/PetNote" target="_blank" rel="noopener noreferrer">Code <span aria-hidden="true">↗</span></a></div></header><div class="motion-cover pet-cover" data-tilt data-pet-mode="pets" role="group" aria-label="Interactive PetNote feature preview">
+  <div class="cover-top"><span>INTERACTIVE PREVIEW</span><span>TRY IT BELOW</span></div>
+  <div class="cover-orbit orbit-one" aria-hidden="true"></div><div class="cover-orbit orbit-two" aria-hidden="true"></div>
+  <div class="pet-scene cover-depth">
+    <div class="pet-window">
+      <div class="pet-window-top"><span class="pet-brand">petnote<span>✳</span></span><span class="demo-label">A LITTLE PRODUCT SKETCH</span></div>
+      <div class="pet-stage" aria-live="polite">
+        <section class="pet-state" data-pet-panel="pets" aria-label="Pet profiles">
+          <div class="pet-portrait"><img src="assets/dog.jpg" alt="Jelly" width="180" height="180"><span class="pet-sticker">a very good dog ↗</span></div>
+          <div class="pet-profile-copy"><small>EXAMPLE PET PROFILE</small><h4>Meet Jelly.</h4><p>Pet photos, updates,<br>and a profile of their own.</p></div>
+        </section>
+        <section class="pet-state" data-pet-panel="places" aria-label="Pet-friendly places" hidden>
+          <div class="place-sketch" aria-hidden="true"><svg viewBox="0 0 280 175" fill="none"><path class="map-land" d="M0 26 65 10l49 25 52-15 114 32v123H0Z"/><path class="map-park" d="m178 14 82 20-21 69-55-17-25-34Z"/><path class="map-road" d="M-10 87 82 106 140 53 290 91M72-10 76 96 38 190M155-10 140 53 190 182"/><path class="map-route" d="M76 96 114 73 140 53 216 73"/><circle class="map-you" cx="76" cy="96" r="7"/><g class="map-pin"><circle cx="216" cy="68" r="13"/><path d="m211 68 4 4 6-8"/></g></svg><span class="map-caption">A NEW FAVORITE SPOT</span></div>
+          <div class="pet-profile-copy"><small>PLACES & CHECK-INS</small><h4>Go together.</h4><p>Find pet-friendly places.<br>Keep the good ones close.</p></div>
+        </section>
+        <section class="pet-state" data-pet-panel="meetups" aria-label="Pet meetups" hidden>
+          <div class="meetup-sketch"><div class="meetup-day"><span>GOOD COMPANY</span><strong>See you<br>outside.</strong><div class="meetup-friends" aria-hidden="true"><img src="assets/dog.jpg" alt="" width="44" height="44"><i>+</i><span>you</span></div></div><span class="meetup-spark" aria-hidden="true">✳</span></div>
+          <div class="pet-profile-copy"><small>IN-PERSON MEETUPS</small><h4>Make a day of it.</h4><p>Turn an online hello<br>into an actual walk.</p></div>
+        </section>
       </div>
+      <div class="pet-controls" aria-label="Explore PetNote features"><button type="button" data-pet-select="pets" aria-pressed="true">The pets</button><button type="button" data-pet-select="places" aria-pressed="false">The places</button><button type="button" data-pet-select="meetups" aria-pressed="false">The people</button></div>
+    </div>
+    <span class="floating-note" aria-hidden="true">Pets<br>welcome.</span>
+  </div>
+  <div class="cover-bottom"><span>PROFILES · PLACES · MEETUPS</span><span class="interaction-hint">Try the tabs <b aria-hidden="true">↖</b></span></div>
+</div><details class="project-details"><summary>Inside the build</summary><div class="details-body"><p>A full social app for pet people: posts and feeds, multi-pet profiles, check-ins at pet-friendly places, in-person meetups, notifications, and moderation. It runs on React 19 with a callable-first Firebase backend — Cloud Functions and Firestore security rules doing the heavy lifting, with Cloudinary for media and Geoapify for places.</p><div id="skills" class="stack"><span>Firebase</span><span>Cloud Functions</span><span>Firestore Rules</span><span>Cloudinary</span><span>Geoapify</span></div></div></details></article>
+<article class="featured-project"><header class="project-header"><span class="project-number">02</span><div class="project-caption"><h3>AgentTape</h3><span>AI Agent Session Replay</span></div><p class="project-short">Replay Claude Code sessions to see the messages, tool calls, and context behind each step. Compare runs without uploading your files.</p><div class="project-links"><a href="https://agenttape.vercel.app" target="_blank" rel="noopener noreferrer">Live demo <span aria-hidden="true">↗</span></a><a href="https://github.com/renrenmimi/AgentTape" target="_blank" rel="noopener noreferrer">Code <span aria-hidden="true">↗</span></a></div></header><div class="motion-cover tape-cover" data-tilt role="group" aria-label="Interactive AgentTape example session">
+  <div class="cover-top"><span>INTERACTIVE PREVIEW</span><span>TRY IT BELOW</span></div>
+  <div class="tape-rings" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="tape-scene cover-depth">
+    <div class="tape-window">
+      <div class="tape-window-top"><span class="tape-brand"><i aria-hidden="true"></i>AgentTape</span><span class="tape-example">EXAMPLE SESSION</span></div>
+      <div class="tape-progress"><span>Follow the session.</span><span data-tape-count>01 / 05</span></div>
+      <div class="tape-timeline" aria-label="Replay steps"><button type="button" data-tape-select="0" aria-label="Step 1: user request" aria-pressed="true">U</button><i></i><button type="button" data-tape-select="1" aria-label="Step 2: assistant plan" aria-pressed="false">A</button><i></i><button type="button" data-tape-select="2" aria-label="Step 3: tool result" aria-pressed="false">T</button><i></i><button type="button" data-tape-select="3" aria-label="Step 4: assistant reads file" aria-pressed="false">A</button><i></i><button type="button" data-tape-select="4" aria-label="Step 5: tool returns file" aria-pressed="false">T</button></div>
+      <div class="tape-message" aria-live="polite" aria-atomic="true"><span class="tape-role" data-tape-role>USER</span><p data-tape-message>Find the app’s entry point.</p><span class="tape-detail" data-tape-detail>The request that started the session.</span></div>
+      <div class="tape-controls"><button type="button" data-tape-prev aria-label="Previous session step">←</button><button type="button" class="tape-play" data-tape-play aria-pressed="false"><span data-tape-play-icon aria-hidden="true">▶</span><span data-tape-play-label>Play the trace</span></button><button type="button" data-tape-next aria-label="Next session step">→</button></div>
+    </div>
+    <span class="tape-receipt" aria-hidden="true">MESSAGES → TOOLS → CONTEXT</span>
+  </div>
+  <div class="cover-bottom"><span>STEP THROUGH AN EXAMPLE SESSION</span><span class="interaction-hint">Press play <b aria-hidden="true">↖</b></span></div>
+</div><details class="project-details"><summary>Inside the build</summary><div class="details-body"><p>Drop a Claude Code transcript on the page and step through the run: the messages array as it grew, the step that blew up the context, and what it had read before it wrote. Compare two runs, or index every session on your machine at once — all parsed incrementally in the browser, nothing uploaded. A rule set runs the same checks from the command line and exits non-zero, so it fits in CI.</p><div id="skills" class="stack"><span>Next.js 15</span><span>TypeScript</span><span>File System Access</span><span>Virtual scrolling</span><span>Node CLI</span></div></div></details></article></div>
+      <div class="project-index"><details class="index-item"><summary><span class="index-number">03</span><h3>ToneDown</h3><span class="index-category">Real-Time AI Communication Coach</span><span class="index-plus" aria-hidden="true">+</span></summary><div class="index-body"><div><p>A real-time coach that scores how you&#x27;re coming across as you speak — live transcription, LLM tone analysis, and audio signals combined into one score. It adds roleplay &quot;sparring&quot; personas, an explanation timeline behind every reminder, AI recaps and a zero-mic demo, all served through a Vercel serverless proxy to Groq (Whisper + Llama 3.3 70B) with a circuit-breaker fallback chain.</p><div class="project-links"><a href="https://tone-down.vercel.app" target="_blank" rel="noopener noreferrer">Live demo <span aria-hidden="true">↗</span></a><a href="https://github.com/renrenmimi/ToneDown" target="_blank" rel="noopener noreferrer">Code <span aria-hidden="true">↗</span></a></div></div><div><div id="skills" class="stack"><span>React</span><span>Vercel Serverless</span><span>Groq</span><span>Whisper</span><span>Llama 3.3 70B</span><span>Web Audio API</span></div></div></div></details>
+<details class="index-item"><summary><span class="index-number">04</span><h3>KOVA Flooring</h3><span class="index-category">Brand Site &amp; Dealer Portal</span><span class="index-plus" aria-hidden="true">+</span></summary><div class="index-body"><div><p>Brand website and dealer portal for KOVA Flooring. Solo design and build, with three business tiers, Firebase authentication, and a Firestore backend.</p><div class="project-links"><a href="https://www.kovaflooring.com" target="_blank" rel="noopener noreferrer">Visit site <span aria-hidden="true">↗</span></a></div></div><div><img src="assets/kova.jpg" alt="KOVA Flooring brand website" loading="lazy"></div></div></details>
+<details class="index-item"><summary><span class="index-number">05</span><h3>GreenLane</h3><span class="index-category">Immigration Timeline Tracker</span><span class="index-plus" aria-hidden="true">+</span></summary><div class="index-body"><div><p>A statically generated dashboard for immigration backlogs: US green card categories (EB-1 through EB-5 and family-based) alongside Canada&#x27;s Express Entry draws. Ten years of history, per-category wait estimates, and official regulatory news — fed by three scheduled pipelines that pull from official sources only.</p><div class="project-links"><a href="https://greenlane-beryl.vercel.app" target="_blank" rel="noopener noreferrer">Live demo <span aria-hidden="true">↗</span></a><a href="https://github.com/renrenmimi/greenlane" target="_blank" rel="noopener noreferrer">Code <span aria-hidden="true">↗</span></a></div></div><div><div id="skills" class="stack"><span>Next.js 16</span><span>TypeScript</span><span>Python</span><span>Headless Chrome</span><span>Scheduled jobs</span></div></div></div></details>
+<details class="index-item"><summary><span class="index-number">06</span><h3>Repo Time Machine</h3><span class="index-category">Visual Git History Explorer</span><span class="index-plus" aria-hidden="true">+</span></summary><div class="index-body"><div><p>Three views over a public repository: Replay walks the default branch commit by commit, Compare puts any two points side by side, and Insights tracks how size and structure moved. File trees are rebuilt from checkpoints and diffs, the GitHub token stays on the server, and a synthetic demo spends no API quota.</p><div class="project-links"><a href="https://repo-time-machine.vercel.app" target="_blank" rel="noopener noreferrer">Live demo <span aria-hidden="true">↗</span></a><a href="https://github.com/renrenmimi/RepoTimeMachine" target="_blank" rel="noopener noreferrer">Code <span aria-hidden="true">↗</span></a></div></div><div><div id="skills" class="stack"><span>Next.js 16</span><span>TypeScript</span><span>GitHub REST API</span><span>Vitest</span><span>Playwright</span></div></div></div></details>
+<details class="index-item"><summary><span class="index-number">07</span><h3>TaxLot</h3><span class="index-category">Investment Tracking &amp; Tax Estimates</span><span class="index-plus" aria-hidden="true">+</span></summary><div class="index-body"><div><p>Track investment lots, explain realized gains, and check wash sales across a household&#x27;s accounts. Import transactions, reconcile them against brokerage statements, and try a sale before making it. A standalone TypeScript engine handles the calculations; the bilingual Expo app keeps your data in your own browser, with safeguards against competing writes from other tabs.</p><div class="project-links"><a href="https://taxlot.vercel.app" target="_blank" rel="noopener noreferrer">Live demo <span aria-hidden="true">↗</span></a></div></div><div><div id="skills" class="stack"><span>TypeScript</span><span>React Native</span><span>Expo</span><span>IndexedDB</span><span>Jest</span></div></div></div></details>
+<details class="index-item"><summary><span class="index-number">08</span><h3>iCanDoIt</h3><span class="index-category">Native macOS Day Planner</span><span class="index-plus" aria-hidden="true">+</span></summary><div class="index-body"><div><p>Attach a reward to each task; clear them all and the app throws confetti for a Perfect Day. It builds as a plain Swift package, SwiftUI and SwiftData only. Two hidden flags: --snapshot renders every screen to PNG offscreen, --selftest checks what screenshots cannot, like drag-and-drop placement and schema backfill.</p><div class="project-links"><a href="https://github.com/renrenmimi/iCanDoIt#readme" target="_blank" rel="noopener noreferrer">Demo <span aria-hidden="true">↗</span></a><a href="https://github.com/renrenmimi/iCanDoIt" target="_blank" rel="noopener noreferrer">Code <span aria-hidden="true">↗</span></a><a href="https://renrenmimi.github.io/SwiftLab/" target="_blank" rel="noopener noreferrer">Learn with SwiftLab <span aria-hidden="true">↗</span></a></div></div><div><div id="skills" class="stack"><span>SwiftUI</span><span>SwiftData</span><span>SQLite</span><span>Canvas</span><span>Swift Package</span><span>macOS</span></div></div></div></details></div>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section class="section experience" id="experience" aria-labelledby="exp-h">
-      <div class="container">
-        <header class="section__head reveal">
-          <p class="eyebrow">// experience</p>
-          <h2 id="exp-h" class="section__title">Where I've been shipping</h2>
-          <p class="section__sub">Most recently: building a shipping platform from zero.</p>
-        </header>
-
-        <ol class="roles">
-          <li class="role reveal">
-            <div class="role__head">
-              <div>
-                <h3 class="role__title">Full-Stack Engineer</h3>
-                <p class="role__org">WeShipItNow <span class="sep">·</span> multi-carrier shipping platform</p>
-              </div>
-              <p class="role__period">2024 — present</p>
-            </div>
-            <p class="role__desc">
-              E-commerce sellers compare live rates across USPS, FedEx, UPS and Amazon, buy
-              discounted labels, and track every shipment in one place. I built the React
-              front end from scratch against a hybrid GraphQL-and-REST API, and co-designed
-              the backend behind it — idempotent purchase flows, a durable job queue for
-              carrier calls, and an adapter layer that keeps four carrier APIs behind one
-              internal contract.
-            </p>
-            <ul class="tags" aria-label="Tech stack">
-              <li>React</li>
-              <li>GraphQL BFF</li>
-              <li>Apollo</li>
-              <li>Redux</li>
-              <li>REST</li>
-              <li>Durable queue</li>
-            </ul>
-
-            <div class="role__aside">
-              <div class="role__aside-head">
-                <span class="role__aside-title">Teaching Assistant</span>
-                <span class="role__aside-org">Northeastern University <span class="sep">·</span> Remote</span>
-                <span class="role__aside-period">Sep — Dec 2025</span>
-              </div>
-              <p class="role__aside-desc">Supported a graduate database course covering SQL and Microsoft SQL Server.</p>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- LEARNING TOOLS -->
-    <section class="section learning-tools" id="teaching" aria-labelledby="teach-h">
-      <div class="container">
-        <header class="section__head reveal">
-          <p class="eyebrow">// learn by doing</p>
-          <h2 id="teach-h" class="section__title">Learning Tools</h2>
-          <p class="section__sub">Interactive courses and practice tools for beginners and anyone who wants to keep improving.</p>
-          <p class="learning-availability"><span aria-hidden="true"></span>All live · Free to use</p>
-        </header>
-
-        <div class="course-shelf">
-          <div class="mini-grid">
-          <a class="mini mini--system" href="https://boxarrow.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #8a7cf6; --course-bg: #121722">
+    <span id="teaching" aria-hidden="true"></span><section id="learning" class="learning" aria-labelledby="learning-title">
+      <div class="wrap">
+        <div class="learning-head"><div><p class="eyebrow">02 / LEARN BY DOING</p><h2 id="learning-title">Learning Tools<span class="heading-star" aria-hidden="true"><span>✳</span></span></h2></div><div><p>Free lessons and practice for beginners and intermediate learners.<br>Each tool helps you learn a topic by trying it.</p><span class="availability"><i aria-hidden="true"></i> ALL LIVE IN PRODUCTION · FREE TO USE</span></div></div>
+        <div class="mini-grid"><a class="mini mini--system" href="https://boxarrow.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #8a7cf6; --course-bg: #121722">
             <span class="course-diagram" aria-hidden="true">
               <svg class="system-map" viewBox="0 0 164 64" fill="none" focusable="false">
                 <!-- Clients, an edge gateway, replicated services, and data / async paths. -->
@@ -632,21 +117,21 @@
             </span>
             <h3 class="mini__title">BoxArrow</h3>
             <p class="mini__desc">Learn system design through interactive diagrams and experiments: how clients, servers, databases and rate limits fit together. English and Chinese.</p>
-            <span class="mini__go">System design · EN / 中文<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
+            <span class="mini__go">System design · EN / 中文<span aria-hidden="true">↗</span></span>
           </a>
-          <a class="mini" href="https://data-data.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: oklch(76% 0.15 292); --course-bg: #0d1019">
+<a class="mini" href="https://data-data.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: oklch(76% 0.15 292); --course-bg: #0d1019">
             <span class="viz viz--array" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
             <h3 class="mini__title">DataData</h3>
             <p class="mini__desc">Learn data structures through memory diagrams and animations you can step or predict. Compare Java, Python and JS, then practice with worked problems.</p>
-            <span class="mini__go">14 chapters<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
+            <span class="mini__go">14 chapters<span aria-hidden="true">↗</span></span>
           </a>
-          <a class="mini" href="https://algo-algo.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: oklch(76% 0.15 62); --course-bg: #0d1019">
+<a class="mini" href="https://algo-algo.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: oklch(76% 0.15 62); --course-bg: #0d1019">
             <span class="viz viz--bisect" aria-hidden="true"><u></u><b class="lo"></b><b class="hi"></b><s></s></span>
             <h3 class="mini__title">AlgoAlgo</h3>
             <p class="mini__desc">Learn how algorithms decide with step-through decision trees, DP tables and binary search. Compare sorting strategies by comparisons, moves and space.</p>
-            <span class="mini__go">13 chapters<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
+            <span class="mini__go">13 chapters<span aria-hidden="true">↗</span></span>
           </a>
-          <a class="mini" href="https://apier-eta.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: oklch(76% 0.15 210); --course-bg: #0d1019">
+<a class="mini" href="https://apier-eta.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: oklch(76% 0.15 210); --course-bg: #0d1019">
             <span class="viz viz--rtt" aria-hidden="true">
               <span class="api-node">CLIENT</span>
               <span class="api-lane"><i class="api-request">GET</i><i class="api-response">200</i></span>
@@ -654,9 +139,9 @@
             </span>
             <h3 class="mini__title">APIer</h3>
             <p class="mini__desc">Learn HTTP, REST and GraphQL, from your first request to auth, caching and versioning. Practice with a mock API and request inspector in your browser.</p>
-            <span class="mini__go">12 chapters<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
+            <span class="mini__go">12 chapters<span aria-hidden="true">↗</span></span>
           </a>
-          <a class="mini" href="https://tser.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: oklch(76% 0.15 210); --course-bg: #0d1019">
+<a class="mini" href="https://tser.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: oklch(76% 0.15 210); --course-bg: #0d1019">
             <span class="viz viz--type" aria-hidden="true">
               <span class="type-code"><span>const score =</span><b>42</b></span>
               <span class="type-arrow">→</span>
@@ -664,32 +149,32 @@
             </span>
             <h3 class="mini__title">TSer</h3>
             <p class="mini__desc">Learn TypeScript from first principles. Edit code, get errors and inferred types from the real compiler in a Web Worker, and practice what each concept means.</p>
-            <span class="mini__go">12 chapters<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
+            <span class="mini__go">12 chapters<span aria-hidden="true">↗</span></span>
           </a>
-          <a class="mini" href="https://redis-visual.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #e0483d; --course-bg: #121722">
+<a class="mini" href="https://redis-visual.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #e0483d; --course-bg: #121722">
             <span class="viz viz--cache" aria-hidden="true"><b></b><u></u><b class="hit"></b><u class="d"></u><b class="db"></b><s></s></span>
             <h3 class="mini__title">RedisVisual</h3>
             <p class="mini__desc">Learn Redis through data structures, caching, concurrency guards and read models, then test your understanding in a hands-on lab and fault simulator.</p>
-            <span class="mini__go">8 stops<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
+            <span class="mini__go">8 stops<span aria-hidden="true">↗</span></span>
           </a>
-          <a class="mini" href="https://drill-lab-three.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #b8f23d; --course-bg: #101512">
+<a class="mini" href="https://drill-lab-three.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #b8f23d; --course-bg: #101512">
             <span class="viz viz--drill" aria-hidden="true">
               <span class="drill-stairs"><i></i><i></i><i></i><i></i><s></s></span>
             </span>
             <h3 class="mini__title">DrillLab</h3>
             <p class="mini__desc">Build independence with 80 lessons, 105 recall questions, 148 exercises, 25 coding problems and 7 timed builds, organized into six guided learning plans.</p>
-            <span class="mini__go">80 lessons<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
+            <span class="mini__go">80 lessons<span aria-hidden="true">↗</span></span>
           </a>
-          <a class="mini" href="https://agent-lab-blond.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #8a7cf6; --course-bg: #121722">
+<a class="mini" href="https://agent-lab-blond.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #8a7cf6; --course-bg: #121722">
             <span class="viz viz--grow" aria-hidden="true">
               <span class="agent-stack"><i><b>U</b><span>plan</span></i><i><b>A</b><span>tool?</span></i><i><b>T</b><span>result</span></i></span>
               <span class="agent-loop">LOOP ↻</span>
             </span>
             <h3 class="mini__title">AgentLab</h3>
             <p class="mini__desc">Learn how tool-using agents work: watch messages and tool calls, build an agent by stop three, then explore context, cost, failure handling and trust.</p>
-            <span class="mini__go">14 stops<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
+            <span class="mini__go">14 stops<span aria-hidden="true">↗</span></span>
           </a>
-          <a class="mini" href="https://bugmuseum.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #cbb896; --course-bg: #1e1b16; --viz-fixed: #5cbfa0">
+<a class="mini" href="https://bugmuseum.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #cbb896; --course-bg: #1e1b16; --viz-fixed: #5cbfa0">
             <span class="viz viz--museum" aria-hidden="true">
               <span class="museum-case museum-case--broken"><b>×</b><small>broken</small></span>
               <span class="museum-arrow">→</span>
@@ -697,35 +182,22 @@
             </span>
             <h3 class="mini__title">Bug Museum</h3>
             <p class="mini__desc">Learn to debug through six real cases: reproduce each failure, investigate its cause, compare fixes and run the regression test that prevents it from returning.</p>
-            <span class="mini__go">6 exhibits<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"></use></svg></span>
-          </a>
-          </div>
-        </div>
+            <span class="mini__go">6 exhibits<span aria-hidden="true">↗</span></span>
+          </a></div>
       </div>
     </section>
 
-    <!-- LAB -->
-    <section class="section lab" id="lab" aria-labelledby="lab-h">
-      <div class="container">
-        <header class="section__head reveal">
-          <p class="eyebrow">// lab</p>
-          <h2 id="lab-h" class="section__title">Small things, built to learn something</h2>
-          <p class="section__sub">
-            Browser experiments, small games and visual sketches. Click one and it runs.
-          </p>
-        </header>
+    <section id="about" class="about wrap" aria-labelledby="about-title">
+      <div class="section-rule"><span class="eyebrow">03 / ABOUT ME</span><span>English / 中文</span></div>
+      <div class="about-grid"><div class="about-title"><h2 id="about-title">A bit<br><span>about me.</span></h2><div class="dog-note"><img src="assets/dog.jpg" alt="Jelly, my dog" loading="lazy" width="80" height="80"><p>This is Jelly,<br>my dog.</p></div></div><div class="about-copy"><p class="large-copy">I worked as a data analyst for six years before moving into software engineering.</p><p>I’m Weiren, and Renren is my nickname. I completed my M.S. in Information Systems at Northeastern University in 2025. Today I build across the stack: responsive React interfaces, backend services, data models, and AI integrations that fit into the product.</p><dl class="facts"><div><dt>Based in</dt><dd>SF Bay Area / Irvine, CA</dd></div><div><dt>Work authorization</dt><dd>No sponsorship required</dd></div></dl></div></div>
+      <div id="experience" class="experience"><div><span class="eyebrow">2024 — PRESENT</span><h3>WeShipItNow</h3><p>Full-Stack Engineer</p></div><div><p>A multi-carrier shipping platform, built from zero. I built the React front end and co-designed the backend: live rates, labels, tracking, idempotent purchases, and a durable queue behind four carrier integrations.</p><div id="skills" class="stack"><span>React</span><span>GraphQL / REST</span><span>Apollo / Redux</span><span>Durable queues</span></div></div></div>
+      <div class="teaching-role"><span class="eyebrow">SEP — DEC 2025</span><span>Teaching Assistant · Northeastern University</span><span>Graduate databases / SQL & Microsoft SQL Server</span></div>
+    </section>
 
-        <div class="lab__group reveal">
-          <h3 class="lab__label">Browser experiments</h3>
-          <ul class="pills">
+    <section id="lab" class="playground" aria-labelledby="play-title"><div class="wrap play-inner"><div><p class="eyebrow">04 / SMALL EXPERIMENTS</p><h2 id="play-title">Some things<br>I made for fun.</h2><p class="play-description">Small games and browser experiments I built while learning.</p></div><div class="experiment-list"><a href="https://renrenmimi.github.io/fluid-simulation/" target="_blank" rel="noopener noreferrer"><span>Fluid Simulation<small>CANVAS & MOTION</small></span><span class="experiment-mark wave-mark" aria-hidden="true"><svg viewBox="0 0 54 31"><path d="M-6 15c9-18 18 18 27 0s18 18 27 0 18 18 27 0"/><path d="M-6 22c9-18 18 18 27 0s18 18 27 0 18 18 27 0"/></svg></span><span class="experiment-arrow" aria-hidden="true">↗</span></a><a href="https://renrenmimi.github.io/Gomoku/" target="_blank" rel="noopener noreferrer"><span>Gomoku<small>GAMES</small></span><span class="experiment-mark stones-mark" aria-hidden="true"><i></i><i></i><i></i></span><span class="experiment-arrow" aria-hidden="true">↗</span></a><a href="https://renrenmimi.github.io/renren-across-tabs/" target="_blank" rel="noopener noreferrer"><span>Renren Across Tabs<small>BROWSER EXPERIMENTS</small></span><span class="experiment-mark tabs-mark" aria-hidden="true"><i></i><i></i></span><span class="experiment-arrow" aria-hidden="true">↗</span></a><details class="all-experiments"><summary>Explore all experiments <span aria-hidden="true">+</span></summary><div class="experiment-directory"><div><h3>Browser experiments</h3><ul>
             <li><a href="https://renrenmimi.github.io/CyberFan/" target="_blank" rel="noopener noreferrer">CyberFan</a></li>
             <li><a href="https://renrenmimi.github.io/renren-across-tabs/" target="_blank" rel="noopener noreferrer">Renren Across Tabs</a></li>
-          </ul>
-        </div>
-
-        <div class="lab__group reveal">
-          <h3 class="lab__label">Games</h3>
-          <ul class="pills">
+          </ul></div><div><h3>Games</h3><ul>
             <li><a href="https://renrenmimi.github.io/avatar-dash/" target="_blank" rel="noopener noreferrer">Avatar Dash</a></li>
             <li><a href="https://renrenmimi.github.io/dota-snake/" target="_blank" rel="noopener noreferrer">Dota Snake</a></li>
             <li><a href="https://renrenmimi.github.io/Tank/" target="_blank" rel="noopener noreferrer">Tank Battle</a></li>
@@ -735,366 +207,27 @@
             <li><a href="https://renrenmimi.github.io/SINGULARITY-Gravity-Collapse/" target="_blank" rel="noopener noreferrer">Singularity</a></li>
             <li><a href="https://renrenmimi.github.io/1v1/" target="_blank" rel="noopener noreferrer">Split-Screen Duel</a></li>
             <li><a href="https://renrenmimi.github.io/1v1--2/" target="_blank" rel="noopener noreferrer">Western Duel</a></li>
-          </ul>
-        </div>
-
-        <div class="lab__group reveal">
-          <h3 class="lab__label">Canvas &amp; motion</h3>
-          <ul class="pills">
+          </ul></div><div><h3>Canvas &amp; motion</h3><ul>
             <li><a href="https://renrenmimi.github.io/fluid-simulation/" target="_blank" rel="noopener noreferrer">Fluid Simulation</a></li>
             <li><a href="https://renrenmimi.github.io/particle-galaxy/" target="_blank" rel="noopener noreferrer">Particle Galaxy</a></li>
             <li><a href="https://renrenmimi.github.io/firework/" target="_blank" rel="noopener noreferrer">Fireworks</a></li>
-          </ul>
-        </div>
-
-        <div class="lab__group reveal">
-          <h3 class="lab__label">Cognitive drills</h3>
-          <ul class="pills">
+          </ul></div><div><h3>Cognitive drills</h3><ul>
             <li><a href="https://renrenmimi.github.io/N-Back/" target="_blank" rel="noopener noreferrer">N-Back</a></li>
             <li><a href="https://renrenmimi.github.io/Aim-Trainer/" target="_blank" rel="noopener noreferrer">Aim Trainer</a></li>
             <li><a href="https://renrenmimi.github.io/Stroop-Test/" target="_blank" rel="noopener noreferrer">Stroop Test</a></li>
             <li><a href="https://renrenmimi.github.io/Schulte-Grid/" target="_blank" rel="noopener noreferrer">Schulte Grid</a></li>
             <li><a href="https://renrenmimi.github.io/Reaction/" target="_blank" rel="noopener noreferrer">Reaction Time</a></li>
-          </ul>
-        </div>
-      </div>
-    </section>
+          </ul></div></div></details></div></div></section>
 
-    <!-- SKILLS -->
-    <section class="section skills" id="skills" aria-labelledby="skills-h">
-      <div class="container">
-        <header class="section__head reveal">
-          <p class="eyebrow">// skills</p>
-          <h2 id="skills-h" class="section__title">What I work with</h2>
-          <p class="section__sub">The stack I reach for.</p>
-        </header>
-
-        <div class="skill-groups">
-          <div class="skill-group reveal">
-            <h3 class="skill-group__title">Languages</h3>
-            <ul class="tags">
-              <li>JavaScript</li><li>TypeScript</li><li>Java</li><li>Python</li><li>SQL</li>
-            </ul>
-          </div>
-          <div class="skill-group reveal">
-            <h3 class="skill-group__title">Frontend</h3>
-            <ul class="tags">
-              <li>React</li><li>Next.js</li><li>Vue</li><li>Tailwind</li>
-            </ul>
-          </div>
-          <div class="skill-group reveal">
-            <h3 class="skill-group__title">Backend &amp; Data</h3>
-            <ul class="tags">
-              <li>Node</li><li>Express</li><li>GraphQL</li><li>REST</li>
-              <li>Firebase</li><li>MySQL</li><li>MongoDB</li><li>Redis</li>
-            </ul>
-          </div>
-          <div class="skill-group reveal">
-            <h3 class="skill-group__title">Cloud &amp; Tools</h3>
-            <ul class="tags">
-              <li>AWS</li><li>Vercel</li><li>Docker</li><li>Git</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="section about" id="about" aria-labelledby="about-h">
-      <div class="container">
-        <div class="about__grid">
-          <div class="about__bio reveal">
-            <p class="eyebrow">// about</p>
-            <h2 id="about-h" class="section__title">From data to product</h2>
-            <p>
-              I came to engineering the long way — six years as a senior data analyst before a
-              STEM master's at Northeastern. That path stuck with me: I build with an eye on what
-              actually ships and what the data says afterward, and I like owning a product end to
-              end, from a responsive React front end to the serverless functions and data model
-              behind it. Lately I'm most interested in getting the AI/LLM pieces right — and I
-              work in both English and Chinese.
-            </p>
-          </div>
-          <aside class="facts reveal" aria-label="Quick facts">
-            <dl>
-              <div class="fact">
-                <dt>Location</dt>
-                <dd>SF Bay Area / Irvine, CA</dd>
-              </div>
-              <div class="fact">
-                <dt>Education</dt>
-                <dd>M.S. Information Systems (STEM) — Northeastern University, 2025</dd>
-              </div>
-              <div class="fact">
-                <dt>Focus</dt>
-                <dd>Frontend · Full-Stack</dd>
-              </div>
-              <div class="fact">
-                <dt>Work authorization</dt>
-                <dd>No visa sponsorship required</dd>
-              </div>
-              <div class="fact">
-                <dt>Languages</dt>
-                <dd>English · 中文 (Chinese)</dd>
-              </div>
-            </dl>
-          </aside>
-        </div>
-      </div>
-    </section>
+    <footer class="footer wrap"><div class="footer-invitation"><div><p class="eyebrow">GET IN TOUCH</p><a class="footer-hello" href="mailto:feng.weir@northeastern.edu">Say hello.<span aria-hidden="true">↗</span></a><p>If you’d like to talk about a role or a project, feel free to email me.</p></div><a class="footer-email" href="mailto:feng.weir@northeastern.edu">feng.weir@northeastern.edu ↗</a></div><div class="footer-bottom"><span>Weiren Feng · Software engineer</span><div><a href="https://github.com/renrenmimi" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/fengweiren" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="#top">Back to top ↑</a><button class="motion-control" type="button" data-motion-toggle aria-pressed="false">Motion on</button></div></div></footer>
   </main>
-
-  <!-- RENREN GUIDE -->
-  <aside class="renren-guide" data-renren aria-label="Renren site guide">
-    <div class="renren__bubble" data-renren-bubble aria-hidden="true">
-      <div class="renren__head">
-        <span><i aria-hidden="true"></i>RENREN · SITE GUIDE</span>
-        <button class="renren__close" type="button" data-renren-close aria-label="Close Renren guide">&#215;</button>
-      </div>
-      <p class="renren__copy" data-renren-copy aria-live="polite">Hi! I know every corner of this site.</p>
-      <div class="renren__actions">
-        <button type="button" data-renren-surprise>Surprise me</button>
-        <a href="mailto:feng.weir@northeastern.edu">Say hello <span aria-hidden="true">&#8599;</span></a>
-      </div>
-    </div>
-    <span class="renren__zzz" aria-hidden="true"><i>Z</i><i>z</i><i>z</i></span>
-    <button class="renren__launcher" type="button" data-renren-launcher aria-label="Ask Renren about this page" aria-expanded="false">
-      <span class="renren__face">
-        <img src="https://raw.githubusercontent.com/renrenmimi/renrenmimi/main/assets/dog.jpg" alt="" width="500" height="500" decoding="async">
-      </span>
-      <span class="renren__status" aria-hidden="true"></span>
-    </button>
-  </aside>
-
-  <footer class="site-footer">
-    <div class="container footer__inner">
-      <p class="footer__copy">&#169; <span id="year">2026</span> Weiren Feng</p>
-      <nav class="footer__links" aria-label="Contact and links">
-        <a href="mailto:feng.weir@northeastern.edu">
-          <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-mail"></use></svg>
-          Email
-        </a>
-        <a href="https://github.com/renrenmimi" target="_blank" rel="noopener noreferrer">
-          <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-github"></use></svg>
-          GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/fengweiren" target="_blank" rel="noopener noreferrer">
-          <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-linkedin"></use></svg>
-          LinkedIn
-        </a>
-      </nav>
-      <a class="footer__top" href="#top">Back to top &#8593;</a>
-    </div>
-  </footer>
-
-  <script>
-    (function () {
-      var root = document.documentElement;
-      var toggle = document.querySelector('.theme-toggle');
-      var meta = document.getElementById('theme-color-meta');
-      var colors = { dark: '#0a0d14', light: '#f6f7fb' };
-
-      function label(t) { return t === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'; }
-      function apply(t) {
-        root.setAttribute('data-theme', t);
-        if (meta) meta.setAttribute('content', colors[t] || colors.dark);
-        if (toggle) toggle.setAttribute('aria-label', label(t));
-      }
-      apply(root.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
-
-      if (toggle) {
-        toggle.addEventListener('click', function () {
-          var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-          apply(next);
-          try { localStorage.setItem('theme', next); } catch (e) {}
-        });
-      }
-
-      var y = document.getElementById('year');
-      if (y) y.textContent = new Date().getFullYear();
-
-      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var items = document.querySelectorAll('.reveal');
-      if (!reduce && 'IntersectionObserver' in window && items.length) {
-        root.classList.add('reveal-on');
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              io.unobserve(entry.target);
-            }
-          });
-        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
-        items.forEach(function (el) { io.observe(el); });
-      }
-
-      /* Work deck — arrows and progress on top of native snap scrolling.
-         Trackpad and touch already work through overflow-x; this only adds
-         the controls and keeps them in sync with wherever the user scrolled. */
-      var deck = document.querySelector('[data-deck]');
-      if (deck) {
-        var vp = deck.querySelector('[data-deck-viewport]');
-        var cards = deck.querySelectorAll('.cards > .card');
-        var dots = deck.querySelector('[data-deck-dots]');
-        var prev = deck.querySelector('[data-deck-prev]');
-        var next = deck.querySelector('[data-deck-next]');
-
-        for (var d = 0; d < cards.length; d++) {
-          dots.appendChild(document.createElement('span')).className = 'deck__dot';
-        }
-
-        function step() {
-          if (cards.length < 2) return vp.clientWidth;
-          return cards[1].getBoundingClientRect().left - cards[0].getBoundingClientRect().left;
-        }
-
-        function index() {
-          var s = step();
-          var i = s ? Math.round(vp.scrollLeft / s) : 0;
-          return i < 0 ? 0 : (i > cards.length - 1 ? cards.length - 1 : i);
-        }
-
-        function sync() {
-          var idx = index();
-          for (var i = 0; i < dots.children.length; i++) {
-            if (i === idx) dots.children[i].setAttribute('data-active', '');
-            else dots.children[i].removeAttribute('data-active');
-          }
-          prev.disabled = vp.scrollLeft <= 2;
-          next.disabled = vp.scrollLeft >= vp.scrollWidth - vp.clientWidth - 2;
-        }
-
-        function go(dir) {
-          /* scrollBy fights mandatory snapping — a smooth scroll of exactly one
-             card gets snapped back to where it started. Scrolling the target
-             card into view gives the snap engine the same destination, and it
-             honours scroll-padding, so the card lands on the text grid. */
-          var i = index() + dir;
-          if (i < 0) i = 0;
-          if (i > cards.length - 1) i = cards.length - 1;
-          cards[i].scrollIntoView({
-            behavior: reduce ? 'auto' : 'smooth',
-            inline: 'start',
-            block: 'nearest'
-          });
-        }
-
-        prev.addEventListener('click', function () { go(-1); });
-        next.addEventListener('click', function () { go(1); });
-
-        var tick;
-        vp.addEventListener('scroll', function () {
-          clearTimeout(tick);
-          tick = setTimeout(sync, 60);
-        }, { passive: true });
-
-        window.addEventListener('resize', function () { clearTimeout(tick); tick = setTimeout(sync, 120); });
-        sync();
-      }
-
-      /* Renren — a small, local guide. It reacts to the section in view,
-         sleeps when the page is idle, and can pick a project without sending
-         visitor data anywhere. */
-      var guide = document.querySelector('[data-renren]');
-      if (guide) {
-        var launcher = guide.querySelector('[data-renren-launcher]');
-        var bubble = guide.querySelector('[data-renren-bubble]');
-        var copy = guide.querySelector('[data-renren-copy]');
-        var close = guide.querySelector('[data-renren-close]');
-        var surprise = guide.querySelector('[data-renren-surprise]');
-        var activeMessage = 'Hi! I know every corner of this site.';
-        var idleTimer;
-        var lastPick = -1;
-        var messages = {
-          top: 'Hi! I’m Renren. I know every corner of this site.',
-          work: 'These are the things Weiren actually shipped.',
-          experience: 'Six years in data made the product instincts stick.',
-          teaching: 'Free interactive courses for beginners and anyone who wants to keep improving. Pick a subject to learn by doing.',
-          lab: 'This is where the playful experiments live.',
-          skills: 'A practical stack — chosen for shipping, not collecting logos.',
-          about: 'You made it this far. We should probably say hello.'
-        };
-
-        function setCopy(message) {
-          if (!message || copy.textContent === message) return;
-          copy.textContent = message;
-          if (!reduce && copy.animate) {
-            copy.animate([
-              { opacity: 0, transform: 'translateY(4px)' },
-              { opacity: 1, transform: 'translateY(0)' }
-            ], { duration: 220, easing: 'cubic-bezier(.2,.7,.2,1)' });
-          }
-        }
-
-        function openGuide(message) {
-          setCopy(message || activeMessage);
-          guide.classList.add('is-open');
-          bubble.setAttribute('aria-hidden', 'false');
-          launcher.setAttribute('aria-expanded', 'true');
-        }
-
-        function closeGuide() {
-          guide.classList.remove('is-open');
-          bubble.setAttribute('aria-hidden', 'true');
-          launcher.setAttribute('aria-expanded', 'false');
-        }
-
-        launcher.addEventListener('click', function () {
-          if (guide.classList.contains('is-open')) closeGuide();
-          else openGuide(activeMessage);
-        });
-        close.addEventListener('click', function () { closeGuide(); launcher.focus(); });
-
-        surprise.addEventListener('click', function () {
-          var choices = document.querySelectorAll('.cards > .card, .mini-grid > .mini');
-          if (!choices.length) return;
-          var pick = Math.floor(Math.random() * choices.length);
-          if (choices.length > 1 && pick === lastPick) pick = (pick + 1) % choices.length;
-          lastPick = pick;
-          var target = choices[pick];
-          var title = target.querySelector('.card__title, .mini__title');
-          setCopy('Renren picked ' + (title ? title.textContent.trim() : 'this one') + '. Good choice.');
-          target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center', inline: 'center' });
-          target.classList.add('renren-picked');
-          window.setTimeout(function () { target.classList.remove('renren-picked'); }, 1800);
-        });
-
-        document.addEventListener('keydown', function (event) {
-          if (event.key === 'Escape' && guide.classList.contains('is-open')) closeGuide();
-        });
-
-        if ('IntersectionObserver' in window) {
-          var sectionObserver = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-              if (!entry.isIntersecting || !messages[entry.target.id]) return;
-              activeMessage = messages[entry.target.id];
-              if (guide.classList.contains('is-open')) setCopy(activeMessage);
-              else if (!reduce && launcher.animate) {
-                launcher.animate([
-                  { transform: 'scale(1)' },
-                  { transform: 'scale(1.06)' },
-                  { transform: 'scale(1)' }
-                ], { duration: 420, easing: 'cubic-bezier(.2,.8,.2,1)' });
-              }
-            });
-          }, { rootMargin: '-38% 0px -52% 0px', threshold: 0 });
-          Object.keys(messages).forEach(function (id) {
-            var section = document.getElementById(id);
-            if (section) sectionObserver.observe(section);
-          });
-        }
-
-        function wakeRenren() {
-          guide.classList.remove('is-idle');
-          clearTimeout(idleTimer);
-          idleTimer = window.setTimeout(function () { guide.classList.add('is-idle'); }, 12000);
-        }
-        ['scroll', 'pointerdown', 'keydown'].forEach(function (eventName) {
-          window.addEventListener(eventName, wakeRenren, { passive: true });
-        });
-        wakeRenren();
-      }
-    })();
-  </script>
+<dialog id="project-picker" class="project-picker" aria-labelledby="picker-title" data-picker-view="projects">
+<div class="picker-header"><h2 id="picker-title">What would you like to try?</h2><p>Browse an app, or learn something new.</p><button class="picker-close" type="button" data-close-project-picker aria-label="Close browse menu">×</button></div>
+<div class="picker-mobile-switch" aria-label="Choose a collection"><button type="button" data-picker-view-button="projects" aria-pressed="true" aria-controls="picker-projects">Projects <span>08</span></button><button type="button" data-picker-view-button="learning" aria-pressed="false" aria-controls="picker-tools">Learning Tools <span>09</span></button></div>
+<div class="picker-columns">
+<section id="picker-projects" class="picker-column picker-projects" aria-labelledby="picker-projects-title"><header class="picker-collection-head"><div><h3 id="picker-projects-title">Projects</h3><span>08</span></div><p>Apps for everyday use and development.</p></header><div class="picker-list"><a class="picker-link" href="https://petnote.vercel.app" target="_blank" rel="noopener noreferrer"><strong>PetNote</strong><small>A social app for pet owners</small><b aria-hidden="true">↗</b></a><a class="picker-link" href="https://agenttape.vercel.app" target="_blank" rel="noopener noreferrer"><strong>AgentTape</strong><small>Replay an AI coding session</small><b aria-hidden="true">↗</b></a><a class="picker-link" href="https://tone-down.vercel.app" target="_blank" rel="noopener noreferrer"><strong>ToneDown</strong><small>Practice conversations with an AI coach</small><b aria-hidden="true">↗</b></a><a class="picker-link" href="https://www.kovaflooring.com" target="_blank" rel="noopener noreferrer"><strong>KOVA Flooring</strong><small>A flooring brand and dealer portal</small><b aria-hidden="true">↗</b></a><a class="picker-link" href="https://greenlane-beryl.vercel.app" target="_blank" rel="noopener noreferrer"><strong>GreenLane</strong><small>Explore immigration timelines</small><b aria-hidden="true">↗</b></a><a class="picker-link" href="https://repo-time-machine.vercel.app" target="_blank" rel="noopener noreferrer"><strong>Repo Time Machine</strong><small>Replay a repository’s Git history</small><b aria-hidden="true">↗</b></a><a class="picker-link" href="https://taxlot.vercel.app" target="_blank" rel="noopener noreferrer"><strong>TaxLot</strong><small>Track investments and estimate taxes</small><b aria-hidden="true">↗</b></a><a class="picker-link" href="https://github.com/renrenmimi/iCanDoIt#readme" target="_blank" rel="noopener noreferrer"><strong>iCanDoIt</strong><small>A native macOS day planner</small><b aria-hidden="true">↗</b></a></div><a class="picker-section-link" href="#work" data-picker-section="work">See the projects on this page <span aria-hidden="true">↘</span></a></section>
+<section id="picker-tools" class="picker-column picker-tools" aria-labelledby="picker-tools-title"><header class="picker-collection-head"><div><h3 id="picker-tools-title">Learning Tools</h3><span>09</span></div><p>Interactive lessons and practice. All free.</p></header><div class="picker-list"><a class="picker-link" href="https://boxarrow.vercel.app" target="_blank" rel="noopener noreferrer"><strong>BoxArrow</strong><small>System design</small><b aria-hidden="true">↗</b></a><a class="picker-link" href="https://data-data.vercel.app" target="_blank" rel="noopener noreferrer"><strong>DataData</strong><small>Data structures</small><b aria-hidden="true">↗</b></a><a class="picker-link" href="https://algo-algo.vercel.app" target="_blank" rel="noopener noreferrer"><strong>AlgoAlgo</strong><small>Algorithms</small><b aria-hidden="true">↗</b></a><a class="picker-link" href="https://apier-eta.vercel.app" target="_blank" rel="noopener noreferrer"><strong>APIer</strong><small>HTTP, REST &amp; GraphQL</small><b aria-hidden="true">↗</b></a><a class="picker-link" href="https://tser.vercel.app" target="_blank" rel="noopener noreferrer"><strong>TSer</strong><small>TypeScript</small><b aria-hidden="true">↗</b></a><a class="picker-link" href="https://redis-visual.vercel.app" target="_blank" rel="noopener noreferrer"><strong>RedisVisual</strong><small>Redis &amp; caching</small><b aria-hidden="true">↗</b></a><a class="picker-link" href="https://drill-lab-three.vercel.app" target="_blank" rel="noopener noreferrer"><strong>DrillLab</strong><small>Coding practice</small><b aria-hidden="true">↗</b></a><a class="picker-link" href="https://agent-lab-blond.vercel.app" target="_blank" rel="noopener noreferrer"><strong>AgentLab</strong><small>AI agents &amp; tool calls</small><b aria-hidden="true">↗</b></a><a class="picker-link" href="https://bugmuseum.vercel.app" target="_blank" rel="noopener noreferrer"><strong>Bug Museum</strong><small>Debugging &amp; regression tests</small><b aria-hidden="true">↗</b></a></div><a class="picker-section-link" href="#learning" data-picker-section="learning">See the tools on this page <span aria-hidden="true">↘</span></a></section>
+</div></dialog>
+  <script src="open-form.js?v=20261025-openform"></script>
 </body>
 </html>
