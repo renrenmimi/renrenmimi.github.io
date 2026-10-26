@@ -1,9 +1,9 @@
 (function(){
   'use strict';
   const root=document.documentElement, reduced=matchMedia('(prefers-reduced-motion: reduce)'), fine=matchMedia('(hover: hover) and (pointer: fine)');
-  let motion=!reduced.matches,userMotionChoice=false,tapeTimer=null,tapePlaying=false,tapeVisible=false,tapeStep=0,wakeMark=function(){};
-  const motionButton=document.querySelector('[data-motion-toggle]'),playButton=document.querySelector('[data-tape-play]'),tape=document.querySelector('.tape-cover'),canvas=document.getElementById('curiosity-mark');
-  function setMotion(value){motion=value;root.dataset.motion=motion?'running':'paused';if(motionButton){motionButton.setAttribute('aria-pressed',String(!motion));motionButton.textContent=motion?'Motion on':'Motion off';}if(!motion){setTapePlaying(false);document.querySelectorAll('[data-reveal]').forEach(e=>e.classList.add('is-visible'));}wakeMark();}
+  let motion=!reduced.matches,userMotionChoice=false,wakeMark=function(){};
+  const motionButton=document.querySelector('[data-motion-toggle]'),canvas=document.getElementById('curiosity-mark');
+  function setMotion(value){motion=value;root.dataset.motion=motion?'running':'paused';if(motionButton){motionButton.setAttribute('aria-pressed',String(!motion));motionButton.textContent=motion?'Motion on':'Motion off';}if(!motion){document.querySelectorAll('[data-reveal]').forEach(e=>e.classList.add('is-visible'));}wakeMark();}
   motionButton?.addEventListener('click',()=>{userMotionChoice=true;setMotion(!motion);});
   reduced.addEventListener('change',e=>{if(!userMotionChoice)setMotion(!e.matches);});
   root.classList.add('motion-ready');
@@ -44,27 +44,7 @@
     document.querySelectorAll('[data-pet-select]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
     document.querySelectorAll('[data-pet-panel]').forEach(panel=>{panel.hidden=panel.dataset.petPanel!==selected;panel.classList.remove('is-entering');if(!panel.hidden&&motion){void panel.offsetWidth;panel.classList.add('is-entering');}});
   }));
-  const steps=[
-    {role:'USER',message:'Find the app’s entry point.',detail:'The request that started the session.'},
-    {role:'ASSISTANT',message:'First, locate the project files.',detail:'A plan becomes the next tool call.'},
-    {role:'TOOL',message:'File search → src/main.tsx',detail:'A tool result becomes part of the context.'},
-    {role:'ASSISTANT',message:'Read src/main.tsx.',detail:'See what the agent knew before it acted.'},
-    {role:'TOOL',message:'Entry point found. Context updated.',detail:'Five messages. One trace you can follow.'}
-  ];
-  function renderTape(index){
-    tapeStep=(index+steps.length)%steps.length;const item=steps[tapeStep];
-    document.querySelector('[data-tape-count]').textContent=String(tapeStep+1).padStart(2,'0')+' / 05';document.querySelector('[data-tape-role]').textContent=item.role;document.querySelector('[data-tape-message]').textContent=item.message;document.querySelector('[data-tape-detail]').textContent=item.detail;
-    document.querySelectorAll('[data-tape-select]').forEach((button,i)=>{button.setAttribute('aria-pressed',String(i===tapeStep));button.classList.toggle('is-past',i<tapeStep);});document.querySelectorAll('.tape-timeline>i').forEach((line,i)=>line.classList.toggle('is-past',i<tapeStep));
-    const message=document.querySelector('.tape-message');message.classList.remove('is-entering');if(motion){void message.offsetWidth;message.classList.add('is-entering');}
-  }
-  function scheduleTape(){clearTimeout(tapeTimer);tapeTimer=null;if(!tapePlaying||!tapeVisible||document.hidden||!motion)return;tapeTimer=setTimeout(()=>{if(tapeStep===steps.length-1){setTapePlaying(false);return;}renderTape(tapeStep+1);scheduleTape();},1700);}
-  function setTapePlaying(value){tapePlaying=value;if(!playButton)return;playButton.setAttribute('aria-pressed',String(tapePlaying));document.querySelector('[data-tape-play-icon]').textContent=!motion?'→':tapePlaying?'Ⅱ':'▶';document.querySelector('[data-tape-play-label]').textContent=!motion?'Next step':tapePlaying?'Pause the trace':'Play the trace';scheduleTape();}
-  if(playButton){
-    playButton.addEventListener('click',()=>{if(!motion){renderTape(tapeStep+1);return;}if(!tapePlaying&&tapeStep===steps.length-1)renderTape(0);setTapePlaying(!tapePlaying);});
-    document.querySelector('[data-tape-prev]').addEventListener('click',()=>{setTapePlaying(false);renderTape(tapeStep-1);});document.querySelector('[data-tape-next]').addEventListener('click',()=>{setTapePlaying(false);renderTape(tapeStep+1);});
-    document.querySelectorAll('[data-tape-select]').forEach(button=>button.addEventListener('click',()=>{setTapePlaying(false);renderTape(Number(button.dataset.tapeSelect));}));
-    new IntersectionObserver(entries=>{tapeVisible=entries[0].isIntersecting;scheduleTape();},{threshold:.2}).observe(tape);
-  }
+  /* The AgentTape preview and both previews' autoplay live in previews.js. */
   if(canvas){
     const ctx=canvas.getContext('2d');let points=[],width=210,height=210,markFrame=0,visible=false,settleFrames=0,pointer={x:-1000,y:-1000},angle=0,targetAngle=0;
     function resizeMark(){
@@ -87,5 +67,5 @@
   const navLinks=Array.from(document.querySelectorAll('.site-header nav a[href^="#"]'));
   const sections=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)navLinks.forEach(a=>{if(a.hash==='#'+entry.target.id)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});}),{rootMargin:'-15% 0px -65% 0px',threshold:0});
   ['work','learning','about'].forEach(id=>{const section=document.getElementById(id);if(section)sections.observe(section);});
-  document.addEventListener('visibilitychange',()=>{scheduleTape();wakeMark();});setMotion(motion);
+  document.addEventListener('visibilitychange',()=>{wakeMark();});setMotion(motion);
 })();
