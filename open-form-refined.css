@@ -28,3 +28,6 @@ body:has(.project-picker[open]){overflow:hidden}
 
 /* Full experiment directory, expanded on request. */
 .all-experiments{border-top:1px solid #d9cfc1;margin-top:0}.all-experiments summary{cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:20px 0;font-size:13px;list-style:none}.all-experiments summary::-webkit-details-marker{display:none}.all-experiments summary span{font-size:22px}.all-experiments[open] summary span{transform:rotate(45deg)}.experiment-directory{display:grid;grid-template-columns:1fr 1fr;gap:24px 20px;padding:5px 0 25px}.experiment-directory h3{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#7a7166;margin:0 0 12px}.experiment-directory ul{list-style:none;padding:0;margin:0}.experiment-directory a{display:inline-block;font-size:13px;padding:6px 0;text-underline-offset:4px}.experiment-directory a:hover{text-decoration:underline}#teaching{display:block;scroll-margin-top:85px}#experience,#skills,#lab{scroll-margin-top:85px}@media(max-width:380px){.experiment-directory{grid-template-columns:1fr}}
+
+/* PetNote’s original brand mark, shared by its two product sketches. */
+.pet-brand-paw{display:inline-block;width:24px;height:24px;margin-left:4px;vertical-align:-5px;object-fit:contain}.meetup-spark{width:36px;height:36px;object-fit:contain}
