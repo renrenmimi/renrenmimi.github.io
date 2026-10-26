@@ -15,7 +15,7 @@
   <meta name="description" content="Software by Weiren Feng. Production web apps, interactive learning tools, and browser experiments. Renren is my nickname.">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="course-motion.css?v=20261025-openform"><link rel="stylesheet" href="open-form.css?v=20261025-openform"><link rel="stylesheet" href="open-form-motion.css?v=20261025-openform"><link rel="stylesheet" href="open-form-refined.css?v=20261025-openform">
+  <link rel="stylesheet" href="course-motion.css?v=20261025-openform"><link rel="stylesheet" href="open-form.css?v=20261025-openform"><link rel="stylesheet" href="open-form-motion.css?v=20261025-openform"><link rel="stylesheet" href="open-form-refined.css?v=20261025-openform"><link rel="stylesheet" href="learning-tools.css?v=20261025-lab">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -86,110 +86,174 @@
     <span id="teaching" aria-hidden="true"></span><section id="learning" class="learning" aria-labelledby="learning-title">
       <div class="wrap">
         <div class="learning-head"><div><p class="eyebrow">02 / LEARN BY DOING</p><h2 id="learning-title">Learning Tools<span class="heading-star" aria-hidden="true"><span>✳</span></span></h2></div><div><p>Free lessons and practice for beginners and intermediate learners.<br>Each tool helps you learn a topic by trying it.</p><span class="availability"><i aria-hidden="true"></i> ALL LIVE IN PRODUCTION · FREE TO USE</span></div></div>
-        <div class="mini-grid"><a class="mini mini--system" href="https://boxarrow.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #8a7cf6; --course-bg: #121722">
-            <span class="course-diagram" aria-hidden="true">
-              <svg class="system-map" viewBox="0 0 164 64" fill="none" focusable="false">
-                <!-- Clients, an edge gateway, replicated services, and data / async paths. -->
-                <rect class="system-boundary" x="61" y="3" width="44" height="48" rx="5"/>
-                <path class="system-link" d="M17 19h7v12h9M17 43h7V31M48 31h9V14h14M57 31h14M57 31v14h14M96 14h17v18h11M96 31h17M96 45h17V14h17M84 51v8h40"/>
-                <rect x="4" y="12" width="13" height="13" rx="2.5"/>
-                <path d="M7 16h7"/>
-                <rect x="4" y="37" width="13" height="13" rx="2.5"/>
-                <path d="M7 41h7"/>
-                <rect class="diagram-active" x="33" y="23" width="15" height="16" rx="3"/>
-                <path class="system-gateway" d="M37 31h7m-4-4 4 4-4 4"/>
-                <rect class="system-replica system-replica--one" x="71" y="9" width="25" height="10" rx="2.5"/>
-                <rect class="diagram-active system-replica system-replica--two" x="71" y="26" width="25" height="10" rx="2.5"/>
-                <rect class="system-replica system-replica--three" x="71" y="40" width="25" height="10" rx="2.5"/>
-                <path d="M75 14h5m-5 17h5m-5 14h5"/>
-                <ellipse class="system-data" cx="142" cy="8" rx="12" ry="4"/>
-                <path class="system-data" d="M130 8v10c0 5 24 5 24 0V8m-24 5c0 5 24 5 24 0"/>
-                <rect x="124" y="27" width="32" height="10" rx="2.5"/>
-                <path d="m130 30-2 3h6l-2 3"/>
-                <rect x="124" y="49" width="32" height="13" rx="2.5"/>
-                <path d="M130 53v5m4-5v5m4-5v5m4-5v5m4-5v5m4-5v5"/>
-                <circle class="diagram-dot" cx="57" cy="31" r="2"/>
-                <circle class="diagram-dot" cx="113" cy="31" r="2"/>
-                <circle class="system-packet system-packet--read" r="2.4"/>
-                <circle class="system-packet system-packet--cache" r="2.4"/>
-                <circle class="system-packet system-packet--queue" r="2.4"/>
-              </svg>
-            </span>
-            <h3 class="mini__title">BoxArrow</h3>
-            <p class="mini__desc">Learn system design through interactive diagrams and experiments: how clients, servers, databases and rate limits fit together. English and Chinese.</p>
-            <span class="mini__go">System design · EN / 中文<span aria-hidden="true">↗</span></span>
+        <!-- Nine courses on one dark panel. BoxArrow, the system design course,
+             sits in the middle; each component in its diagram is something
+             another course teaches, and pointing at that course lights it up. -->
+        <div class="lt-panel">
+          <div class="lt-grid" data-lt-grid>
+            <span class="lt-grid__amb" aria-hidden="true"></span>
+          <a class="lt-card" data-link="db replica" data-role="database &amp; replica" href="https://data-data.vercel.app" target="_blank" rel="noopener noreferrer" style="--h: 212; --c: .12; --Ld: .82">
+            <div class="lt-card__head">
+              <h3 class="lt-card__title">DataData</h3>
+              <span class="lt-card__stage"><span class="viz viz--array" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span></span>
+            </div>
+            <p class="lt-card__desc">Learn data structures through memory diagrams and animations you can step or predict. Compare Java, Python and JS, then practice with worked problems.</p>
+            <p class="lt-card__foot"><span class="lt-card__meta">14 chapters</span><span class="lt-card__go"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3.6 8.4 8.4 3.6M4.6 3.6h3.8v3.8"/></svg></span></p>
           </a>
-<a class="mini" href="https://data-data.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: oklch(76% 0.15 292); --course-bg: #0d1019">
-            <span class="viz viz--array" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
-            <h3 class="mini__title">DataData</h3>
-            <p class="mini__desc">Learn data structures through memory diagrams and animations you can step or predict. Compare Java, Python and JS, then practice with worked problems.</p>
-            <span class="mini__go">14 chapters<span aria-hidden="true">↗</span></span>
+          <a class="lt-card" data-link="lb" data-role="load balancing" href="https://algo-algo.vercel.app" target="_blank" rel="noopener noreferrer" style="--h: 62; --c: .15; --Ld: .8">
+            <div class="lt-card__head">
+              <h3 class="lt-card__title">AlgoAlgo</h3>
+              <span class="lt-card__stage"><span class="viz viz--bisect" aria-hidden="true"><u></u><b class="lo"></b><b class="hi"></b><s></s></span></span>
+            </div>
+            <p class="lt-card__desc">Learn how algorithms decide with step-through decision trees, DP tables and binary search. Compare sorting strategies by comparisons, moves and space.</p>
+            <p class="lt-card__foot"><span class="lt-card__meta">13 chapters</span><span class="lt-card__go"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3.6 8.4 8.4 3.6M4.6 3.6h3.8v3.8"/></svg></span></p>
           </a>
-<a class="mini" href="https://algo-algo.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: oklch(76% 0.15 62); --course-bg: #0d1019">
-            <span class="viz viz--bisect" aria-hidden="true"><u></u><b class="lo"></b><b class="hi"></b><s></s></span>
-            <h3 class="mini__title">AlgoAlgo</h3>
-            <p class="mini__desc">Learn how algorithms decide with step-through decision trees, DP tables and binary search. Compare sorting strategies by comparisons, moves and space.</p>
-            <span class="mini__go">13 chapters<span aria-hidden="true">↗</span></span>
+          <a class="lt-card" data-link="c1 c2" data-role="load drill" href="https://drill-lab-three.vercel.app" target="_blank" rel="noopener noreferrer" style="--h: 128; --c: .18; --Ld: .87">
+            <div class="lt-card__head">
+              <h3 class="lt-card__title">DrillLab</h3>
+              <span class="lt-card__stage"><span class="viz viz--drill" aria-hidden="true"><span class="drill-stairs"><i></i><i></i><i></i><i></i><s></s></span></span></span>
+            </div>
+            <p class="lt-card__desc">Build independence with 80 lessons, 105 recall questions, 148 exercises, 25 coding problems and 7 timed builds, organized into six guided learning plans.</p>
+            <p class="lt-card__foot"><span class="lt-card__meta">80 lessons</span><span class="lt-card__go"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3.6 8.4 8.4 3.6M4.6 3.6h3.8v3.8"/></svg></span></p>
           </a>
-<a class="mini" href="https://apier-eta.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: oklch(76% 0.15 210); --course-bg: #0d1019">
-            <span class="viz viz--rtt" aria-hidden="true">
-              <span class="api-node">CLIENT</span>
-              <span class="api-lane"><i class="api-request">GET</i><i class="api-response">200</i></span>
-              <span class="api-node">API</span>
-            </span>
-            <h3 class="mini__title">APIer</h3>
-            <p class="mini__desc">Learn HTTP, REST and GraphQL, from your first request to auth, caching and versioning. Practice with a mock API and request inspector in your browser.</p>
-            <span class="mini__go">12 chapters<span aria-hidden="true">↗</span></span>
+          <a class="lt-card" data-link="s1 s2 s3" data-role="API servers" href="https://apier-eta.vercel.app" target="_blank" rel="noopener noreferrer" style="--h: 158; --c: .15; --Ld: .8">
+            <div class="lt-card__head">
+              <h3 class="lt-card__title">APIer</h3>
+              <span class="lt-card__stage"><span class="viz viz--rtt" aria-hidden="true"><span class="api-node">CLIENT</span><span class="api-lane"><i class="api-request">GET</i><i class="api-response">200</i></span><span class="api-node">API</span></span></span>
+            </div>
+            <p class="lt-card__desc">Learn HTTP, REST and GraphQL, from your first request to auth, caching and versioning. Practice with a mock API and request inspector in your browser.</p>
+            <p class="lt-card__foot"><span class="lt-card__meta">12 chapters</span><span class="lt-card__go"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3.6 8.4 8.4 3.6M4.6 3.6h3.8v3.8"/></svg></span></p>
           </a>
-<a class="mini" href="https://tser.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: oklch(76% 0.15 210); --course-bg: #0d1019">
-            <span class="viz viz--type" aria-hidden="true">
-              <span class="type-code"><span>const score =</span><b>42</b></span>
-              <span class="type-arrow">→</span>
-              <span class="type-result"><small>inferred</small><strong>number</strong></span>
-            </span>
-            <h3 class="mini__title">TSer</h3>
-            <p class="mini__desc">Learn TypeScript from first principles. Edit code, get errors and inferred types from the real compiler in a Web Worker, and practice what each concept means.</p>
-            <span class="mini__go">12 chapters<span aria-hidden="true">↗</span></span>
+          <a class="lt-card lt-card--hub" data-hub href="https://boxarrow.vercel.app" target="_blank" rel="noopener noreferrer" style="--h: 285; --c: .15; --Ld: .78">
+            <div class="lt-card__head">
+              <h3 class="lt-card__title">BoxArrow</h3>
+              <span class="lt-card__stage lt-card__stage--system" aria-hidden="true">
+<svg class="sysmap" data-sysmap viewBox="0 0 240 62" fill="none" focusable="false">
+                  <!-- Two clients, a load balancer, three servers, a sharded cache,
+                       a primary database with a replica, and a queue drained by a worker. -->
+                  <g class="sys-edges">
+                    <path d="M22.5 14.5H31V31h9.5M22.5 47.5H31V31"/>
+                    <path d="M61.5 31H72V9.5h10.5M61.5 31h21M72 31v21.5h10.5"/>
+                    <path d="M122.5 9.5H134M122.5 31H134M122.5 52.5H134M134 9.5v43M134 9.5h12.5M134 31h12.5M134 52.5h12.5"/>
+                    <path class="sys-edge--async" d="M184.5 31h17M184.5 52.5h17"/>
+                  </g>
+                  <g class="sys-node sys-node--client" data-node="c1">
+                    <rect class="sys-box" x="0.5" y="7.5" width="22" height="14" rx="3.5"/>
+                    <circle class="sys-glyph" cx="11.5" cy="12.3" r="1.8"/>
+                    <path class="sys-glyph" d="M7.7 18.4c.6-2 2.1-3 3.8-3s3.2 1 3.8 3"/>
+                  </g>
+                  <g class="sys-node sys-node--client" data-node="c2">
+                    <rect class="sys-box" x="0.5" y="40.5" width="22" height="14" rx="3.5"/>
+                    <circle class="sys-glyph" cx="11.5" cy="45.3" r="1.8"/>
+                    <path class="sys-glyph" d="M7.7 51.4c.6-2 2.1-3 3.8-3s3.2 1 3.8 3"/>
+                  </g>
+                  <g class="sys-node sys-node--lb" data-node="lb">
+                    <rect class="sys-box" x="40.5" y="22.5" width="21" height="17" rx="4.5"/>
+                    <path class="sys-glyph" d="M45 31h3.6m0 0 4.2-3.8m-4.2 3.8h4.2m-4.2 0 4.2 3.8"/>
+                    <circle class="sys-dot" cx="53.6" cy="27.2" r="0.95"/><circle class="sys-dot" cx="53.6" cy="31" r="0.95"/><circle class="sys-dot" cx="53.6" cy="34.8" r="0.95"/>
+                  </g>
+                  <g class="sys-node sys-node--server" data-node="s1">
+                    <rect class="sys-box" x="82.5" y="2.5" width="40" height="14" rx="3.5"/>
+                    <path class="sys-glyph" d="M87.5 7.5h6m-6 4h6"/>
+                    <rect class="sys-track" x="98" y="8.5" width="19" height="2" rx="1"/>
+                    <rect class="sys-load" x="98" y="8.5" width="0" height="2" rx="1"/>
+                    <path class="sys-x" d="M105 7l5 5m0-5-5 5"/>
+                  </g>
+                  <g class="sys-node sys-node--server" data-node="s2">
+                    <rect class="sys-box" x="82.5" y="24" width="40" height="14" rx="3.5"/>
+                    <path class="sys-glyph" d="M87.5 29h6m-6 4h6"/>
+                    <rect class="sys-track" x="98" y="30" width="19" height="2" rx="1"/>
+                    <rect class="sys-load" x="98" y="30" width="0" height="2" rx="1"/>
+                    <path class="sys-x" d="M105 28.5l5 5m0-5-5 5"/>
+                  </g>
+                  <g class="sys-node sys-node--server" data-node="s3">
+                    <rect class="sys-box" x="82.5" y="45.5" width="40" height="14" rx="3.5"/>
+                    <path class="sys-glyph" d="M87.5 50.5h6m-6 4h6"/>
+                    <rect class="sys-track" x="98" y="51.5" width="19" height="2" rx="1"/>
+                    <rect class="sys-load" x="98" y="51.5" width="0" height="2" rx="1"/>
+                    <path class="sys-x" d="M105 50l5 5m0-5-5 5"/>
+                  </g>
+                  <g class="sys-node sys-node--cache" data-node="cache">
+                    <rect class="sys-box" x="146.5" y="2.5" width="93" height="14" rx="3.5"/>
+                    <rect class="sys-shard" data-shard="0" x="149" y="5" width="27" height="9" rx="2"/>
+                    <rect class="sys-shard" data-shard="1" x="179.5" y="5" width="27" height="9" rx="2"/>
+                    <rect class="sys-shard" data-shard="2" x="210" y="5" width="27" height="9" rx="2"/>
+                    <path class="sys-div" d="M177.75 5.5v8M208.25 5.5v8"/>
+                    <circle class="sys-key" cx="156" cy="9.5" r="1.1"/><circle class="sys-key" cx="162.5" cy="9.5" r="1.1"/><circle class="sys-key" cx="169" cy="9.5" r="1.1"/>
+                    <circle class="sys-key" cx="186.5" cy="9.5" r="1.1"/><circle class="sys-key" cx="193" cy="9.5" r="1.1"/><circle class="sys-key" cx="199.5" cy="9.5" r="1.1"/>
+                    <circle class="sys-key" cx="217" cy="9.5" r="1.1"/><circle class="sys-key" cx="223.5" cy="9.5" r="1.1"/><circle class="sys-key" cx="230" cy="9.5" r="1.1"/>
+                  </g>
+                  <g class="sys-node sys-node--store" data-node="db">
+                    <path class="sys-box" d="M146.5 26.6v9c0 4.6 38 4.6 38 0v-9"/>
+                    <ellipse class="sys-box" cx="165.5" cy="26.6" rx="19" ry="3.6"/>
+                    <path class="sys-glyph sys-glyph--soft" d="M146.5 31.2c0 4.6 38 4.6 38 0"/>
+                  </g>
+                  <g class="sys-node sys-node--store" data-node="replica">
+                    <path class="sys-box" d="M201.5 26.6v9c0 4.6 38 4.6 38 0v-9"/>
+                    <ellipse class="sys-box" cx="220.5" cy="26.6" rx="19" ry="3.6"/>
+                    <path class="sys-glyph sys-glyph--soft" d="M201.5 31.2c0 4.6 38 4.6 38 0"/>
+                  </g>
+                  <g class="sys-node sys-node--queue" data-node="queue">
+                    <rect class="sys-box" x="146.5" y="45.5" width="38" height="14" rx="3.5"/>
+                    <rect class="sys-slot" x="151" y="49.5" width="4" height="6" rx="1"/>
+                    <rect class="sys-slot" x="157.5" y="49.5" width="4" height="6" rx="1"/>
+                    <rect class="sys-slot" x="164" y="49.5" width="4" height="6" rx="1"/>
+                    <rect class="sys-slot" x="170.5" y="49.5" width="4" height="6" rx="1"/>
+                    <rect class="sys-slot" x="177" y="49.5" width="4" height="6" rx="1"/>
+                  </g>
+                  <g class="sys-node sys-node--worker" data-node="worker">
+                    <rect class="sys-box" x="201.5" y="45.5" width="38" height="14" rx="3.5"/>
+                    <circle class="sys-spin" cx="210.5" cy="52.5" r="3"/>
+                    <path class="sys-glyph sys-glyph--soft" d="M218 50.5h15m-15 4h10"/>
+                  </g>
+                  <g class="sys-packets" data-packets></g>
+                </svg>
+              </span>
+            </div>
+            <p class="lt-card__desc">Learn system design through interactive diagrams and experiments: how clients, servers, databases and rate limits fit together. English and Chinese.</p>
+            <p class="lt-card__foot"><span class="lt-card__meta" data-hub-caption>System design · EN / 中文</span><span class="lt-card__go"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3.6 8.4 8.4 3.6M4.6 3.6h3.8v3.8"/></svg></span></p>
           </a>
-<a class="mini" href="https://redis-visual.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #e0483d; --course-bg: #121722">
-            <span class="viz viz--cache" aria-hidden="true"><b></b><u></u><b class="hit"></b><u class="d"></u><b class="db"></b><s></s></span>
-            <h3 class="mini__title">RedisVisual</h3>
-            <p class="mini__desc">Learn Redis through data structures, caching, concurrency guards and read models, then test your understanding in a hands-on lab and fault simulator.</p>
-            <span class="mini__go">8 stops<span aria-hidden="true">↗</span></span>
+          <a class="lt-card" data-link="cache" data-role="cache" href="https://redis-visual.vercel.app" target="_blank" rel="noopener noreferrer" style="--h: 27; --c: .19; --Ld: .7">
+            <div class="lt-card__head">
+              <h3 class="lt-card__title">RedisVisual</h3>
+              <span class="lt-card__stage"><span class="viz viz--cache" aria-hidden="true"><b></b><u></u><b class="hit"></b><u class="d"></u><b class="db"></b><s></s></span></span>
+            </div>
+            <p class="lt-card__desc">Learn Redis through data structures, caching, concurrency guards and read models, then test your understanding in a hands-on lab and fault simulator.</p>
+            <p class="lt-card__foot"><span class="lt-card__meta">8 stops</span><span class="lt-card__go"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3.6 8.4 8.4 3.6M4.6 3.6h3.8v3.8"/></svg></span></p>
           </a>
-<a class="mini" href="https://drill-lab-three.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #b8f23d; --course-bg: #101512">
-            <span class="viz viz--drill" aria-hidden="true">
-              <span class="drill-stairs"><i></i><i></i><i></i><i></i><s></s></span>
-            </span>
-            <h3 class="mini__title">DrillLab</h3>
-            <p class="mini__desc">Build independence with 80 lessons, 105 recall questions, 148 exercises, 25 coding problems and 7 timed builds, organized into six guided learning plans.</p>
-            <span class="mini__go">80 lessons<span aria-hidden="true">↗</span></span>
+          <a class="lt-card" data-link="c1 c2" data-role="clients" href="https://tser.vercel.app" target="_blank" rel="noopener noreferrer" style="--h: 252; --c: .14; --Ld: .76">
+            <div class="lt-card__head">
+              <h3 class="lt-card__title">TSer</h3>
+              <span class="lt-card__stage"><span class="viz viz--type" aria-hidden="true"><span class="type-code"><span>const score =</span><b>42</b></span><span class="type-arrow">→</span><span class="type-result"><small>inferred</small><strong>number</strong></span></span></span>
+            </div>
+            <p class="lt-card__desc">Learn TypeScript from first principles. Edit code, get errors and inferred types from the real compiler in a Web Worker, and practice what each concept means.</p>
+            <p class="lt-card__foot"><span class="lt-card__meta">12 chapters</span><span class="lt-card__go"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3.6 8.4 8.4 3.6M4.6 3.6h3.8v3.8"/></svg></span></p>
           </a>
-<a class="mini" href="https://agent-lab-blond.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #8a7cf6; --course-bg: #121722">
-            <span class="viz viz--grow" aria-hidden="true">
-              <span class="agent-stack"><i><b>U</b><span>plan</span></i><i><b>A</b><span>tool?</span></i><i><b>T</b><span>result</span></i></span>
-              <span class="agent-loop">LOOP ↻</span>
-            </span>
-            <h3 class="mini__title">AgentLab</h3>
-            <p class="mini__desc">Learn how tool-using agents work: watch messages and tool calls, build an agent by stop three, then explore context, cost, failure handling and trust.</p>
-            <span class="mini__go">14 stops<span aria-hidden="true">↗</span></span>
+          <a class="lt-card" data-link="queue worker" data-role="queue &amp; worker" href="https://agent-lab-blond.vercel.app" target="_blank" rel="noopener noreferrer" style="--h: 330; --c: .17; --Ld: .75">
+            <div class="lt-card__head">
+              <h3 class="lt-card__title">AgentLab</h3>
+              <span class="lt-card__stage"><span class="viz viz--grow" aria-hidden="true"><span class="agent-stack"><i><b>U</b><span>plan</span></i><i><b>A</b><span>tool?</span></i><i><b>T</b><span>result</span></i></span><span class="agent-loop">LOOP ↻</span></span></span>
+            </div>
+            <p class="lt-card__desc">Learn how tool-using agents work: watch messages and tool calls, build an agent by stop three, then explore context, cost, failure handling and trust.</p>
+            <p class="lt-card__foot"><span class="lt-card__meta">14 stops</span><span class="lt-card__go"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3.6 8.4 8.4 3.6M4.6 3.6h3.8v3.8"/></svg></span></p>
           </a>
-<a class="mini" href="https://bugmuseum.vercel.app" target="_blank" rel="noopener noreferrer" style="--viz: #cbb896; --course-bg: #1e1b16; --viz-fixed: #5cbfa0">
-            <span class="viz viz--museum" aria-hidden="true">
-              <span class="museum-case museum-case--broken"><b>×</b><small>broken</small></span>
-              <span class="museum-arrow">→</span>
-              <span class="museum-case museum-case--fixed"><b>✓</b><small>fixed</small></span>
-            </span>
-            <h3 class="mini__title">Bug Museum</h3>
-            <p class="mini__desc">Learn to debug through six real cases: reproduce each failure, investigate its cause, compare fixes and run the regression test that prevents it from returning.</p>
-            <span class="mini__go">6 exhibits<span aria-hidden="true">↗</span></span>
-          </a></div>
+          <a class="lt-card" data-link="fault" data-role="failure &amp; fix" href="https://bugmuseum.vercel.app" target="_blank" rel="noopener noreferrer" style="--h: 92; --c: .09; --Ld: .84; --viz-fixed: oklch(.78 .13 166)">
+            <div class="lt-card__head">
+              <h3 class="lt-card__title">Bug Museum</h3>
+              <span class="lt-card__stage"><span class="viz viz--museum" aria-hidden="true"><span class="museum-case museum-case--broken"><b>×</b><small>broken</small></span><span class="museum-arrow">→</span><span class="museum-case museum-case--fixed"><b>✓</b><small>fixed</small></span></span></span>
+            </div>
+            <p class="lt-card__desc">Learn to debug through six real cases: reproduce each failure, investigate its cause, compare fixes and run the regression test that prevents it from returning.</p>
+            <p class="lt-card__foot"><span class="lt-card__meta">6 exhibits</span><span class="lt-card__go"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3.6 8.4 8.4 3.6M4.6 3.6h3.8v3.8"/></svg></span></p>
+          </a>
+            <canvas class="lt-flight" data-lt-flight aria-hidden="true"></canvas>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="about" class="about wrap" aria-labelledby="about-title">
       <div class="section-rule"><span class="eyebrow">03 / ABOUT ME</span><span>English / 中文</span></div>
-      <div class="about-grid"><div class="about-title"><h2 id="about-title">A bit<br><span>about me.</span></h2><div class="dog-note"><img src="assets/dog.jpg" alt="Jelly, my dog" loading="lazy" width="80" height="80"><p>This is Jelly,<br>my dog.</p></div></div><div class="about-copy"><p class="large-copy">I worked as a data analyst for six years before moving into software engineering.</p><p>I’m Weiren, and Renren is my nickname. I completed my M.S. in Information Systems at Northeastern University in 2025. Today I build across the stack: responsive React interfaces, backend services, data models, and AI integrations that fit into the product.</p><dl class="facts"><div><dt>Based in</dt><dd>SF Bay Area / Irvine, CA</dd></div><div><dt>Work authorization</dt><dd>No sponsorship required</dd></div></dl></div></div>
+      <div class="about-grid"><div class="about-title"><h2 id="about-title">A bit<br><span>about me.</span></h2><p class="now-note"><span class="now-dot" aria-hidden="true"></span><span><small>CURRENTLY</small>Building <a href="https://boxarrow.vercel.app" target="_blank" rel="noopener noreferrer">BoxArrow</a>, a free system design course in English and Chinese.</span></p></div><div class="about-copy"><p class="large-copy">I worked as a data analyst for six years before moving into software engineering.</p><p>I’m Weiren, and Renren is my nickname. I completed my M.S. in Information Systems at Northeastern University in 2025. Today I build across the stack: responsive React interfaces, backend services, data models, and AI integrations that fit into the product.</p><dl class="facts"><div><dt>Based in</dt><dd>SF Bay Area / Irvine, CA</dd></div><div><dt>Work authorization</dt><dd>No sponsorship required</dd></div></dl></div></div>
       <div id="experience" class="experience"><div><span class="eyebrow">2024 — PRESENT</span><h3>WeShipItNow</h3><p>Full-Stack Engineer</p></div><div><p>A multi-carrier shipping platform, built from zero. I built the React front end and co-designed the backend: live rates, labels, tracking, idempotent purchases, and a durable queue behind four carrier integrations.</p><div id="skills" class="stack"><span>React</span><span>GraphQL / REST</span><span>Apollo / Redux</span><span>Durable queues</span></div></div></div>
       <div class="teaching-role"><span class="eyebrow">SEP — DEC 2025</span><span>Teaching Assistant · Northeastern University</span><span>Graduate databases / SQL & Microsoft SQL Server</span></div>
     </section>
@@ -229,5 +293,6 @@
 <section id="picker-tools" class="picker-column picker-tools" aria-labelledby="picker-tools-title"><header class="picker-collection-head"><div><h3 id="picker-tools-title">Learning Tools</h3><span>09</span></div><p>Interactive lessons and practice. All free.</p></header><div class="picker-list"><a class="picker-link" href="https://boxarrow.vercel.app" target="_blank" rel="noopener noreferrer"><strong>BoxArrow</strong><small>System design</small><b aria-hidden="true">↗</b></a><a class="picker-link" href="https://data-data.vercel.app" target="_blank" rel="noopener noreferrer"><strong>DataData</strong><small>Data structures</small><b aria-hidden="true">↗</b></a><a class="picker-link" href="https://algo-algo.vercel.app" target="_blank" rel="noopener noreferrer"><strong>AlgoAlgo</strong><small>Algorithms</small><b aria-hidden="true">↗</b></a><a class="picker-link" href="https://apier-eta.vercel.app" target="_blank" rel="noopener noreferrer"><strong>APIer</strong><small>HTTP, REST &amp; GraphQL</small><b aria-hidden="true">↗</b></a><a class="picker-link" href="https://tser.vercel.app" target="_blank" rel="noopener noreferrer"><strong>TSer</strong><small>TypeScript</small><b aria-hidden="true">↗</b></a><a class="picker-link" href="https://redis-visual.vercel.app" target="_blank" rel="noopener noreferrer"><strong>RedisVisual</strong><small>Redis &amp; caching</small><b aria-hidden="true">↗</b></a><a class="picker-link" href="https://drill-lab-three.vercel.app" target="_blank" rel="noopener noreferrer"><strong>DrillLab</strong><small>Coding practice</small><b aria-hidden="true">↗</b></a><a class="picker-link" href="https://agent-lab-blond.vercel.app" target="_blank" rel="noopener noreferrer"><strong>AgentLab</strong><small>AI agents &amp; tool calls</small><b aria-hidden="true">↗</b></a><a class="picker-link" href="https://bugmuseum.vercel.app" target="_blank" rel="noopener noreferrer"><strong>Bug Museum</strong><small>Debugging &amp; regression tests</small><b aria-hidden="true">↗</b></a></div><a class="picker-section-link" href="#learning" data-picker-section="learning">See the tools on this page <span aria-hidden="true">↘</span></a></section>
 </div></dialog>
   <script src="open-form.js?v=20261025-openform"></script>
+  <script src="learning-tools.js?v=20261025-lab" defer></script>
 </body>
 </html>
