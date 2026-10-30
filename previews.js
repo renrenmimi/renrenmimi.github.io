@@ -1,7 +1,7 @@
 /* The two project previews.
    PetNote advances every 2.6 seconds; AgentTape every 2 seconds, so a visitor can
-   see they are interactive. Pointing at a preview pauses it; the first real
-   click hands it over for good. Nothing moves with reduced motion or with
+   see they are interactive. Hovering keeps playback going; the first real
+   click on a preview control hands it over for good. Nothing moves with reduced motion or with
    the footer's Motion off switch. */
 (function () {
   'use strict';
@@ -12,9 +12,9 @@
 
   /* A preview that advances itself on a timer until a visitor takes over. */
   function autoplay(cover, opts) {
-    var auto = true, visible = false, hovering = false, timer = 0;
+    var auto = true, visible = false, timer = 0;
     var live = opts.live;
-    function running() { return auto && visible && !hovering && !document.hidden && moving(); }
+    function running() { return auto && visible && !document.hidden && moving(); }
     function schedule() {
       clearTimeout(timer);
       if (!running()) return;
@@ -32,8 +32,6 @@
     }
     // While it plays by itself, screen readers are not told about every turn.
     if (live) live.setAttribute('aria-live', 'off');
-    cover.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') { hovering = true; schedule(); } });
-    cover.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') { hovering = false; schedule(); } });
     cover.addEventListener('click', function (e) { if (e.isTrusted && e.target.closest('button')) stop(); });
     cover.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') stop(); });
     if ('IntersectionObserver' in window) {
